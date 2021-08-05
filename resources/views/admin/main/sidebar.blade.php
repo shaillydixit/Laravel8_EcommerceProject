@@ -50,13 +50,13 @@
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-notebook fa-fw"></i> <span class="hide-menu"> Brands </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="form-layout.html">All Brands</a></li>
+                        <li><a href="{{route('all.brand')}}">All Brands</a></li>
                     </ul>
                 </li>
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu">Categories</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="basic-table.html">All Category</a></li>
+                        <li><a href="{{route('all.category')}}">All Category</a></li>
                         <li><a href="table-layouts.html">All SubCategory</a></li>
                         <li><a href="data-table.html">All SubSubCategory</a></li>
                     </ul>

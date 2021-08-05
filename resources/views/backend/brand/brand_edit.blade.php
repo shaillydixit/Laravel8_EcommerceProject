@@ -2,49 +2,20 @@
 @section('content')
 <br>
 <div class="container">
-    <div class="col-lg-8">
-        <div class="white-box">
-            <h3 class="box-title m-b-0">All Brands</h3>
-
-            <table class="tablesaw table-striped table-hover table-bordered table tablesaw-columntoggle" data-tablesaw-mode="columntoggle" id="table-7981">
-                <thead>
-                    <tr>
-                        <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="persist">Category</th>
-                        <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="persist">Brand Name</th>
-                        <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-sortable-default-col="" data-tablesaw-priority="3" class="tablesaw-priority-3">Brand Image</th>
-                        <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2" class="tablesaw-priority-2">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($brands as $row)
-                    <tr>
-                        <td class="title"><a href="javascript:void(0)">{{$row['category']['category_name']}}</a></td>
-                        <td class="title"><a href="javascript:void(0)">{{$row->brand_name}}</a></td>
-                        <td class="tablesaw-priority-3"><img src="{{asset($row->brand_image)}}" alt=""></td>
-                        <td class="tablesaw-priority-2">
-                            <a href="{{route('edit.brand', $row->id)}}" class="btn btn-info">Edit</a>
-                            <a href="{{route('delete.brand', $row->id)}}" id="delete" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="col-md-4">
+    <div class="col-md-8">
         <div class="white-box">
             <h3 class="box-title m-b-2">Add Brand</h3>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <form method="post" action="{{route('store.brand')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{route('update.brand', $brands->id)}}" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="old_image" value="{{$brands->brand_image}}">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Select Category</label>
                             <select name="category_id" class="form-control">
                                 <option value="" selected="" disabled="">--select category--</option>
                                 @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                <option value="{{$category->id}}" {{$category->id == $brands->category_id ? 'selected' : ''}}>{{$category->category_name}}</option>
                                 @endforeach
                             </select>
                             @error('category_id')
@@ -53,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Brand Name</label>
-                            <input type="text" class="form-control" name="brand_name" placeholder="Enter Brand name">
+                            <input type="text" class="form-control" name="brand_name" value="{{$brands->brand_name}}">
                             @error('brand_name')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -81,10 +52,10 @@
             var reader = new FileReader();
             reader.onload = function(e) {
                 $('#mainImg').attr('src', e.target.result).width(80).height(80);
-            }
+            };
+
             reader.readAsDataURL(input.files[0]);
         }
     }
 </script>
-
 @endsection

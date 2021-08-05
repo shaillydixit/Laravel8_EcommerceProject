@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\BrandController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Rules\Role;
@@ -31,3 +33,17 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', f
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+//category
+Route::get('/category/view', [CategoryController::class, 'AllCategory'])->name('all.category');
+Route::post('/category/store', [CategoryController::class, 'StoreCategory'])->name('store.category');
+Route::get('/category/edit/{id}', [CategoryController::class, 'EditCategory'])->name('edit.category');
+Route::post('/category/update/{id}', [CategoryController::class, 'UpdateCategory'])->name('update.category');
+Route::get('/category/delete/{id}', [CategoryController::class, 'DeleteCategory'])->name('delete.category');
+
+//brand
+Route::get('/brand/view', [BrandController::class, 'AllBrand'])->name('all.brand');
+Route::post('/brand/store', [BrandController::class, 'StoreBrand'])->name('store.brand');
+Route::get('/brand/edit/{id}', [BrandController::class, 'EditBrand'])->name('edit.brand');
+Route::post('/brand/update/{id}', [BrandController::class, 'UpdateBrand'])->name('update.brand');
+Route::get('/brand/delete/{id}', [BrandController::class, 'DeleteBrand'])->name('delete.brand');
