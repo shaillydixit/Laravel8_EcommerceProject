@@ -57,7 +57,7 @@
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-grid fa-fw"></i> <span class="hide-menu">Categories</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('all.category')}}">All Category</a></li>
-                        <li><a href="table-layouts.html">All SubCategory</a></li>
+                        <li><a href="{{route('all.subcategory')}}">All SubCategory</a></li>
                         <li><a href="data-table.html">All SubSubCategory</a></li>
                     </ul>
                 </li>

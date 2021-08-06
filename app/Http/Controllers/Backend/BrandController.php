@@ -13,7 +13,7 @@ class BrandController extends Controller
     public function AllBrand()
     {
         $categories = Category::orderBy('category_name', 'ASC')->paginate(15);
-        $brands = Brand::latest()->get();
+        $brands = Brand::latest()->paginate(6);
         return view('backend.brand.brand_view', compact('brands', 'categories'));
     }
 

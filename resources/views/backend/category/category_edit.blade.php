@@ -24,7 +24,7 @@
                             @enderror
                         </div>
                         <div class="text-xs-right">
-                            <input type="submit" class="btn btn-rounded btn-success mb-5" value="Add New Category">
+                            <input type="submit" class="btn btn-rounded btn-success mb-5" value="Update Category">
                         </div>
                     </form>
                 </div>

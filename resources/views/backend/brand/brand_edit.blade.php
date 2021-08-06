@@ -38,7 +38,7 @@
                             @enderror
                         </div>
                         <div class="text-xs-right">
-                            <input type="submit" class="btn btn-rounded btn-success mb-5" value="Add New Brand">
+                            <input type="submit" class="btn btn-rounded btn-success mb-5" value="Update Brand">
                         </div>
                     </form>
                 </div>

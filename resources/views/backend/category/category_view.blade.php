@@ -27,6 +27,8 @@
                     @endforeach
                 </tbody>
             </table>
+            {{$categories->links('pagination-links')}}
+
         </div>
     </div>
 

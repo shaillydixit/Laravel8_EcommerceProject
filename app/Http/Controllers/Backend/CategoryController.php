@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function AllCategory()
     {
-        $categories = Category::latest()->get();
+        $categories = Category::latest()->paginate(5);
         return view('backend.category.category_view', compact('categories'));
     }
 

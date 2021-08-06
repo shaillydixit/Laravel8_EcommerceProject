@@ -6,7 +6,7 @@ use App\Http\Controllers\Backend\BrandController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Rules\Role;
-
+use App\Http\Controllers\Backend\SubcategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,3 +47,10 @@ Route::post('/brand/store', [BrandController::class, 'StoreBrand'])->name('store
 Route::get('/brand/edit/{id}', [BrandController::class, 'EditBrand'])->name('edit.brand');
 Route::post('/brand/update/{id}', [BrandController::class, 'UpdateBrand'])->name('update.brand');
 Route::get('/brand/delete/{id}', [BrandController::class, 'DeleteBrand'])->name('delete.brand');
+
+//subcategory
+Route::get('/subcategory/view', [SubcategoryController::class, 'AllSubCategory'])->name('all.subcategory');
+Route::post('/subcategory/store', [SubcategoryController::class, 'StoreSubCategory'])->name('store.subcategory');
+Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'EditSubCategory'])->name('edit.subcategory');
+Route::post('/subcategory/update/{id}', [SubcategoryController::class, 'UpdateSubCategory'])->name('update.subcategory');
+Route::get('/subcategory/delete/{id}', [SubcategoryController::class, 'DeleteSubCategory'])->name('delete.subcategory');
