@@ -51,7 +51,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">SubCategory Name</label>
-                            <input type="text" class="form-control" name="subcategory_name" placeholder="Enter SubCategory Name">
+                            <input type="text" class="form-control" name="subcategory_name">
                             @error('subcategory_name')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

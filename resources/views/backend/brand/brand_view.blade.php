@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($brands ?? '' as $row)
+                    @foreach($brands as $row)
                     <tr>
                         <td class="title"><a href="javascript:void(0)">{{$row['category']['category_name']}}</a></td>
                         <td class="title"><a href="javascript:void(0)">{{$row->brand_name}}</a></td>
@@ -29,7 +29,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{$brands ?? ''->links('pagination-links')}}
+            {{$brands->links('pagination-links')}}
         </div>
     </div>
 

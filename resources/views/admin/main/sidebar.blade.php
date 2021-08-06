@@ -58,7 +58,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('all.category')}}">All Category</a></li>
                         <li><a href="{{route('all.subcategory')}}">All SubCategory</a></li>
-                        <li><a href="data-table.html">All SubSubCategory</a></li>
+                        <li><a href="{{route('all.subsubcategory')}}">All SubSubCategory</a></li>
                     </ul>
                 </li>
                 <li>
