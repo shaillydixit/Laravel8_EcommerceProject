@@ -24,10 +24,16 @@
     <link href="{{asset('backend/css/style.css')}}" rel="stylesheet">
     <!-- ===== Color CSS ===== -->
     <link href="{{asset('backend/css/colors/green-dark.css')}}" id="theme" rel="stylesheet">
+
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- toastr -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tags Input Stylesheet -->
+    <link href="tagsinput.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('backend/plugins/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css')}}" rel="stylesheet" />
 
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -79,15 +85,28 @@
     <script src="{{asset('backend/plugins/components/moment/moment.js')}}"></script>
     <script src="{{asset('backend/plugins/components/fullcalendar/fullcalendar.js')}}"></script>
     <script src="js/db2.js"></script>
+
     <!-- ===== Style Switcher JS ===== -->
     <script src="{{asset('backend/plugins/components/styleswitcher/jQuery.style.switcher.js')}}"></script>
+
+    <!-- CK Editor -->
+    <script src="{{asset('backend/ck//ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('backend/ck/bootstrap3-wysihtml5.all.js')}}"></script>
+    <script src="{{asset('backend/ck/editor.js')}}"></script>
 
     <!-- table responsive -->
     <script src="{{asset('backend/plugins/components/tablesaw-master/dist/tablesaw.js')}}"></script>
     <script src="{{asset('backend/plugins/components/tablesaw-master/dist/tablesaw-init.js')}}"></script>
 
+    <!-- Tags Input JavaScript -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script> -->
+    <script src="{{asset('backend/plugins/components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js')}}"></script>
+    <script src="tagsinput.js"></script>
+
     <!-- toastr -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- sweetalert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">

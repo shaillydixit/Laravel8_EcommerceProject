@@ -64,7 +64,7 @@
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Products</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="morris-chart.html">Add Product</a></li>
+                        <li><a href="{{route('add.product')}}">Add Product</a></li>
                         <li><a href="peity-chart.html">Manage Products</a></li>
                     </ul>
                 </li>

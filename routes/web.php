@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\ProductController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Rules\Role;
@@ -64,3 +65,8 @@ Route::get('/category/subsubcategory/ajax/{subcategory_id}', [SubSubCategoryCont
 Route::get('/category/subsubcategory/edit/{id}', [SubSubCategoryController::class, 'EditSubSubCategory'])->name('edit.subsubcategory');
 Route::post('/category/subsubcategory/update/{id}', [SubSubCategoryController::class, 'UpdateSubSubCategory'])->name('update.subsubcategory');
 Route::get('/category/subsubcategory/delete/{id}', [SubSubCategoryController::class, 'DeleteSubSubCategory'])->name('delete.subsubcategory');
+
+//product
+Route::get('/product/add', [ProductController::class, 'AddProduct'])->name('add.product');
+Route::get('/category/brand/ajax/{category_id}', [ProductController::class, 'GetBrand']);
+Route::post('/product/store', [ProductController::class, 'StoreProduct'])->name('store.product');
