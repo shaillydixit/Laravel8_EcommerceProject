@@ -70,3 +70,4 @@ Route::get('/category/subsubcategory/delete/{id}', [SubSubCategoryController::cl
 Route::get('/product/add', [ProductController::class, 'AddProduct'])->name('add.product');
 Route::get('/category/brand/ajax/{category_id}', [ProductController::class, 'GetBrand']);
 Route::post('/product/store', [ProductController::class, 'StoreProduct'])->name('store.product');
+Route::get('/product/manage', [ProductController::class, 'ManageProduct'])->name('manage.product');

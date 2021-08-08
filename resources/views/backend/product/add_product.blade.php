@@ -7,7 +7,7 @@
             <div class="panel-heading"> Add Product</div>
             <div class="panel-wrapper collapse in" aria-expanded="true">
                 <div class="panel-body">
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('store.product')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-body">
                             <div class="row">
@@ -95,13 +95,16 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Product Size <span class="text-danger">*</span></label>
-                                        <input type="text" name="product_size" id="product_size" class="form-control" required="">
-                                        @error('product_size')
+                                        <label class="control-label">Product Color <span class="text-danger">*</span></label>
+                                        <div class="tags-default">
+                                            <input type="text" data-role="tagsinput" name="product_color" class="form-control" required="" value="red,blue,black">
+                                        </div>
+                                        @error('product_color')
                                         <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -117,14 +120,16 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">Product Color <span class="text-danger">*</span></label>
-                                        <input type="text" name="product_color" id="product_color" class="form-control" required="">
-
-                                        @error('product_color')
+                                        <label class="control-label">Product Size <span class="text-danger">*</span></label>
+                                        <div class="tags-default">
+                                            <input type="text" data-role="tagsinput" name="product_size" class="form-control" required="" value="small,medium,large">
+                                        </div>
+                                        @error('product_size')
                                         <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6">

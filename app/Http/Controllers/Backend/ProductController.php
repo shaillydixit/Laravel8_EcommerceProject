@@ -7,6 +7,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\MultiImage;
 use App\Models\Product;
+use App\Models\SubCategory;
+use App\Models\SubSubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -75,6 +77,12 @@ class ProductController extends Controller
             'message' => 'Product Inserted Successfully!',
             'alert_type' => 'info',
         ];
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage.product')->with($notification);
+    }
+
+    public function ManageProduct()
+    {
+        $products = Product::latest()->get();
+        return view('backend.product.manage_product', compact('products'));
     }
 }
