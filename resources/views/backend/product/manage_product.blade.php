@@ -44,7 +44,7 @@
                     </td>
                     <td class="title">
                         <a href="" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i></a>
-                        <a href="" class="btn btn-info" title="Edit Data"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="{{route('edit.product', $row->id)}}" class="btn btn-info" title="Edit Data"><i class="fas fa-pencil-alt"></i></a>
                         <a href="" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i></a>
                         @if($row->status == 1)
                         <a href="" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i></a>

@@ -71,3 +71,6 @@ Route::get('/product/add', [ProductController::class, 'AddProduct'])->name('add.
 Route::get('/category/brand/ajax/{category_id}', [ProductController::class, 'GetBrand']);
 Route::post('/product/store', [ProductController::class, 'StoreProduct'])->name('store.product');
 Route::get('/product/manage', [ProductController::class, 'ManageProduct'])->name('manage.product');
+Route::get('/product/edit/{id}', [ProductController::class, 'EditProduct'])->name('edit.product');
+Route::get('image/delete/{id}', [ProductController::class, 'DeleteProductImage'])->name('product.multiimage.delete');
+Route::post('/product/update/{id}', [ProductController::class, 'UpdateProduct'])->name('update.product');
