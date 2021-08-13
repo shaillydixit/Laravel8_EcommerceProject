@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\ProductController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Rules\Role;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 /*
@@ -19,6 +20,11 @@ use App\Http\Controllers\Backend\SubSubCategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('test', function () {
+    Log::info('test');
+    echo 'wwwww';
+});
 
 Route::get('/', function () {
     return view('welcome');

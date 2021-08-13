@@ -100,6 +100,16 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'browser' => [
+            'driver' => 'monolog',
+            'handler' => Monolog\Handler\BrowserConsoleHandler::class,
+            'formatter' => Monolog\Formatter\JsonFormatter::class,
+            'formatter_with' => [
+                'dateFormat' => 'Y-m-d',
+            ],
+        ],
+
     ],
 
 ];
