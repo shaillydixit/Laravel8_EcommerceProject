@@ -244,9 +244,46 @@
                 </div>
                 </form>
             </div>
+
+            <div class="box bt-3 border-info">
+                <div class="box-header">
+                    <h4 class="box-title">Product Multiple Image <strong>Update</strong></h4>
+                </div>
+                <form method="POST" action="{{route('update.product.image')}}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$products->id}}">
+                    <div class="row row-sm">
+                        @foreach($multiImgs as $img)
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: 130px; width: 280px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="{{route('product.multiimage.delete', $img->id)}}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                    </h5>
+                                    <p class="card-text">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
+                                        <input class="form-control" type="file" name="multi_img[{{$img->id}}]">
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="form-actions text-center">
+                        <input type="submit" class="btn btn-rounded btn-info" value="Update Product Multi Images">
+                    </div>
+                    <br><br>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+
+
 
 <!-- for thumbnail show image -->
 <script type="text/javascript">
@@ -260,6 +297,7 @@
         }
     }
 </script>
+
 
 
 <!-- brand data show as category selected -->

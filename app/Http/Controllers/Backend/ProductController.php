@@ -12,6 +12,7 @@ use App\Models\SubSubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -108,8 +109,6 @@ class ProductController extends Controller
 
     public function UpdateProduct(Request $request, $id)
     {
-
-
         if ($request->file('product_thumbnail')) {
             $oldImage = Product::findOrFail($id);
             unlink($oldImage->product_thumbnail);
@@ -177,5 +176,40 @@ class ProductController extends Controller
             );
             return redirect()->route('manage.product')->with($notification);
         }
+    }
+    public function UpdateProductImage(Request $request)
+    {
+        $images = $request->multi_img;
+        foreach ($images as $id => $img) {
+            $imgDel = MultiImage::findOrFail($id);
+            unlink($imgDel->photo_name);
+            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)->resize(917, 1000)->save('upload/multi-image/' . $make_name);
+            $uploadPath = 'upload/multi-image/' . $make_name;
+
+            MultiImage::where('id', $id)->update([
+                'photo_name' => $uploadPath,
+                'updated_at' => Carbon::now(),
+
+            ]);
+        }
+        $notification = array(
+            'message' => 'Product Image Updated Successfully!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function DeleteProductImage($id)
+    {
+        $oldimg = MultiImage::findOrFail($id);
+        unlink($oldimg->photo_name);
+        MultiImage::findOrFail($id)->delete();
+        $notification = [
+            'message' => 'Product Multi Images Deleted Successfully!',
+            'alert-type' => 'info',
+        ];
+        return redirect()->back()->with($notification);
     }
 }
