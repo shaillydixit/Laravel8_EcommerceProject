@@ -83,3 +83,4 @@ Route::post('/product/update/{id}', [ProductController::class, 'UpdateProduct'])
 Route::post('/image/update', [ProductController::class, 'UpdateProductImage'])->name('update.product.image');
 Route::get('/product/inactive/{id}', [ProductController::class, 'InactiveProduct'])->name('inactive.product');
 Route::get('/product/active/{id}', [ProductController::class, 'ActiveProduct'])->name('active.product');
+Route::get('/product/delete/{id}', [ProductController::class, 'DeleteProduct'])->name('delete.product');

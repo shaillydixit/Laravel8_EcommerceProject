@@ -22,8 +22,8 @@
                 <tr>
                     <td class="title"><img src="{{asset($row->product_thumbnail)}}" alt="" style="width:80px; height:50px;"></td>
                     <td class="title">{{$row->product_name}}</td>
-                    <td class="title">{{$row->selling_price}}piece</td>
-                    <td class="title">{{$row->product_quantity}}piece</td>
+                    <td class="title">{{$row->selling_price}}</td>
+                    <td class="title">{{$row->product_quantity}} piece</td>
                     <td class="title">
                         @if($row->discount_price == NULL)
                         <span class="badge badge-pill badge-danger">No Discount</span>
@@ -45,7 +45,7 @@
                     <td class="title">
                         <a href="" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i></a>
                         <a href="{{route('edit.product', $row->id)}}" class="btn btn-info" title="Edit Data"><i class="fas fa-pencil-alt"></i></a>
-                        <a href="" class="btn btn-danger" title="Delete Data"><i class="fa fa-trash"></i></a>
+                        <a href="{{route('delete.product', $row->id)}}" class="btn btn-sm btn-danger" title="Delete Data" id="delete"><i class="fa fa-trash"></i> </a>
                         @if($row->status == 1)
                         <a href="{{route('inactive.product', $row->id)}}" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i></a>
                         @else
