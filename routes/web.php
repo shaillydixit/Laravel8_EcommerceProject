@@ -80,5 +80,6 @@ Route::get('/product/manage', [ProductController::class, 'ManageProduct'])->name
 Route::get('/product/edit/{id}', [ProductController::class, 'EditProduct'])->name('edit.product');
 Route::get('image/delete/{id}', [ProductController::class, 'DeleteProductImage'])->name('product.multiimage.delete');
 Route::post('/product/update/{id}', [ProductController::class, 'UpdateProduct'])->name('update.product');
-
 Route::post('/image/update', [ProductController::class, 'UpdateProductImage'])->name('update.product.image');
+Route::get('/product/inactive/{id}', [ProductController::class, 'InactiveProduct'])->name('inactive.product');
+Route::get('/product/active/{id}', [ProductController::class, 'ActiveProduct'])->name('active.product');
