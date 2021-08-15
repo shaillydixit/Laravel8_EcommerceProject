@@ -10,6 +10,8 @@ use Laravel\Jetstream\Rules\Role;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
+use App\Http\Controllers\Backend\SliderController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -84,3 +86,13 @@ Route::post('/image/update', [ProductController::class, 'UpdateProductImage'])->
 Route::get('/product/inactive/{id}', [ProductController::class, 'InactiveProduct'])->name('inactive.product');
 Route::get('/product/active/{id}', [ProductController::class, 'ActiveProduct'])->name('active.product');
 Route::get('/product/delete/{id}', [ProductController::class, 'DeleteProduct'])->name('delete.product');
+
+
+//slider
+Route::get('/slider/manage', [SliderController::class, 'ManageSlider'])->name('manage.slider');
+Route::post('/slider/store', [SliderController::class, 'StoreSlider'])->name('store.slider');
+Route::get('/slider/inactive/{id}', [SliderController::class, 'InactiveSlider'])->name('inactive.slider');
+Route::get('/slider/active/{id}', [SliderController::class, 'ActiveSlider'])->name('active.slider');
+Route::get('/slider/edit/{id}', [SliderController::class, 'EditSlider'])->name('edit.slider');
+Route::post('/slider/update/{id}', [SliderController::class, 'UpdateSlider'])->name('update.slider');
+Route::get('/slider/delete/{id}', [SliderController::class, 'DeleteSlider'])->name('delete.slider');

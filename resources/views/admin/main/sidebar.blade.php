@@ -72,7 +72,7 @@
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-bulb fa-fw"></i> <span class="hide-menu"> Slider</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="simple-line.html">Manage Slider</a> </li>
+                        <li> <a href="{{route('manage.slider')}}">Manage Slider</a> </li>
                     </ul>
                 </li>
                 <li>
