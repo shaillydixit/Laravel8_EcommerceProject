@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Backend\SliderController;
-
+use App\Http\Controllers\Frontend\IndexController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,10 +38,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin']], function ()
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
-})->name('dashboard');
-
-Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
 })->name('dashboard');
 
 //category
@@ -96,3 +92,10 @@ Route::get('/slider/active/{id}', [SliderController::class, 'ActiveSlider'])->na
 Route::get('/slider/edit/{id}', [SliderController::class, 'EditSlider'])->name('edit.slider');
 Route::post('/slider/update/{id}', [SliderController::class, 'UpdateSlider'])->name('update.slider');
 Route::get('/slider/delete/{id}', [SliderController::class, 'DeleteSlider'])->name('delete.slider');
+
+//user all routes
+Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
+    return view('frontend.index');
+})->name('dashboard');
+
+Route::get('/', [IndexController::class, 'index']);
