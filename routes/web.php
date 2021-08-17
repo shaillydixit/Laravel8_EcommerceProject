@@ -95,7 +95,12 @@ Route::get('/slider/delete/{id}', [SliderController::class, 'DeleteSlider'])->na
 
 //user all routes
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('frontend.index');
+    return view('dashboard');
 })->name('dashboard');
 
 Route::get('/', [IndexController::class, 'index']);
+Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
+Route::get('/user/profile', [IndexController::class, 'UserProfile'])->name('user.profile');
+Route::get('/user/payment', [IndexController::class, 'UserPayment'])->name('user.payment');
+Route::get('/user/orders', [IndexController::class, 'UserOrders'])->name('user.orders');
+Route::get('/user/address', [IndexController::class, 'UserAddress'])->name('user.address');

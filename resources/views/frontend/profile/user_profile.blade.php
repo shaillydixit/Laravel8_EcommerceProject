@@ -29,9 +29,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="card shadow-none mb-3 mb-lg-0 border rounded-0">
+                            <div class="card shadow-none mb-3 mb-lg-0 border">
                                 <div class="card-body">
-                                    <div class="list-group list-group-flush"> <a href="{{route('dashboard')}}" class="list-group-item active d-flex justify-content-between align-items-center">Dashboard <i class='bx bx-tachometer fs-5'></i></a>
+                                    <div class="list-group list-group-flush"> <a href="{{route('dashboard')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Dashboard <i class='bx bx-tachometer fs-5'></i></a>
                                         <a href="{{route('user.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Orders <i class='bx bx-cart-alt fs-5'></i></a>
                                         <a href="{{route('user.address')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Addresses <i class='bx bx-home-smile fs-5'></i></a>
                                         <a href="{{route('user.payment')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Payment Methods <i class='bx bx-credit-card fs-5'></i></a>
@@ -42,10 +42,41 @@
                             </div>
                         </div>
                         <div class="col-lg-8">
-                            <div class="card shadow-none mb-0">
+                            <div class="card shadow-none mb-0 border">
                                 <div class="card-body">
-                                    <p>Hello <strong>{{Auth::user()->name}}</strong> (not <strong>{{Auth::user()->name}}</strong> <a href="{{route('user.logout')}}">Logout</a>)</p>
-                                    <p>From your account dashboard you can view your Recent Orders, manage your shipping and billing addesses and edit your password and account details</p>
+                                    <form class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control" value="Madison">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" value="Ruiz">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Display Name</label>
+                                            <input type="text" class="form-control" value="Madison Ruiz">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Email address</label>
+                                            <input type="text" class="form-control" value="madison.ruiz@gmail.com">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Current Password</label>
+                                            <input type="text" class="form-control" value=".................">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">New Password</label>
+                                            <input type="text" class="form-control" value=".................">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Confirm New Password</label>
+                                            <input type="text" class="form-control" value=".................">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="button" class="btn btn-dark btn-ecomm">Save Changes</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -57,5 +88,4 @@
     </section>
     <!--end shop cart-->
 </div>
-
 @endsection

@@ -58,7 +58,7 @@
                         </div>
                     </li>
                     @auth
-                    <li class="nav-item"> <a class="nav-link" href="">User Profile</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('dashboard')}}">User Profile</a>
                     </li>
                     @else
                     <li class="nav-item"> <a class="nav-link" href="{{route('login')}}">Login/Register</a>

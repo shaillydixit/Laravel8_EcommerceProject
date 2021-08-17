@@ -52,7 +52,7 @@
         @include('admin.main.header')
         <!-- ===== Top-Navigation-End ===== -->
         <!-- ===== Left-Sidebar ===== -->
-        @include('admin.main.slider')
+        @include('admin.main.sidebar')
         <!-- ===== Left-Sidebar-End ===== -->
         <!-- ===== Page-Content ===== -->
         <div class="page-wrapper">

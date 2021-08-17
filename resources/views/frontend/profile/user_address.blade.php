@@ -29,9 +29,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="card shadow-none mb-3 mb-lg-0 border rounded-0">
+                            <div class="card shadow-none mb-3 mb-lg-0 border">
                                 <div class="card-body">
-                                    <div class="list-group list-group-flush"> <a href="{{route('dashboard')}}" class="list-group-item active d-flex justify-content-between align-items-center">Dashboard <i class='bx bx-tachometer fs-5'></i></a>
+                                    <div class="list-group list-group-flush"> <a href="{{route('dashboard')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Dashboard <i class='bx bx-tachometer fs-5'></i></a>
                                         <a href="{{route('user.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Orders <i class='bx bx-cart-alt fs-5'></i></a>
                                         <a href="{{route('user.address')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Addresses <i class='bx bx-home-smile fs-5'></i></a>
                                         <a href="{{route('user.payment')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Payment Methods <i class='bx bx-credit-card fs-5'></i></a>
@@ -44,8 +44,32 @@
                         <div class="col-lg-8">
                             <div class="card shadow-none mb-0">
                                 <div class="card-body">
-                                    <p>Hello <strong>{{Auth::user()->name}}</strong> (not <strong>{{Auth::user()->name}}</strong> <a href="{{route('user.logout')}}">Logout</a>)</p>
-                                    <p>From your account dashboard you can view your Recent Orders, manage your shipping and billing addesses and edit your password and account details</p>
+                                    <h6 class="mb-4">The following addresses will be used on the checkuot page by default.</h6>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                            <h5 class="mb-3">Billing Addresses</h5>
+                                            <address>
+                                                Madison Riiz<br>
+                                                123 Happy Street<br>
+                                                Cape Town<br>
+                                                Western Cape<br>
+                                                8001<br>
+                                                South Africa
+                                            </address>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <h5 class="mb-3">Shipping Addresses</h5>
+                                            <address>
+                                                Madison Riiz<br>
+                                                123 Happy Street<br>
+                                                Cape Town<br>
+                                                Western Cape<br>
+                                                8001<br>
+                                                South Africa
+                                            </address>
+                                        </div>
+                                    </div>
+                                    <!--end row-->
                                 </div>
                             </div>
                         </div>
