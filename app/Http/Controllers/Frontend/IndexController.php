@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -12,7 +13,10 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $featured = Product::where('featured', 1)->orderBy('id', 'DESC')->limit(6)->get();
+        $hot_deals = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->limit(6)->get();
+        $special_offers = Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(7)->get();
+        return view('frontend.index', compact('featured', 'hot_deals', 'special_offers'));
     }
 
     public function UserLogout()

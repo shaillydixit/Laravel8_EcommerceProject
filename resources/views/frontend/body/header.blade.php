@@ -1,6 +1,6 @@
 <div class="discount-alert d-none d-lg-block">
     <div class="alert alert-dismissible fade show shadow-none rounded-0 mb-0 border-bottom">
-        <div class="d-lg-flex align-items-center gap-2 justify-content-center">
+         <div class="d-lg-flex align-items-center gap-2 justify-content-center">
             <p class="mb-0">Get Up to <strong>40% OFF</strong> New-Season Styles</p>
             <a href="javascript:;" class="bg-dark text-white px-1 font-13 cursor-pointer">Men</a>
             <a href="javascript:;" class="bg-dark text-white px-1 font-13 cursor-pointer">Women</a>
@@ -95,9 +95,12 @@
                         <input type="text" class="form-control w-100" placeholder="Search for Products">
                         <select class="form-select flex-shrink-0" aria-label="Default select example" style="width: 10.5rem;">
                             <option selected>All Categories</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            @php
+                            $categories = App\Models\Category::orderBy('category_name', 'DESC')->get();
+                            @endphp
+                            @foreach($categories as $category)
+                            <option value="1">{{$category->category_name}}</option>
+                            @endforeach
                         </select> <span class="input-group-text cursor-pointer bg-transparent"><i class='bx bx-search'></i></span>
                     </div>
                 </div>
@@ -113,7 +116,7 @@
                     <div class="top-cart-icons float-end">
                         <nav class="navbar navbar-expand">
                             <ul class="navbar-nav ms-auto">
-                                <li class="nav-item"><a href="account-dashboard.html" class="nav-link cart-link"><i class='bx bx-user'></i></a>
+                                <li class="nav-item"><a href="{{route('dashboard')}}" class="nav-link cart-link"><i class='bx bx-user'></i></a>
                                 </li>
                                 <li class="nav-item"><a href="wishlist.html" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
                                 </li>
@@ -278,135 +281,52 @@
                 <ul class="navbar-nav">
                     <li class="nav-item active"> <a class="nav-link" href="index.html">Home </a>
                     </li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">Categories <i class='bx bx-chevron-down'></i></a>
+                    <!-- get category data  -->
+                    @php
+                    $categories = App\Models\Category::orderBy('category_name', 'DESC')->get();
+                    @endphp
+
+                    @foreach($categories as $category)
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">{{$category->category_name}}<i class='bx bx-chevron-down'></i></a>
                         <div class="dropdown-menu dropdown-large-menu">
                             <div class="row">
+                                @php
+                                $subcategories = App\Models\SubCategory::where('category_id', $category->id)->orderBy('subcategory_name', 'DESC')->get();
+                                @endphp
+                                @foreach($subcategories as $subcategory)
                                 <div class="col-md-4">
-                                    <h6 class="large-menu-title">Fashion</h6>
                                     <ul class="">
-                                        <li><a href="#">Casual T-Shirts</a>
-                                        </li>
-                                        <li><a href="#">Formal Shirts</a>
-                                        </li>
-                                        <li><a href="#">Jackets</a>
-                                        </li>
-                                        <li><a href="#">Jeans</a>
-                                        </li>
-                                        <li><a href="#">Dresses</a>
-                                        </li>
-                                        <li><a href="#">Sneakers</a>
-                                        </li>
-                                        <li><a href="#">Belts</a>
-                                        </li>
-                                        <li><a href="#">Sports Shoes</a>
+                                        <li>
+                                            <h6><a href="#">{{$subcategory->subcategory_name}}</a></h6>
+                                            @php
+                                            $subsubcategories = App\Models\SubSubCategory::where('subcategory_id', $subcategory->id)->orderBy('subsubcategory_name', 'DESC')->get();
+                                            @endphp
+                                            @foreach($subsubcategories as $subsubcategory)
+                                            <ul class="">
+                                                <li><a href="#">{{$subsubcategory->subsubcategory_name}}</a>
+                                            </ul>
+                                            @endforeach
                                         </li>
                                     </ul>
                                 </div>
-                                <!-- end col-3 -->
-                                <div class="col-md-4">
-                                    <h6 class="large-menu-title">Electronics</h6>
-                                    <ul class="">
-                                        <li><a href="#">Mobiles</a>
-                                        </li>
-                                        <li><a href="#">Laptops</a>
-                                        </li>
-                                        <li><a href="#">Macbook</a>
-                                        </li>
-                                        <li><a href="#">Televisions</a>
-                                        </li>
-                                        <li><a href="#">Lighting</a>
-                                        </li>
-                                        <li><a href="#">Smart Watch</a>
-                                        </li>
-                                        <li><a href="#">Galaxy Phones</a>
-                                        </li>
-                                        <li><a href="#">PC Monitors</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- end col-3 -->
-                                <div class="col-md-4">
-                                    <div class="pramotion-banner1">
-                                        <img src="{{asset('')}}frontend/assets/images/gallery/menu-img.jpg" class="img-fluid" alt="" />
-                                    </div>
-                                </div>
-                                <!-- end col-3 -->
+
+                                @endforeach
                             </div>
                             <!-- end row -->
                         </div>
                         <!-- dropdown-large.// -->
                     </li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">Shop <i class='bx bx-chevron-down'></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item dropdown-toggle dropdown-toggle-nocaret" href="#">Shop Layouts <i class='bx bx-chevron-right float-end'></i></a>
-                                <ul class="submenu dropdown-menu">
-                                    <li><a class="dropdown-item" href="shop-grid-left-sidebar.html">Shop Grid - Left Sidebar</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="shop-grid-right-sidebar.html">Shop Grid - Right Sidebar</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="shop-list-left-sidebar.html">Shop List - Left Sidebar</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="shop-list-right-sidebar.html">Shop List - Right Sidebar</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="shop-grid-filter-on-top.html">Shop Grid - Top Filter</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="shop-list-filter-on-top.html">Shop List - Top Filter</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="dropdown-item dropdown-toggle dropdown-toggle-nocaret" href="#">Shop Pages <i class='bx bx-chevron-right float-end'></i></a>
-                                <ul class="submenu dropdown-menu">
-                                    <li><a class="dropdown-item" href="shop-cart.html">Shop Cart</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="shop-categories.html">Shop Categories</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="checkout-details.html">Checkout Details</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="checkout-shipping.html">Checkout Shipping</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="checkout-payment.html">Checkout Payment</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="checkout-review.html">Checkout Review</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="checkout-complete.html">Checkout Complete</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="order-tracking.html">Order Tracking</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="product-comparison.html">Product Comparison</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="dropdown-item" href="about-us.html">About Us</a>
-                            </li>
-                            <li><a class="dropdown-item" href="contact-us.html">Contact Us</a>
-                            </li>
-                            <li><a class="dropdown-item" href="authentication-signin.html">Sign In</a>
-                            </li>
-                            <li><a class="dropdown-item" href="authentication-signup.html">Sign Up</a>
-                            </li>
-                            <li><a class="dropdown-item" href="authentication-forgot-password.html">Forgot Password</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="blog.html">Blog </a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="about-us.html">About Us </a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="contact-us.html">Contact Us </a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="shop-categories.html">Our Store</a>
-                    </li>
+                    @endforeach
+
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">My Account <i class='bx bx-chevron-down'></i></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="account-dashboard.html">Dashboard</a>
+                            <li><a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a>
                             </li>
-                            <li><a class="dropdown-item" href="account-downloads.html">Downloads</a>
+                            <li><a class="dropdown-item" href="{{route('user.orders')}}">Orders</a>
                             </li>
-                            <li><a class="dropdown-item" href="account-orders.html">Orders</a>
+                            <li><a class="dropdown-item" href="{{route('user.payment')}}">Payment Methods</a>
                             </li>
-                            <li><a class="dropdown-item" href="account-payment-methods.html">Payment Methods</a>
-                            </li>
-                            <li><a class="dropdown-item" href="account-user-details.html">User Details</a>
+                            <li><a class="dropdown-item" href="{{route('user.profile')}}">User Details</a>
                             </li>
                         </ul>
                     </li>
