@@ -104,3 +104,7 @@ Route::get('/user/profile', [IndexController::class, 'UserProfile'])->name('user
 Route::get('/user/payment', [IndexController::class, 'UserPayment'])->name('user.payment');
 Route::get('/user/orders', [IndexController::class, 'UserOrders'])->name('user.orders');
 Route::get('/user/address', [IndexController::class, 'UserAddress'])->name('user.address');
+
+//product details
+
+Route::get('/product/details/{id}', [IndexController::class, 'ProductDetails']);

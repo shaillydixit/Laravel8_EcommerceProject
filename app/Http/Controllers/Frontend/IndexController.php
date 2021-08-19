@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\MultiImage;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class IndexController extends Controller
 {
@@ -46,5 +48,13 @@ class IndexController extends Controller
     public function UserAddress()
     {
         return view('frontend.profile.user_address');
+    }
+
+    public function ProductDetails($id)
+    {
+        $product = Product::findOrFail($id);
+        $multiImg = MultiImage::where('product_id', $id)->get();
+        $hot_deals = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->limit(6)->get();
+        return view('frontend.product.product_details', compact('product', 'multiImg', 'hot_deals'));
     }
 }

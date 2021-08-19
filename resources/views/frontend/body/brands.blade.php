@@ -11,7 +11,7 @@
                 <div class="item border-end">
                     <div class="p-4">
                         <a href="">
-                            <img src="{{asset($brand->brand_image)}}" class="img-fluid" style="width:120px; height:100px;" alt="...">
+                            <img src="{{asset($brand->brand_image)}}" class="img-fluid" style="width:180px; height:100px;" alt="...">
                         </a>
                     </div>
                 </div>
