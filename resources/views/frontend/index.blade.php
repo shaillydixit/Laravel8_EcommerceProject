@@ -46,51 +46,26 @@
     <section class="py-4">
         <div class="container">
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                @php
+                $categories = App\Models\Category::orderBy('category_name', 'DESC')->limit(3)->get();
+                @endphp
+                @foreach($categories as $category)
                 <div class="col">
                     <div class="card rounded-0 border shadow-none">
                         <div class="row g-0 align-items-center">
                             <div class="col">
-                                <img src="{{asset('frontend/assets/images/promo/01.png')}}" class="img-fluid" alt="" />
+                                <img src="{{asset($category->category_image)}}" class="img-fluid" alt="" />
                             </div>
                             <div class="col">
                                 <div class="card-body">
-                                    <h5 class="card-title text-uppercase">Mens' Wear</h5>
+                                    <h5 class="card-title text-uppercase">{{$category->category_name}}'s Wear</h5>
                                     <p class="card-text text-uppercase">Starting at $9</p> <a href="javascript:;" class="btn btn-dark btn-ecomm">SHOP NOW</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card rounded-0 border shadow-none">
-                        <div class="row g-0 align-items-center">
-                            <div class="col">
-                                <img src="{{asset('frontend/assets/images/promo/02.png')}}" class="img-fluid" alt="" />
-                            </div>
-                            <div class="col">
-                                <div class="card-body">
-                                    <h5 class="card-title text-uppercase">Womens' Wear</h5>
-                                    <p class="card-text text-uppercase">Starting at $9</p> <a href="javascript:;" class="btn btn-dark btn-ecomm">SHOP NOW</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card rounded-0 border shadow-none">
-                        <div class="row g-0 align-items-center">
-                            <div class="col">
-                                <img src="{{asset('frontend/assets/images/promo/03.png')}}" class="img-fluid" alt="" />
-                            </div>
-                            <div class="col">
-                                <div class="card-body">
-                                    <h5 class="card-title text-uppercase">Kids' Wear</h5>
-                                    <p class="card-text text-uppercase">Starting at $9</p> <a href="javascript:;" class="btn btn-dark btn-ecomm">SHOP NOW</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!--end row-->
         </div>
@@ -101,7 +76,7 @@
         <div class="container">
             <div class="d-flex align-items-center">
                 <h5 class="text-uppercase mb-0">FEATURED PRODUCTS</h5>
-                <a href="javascript:;" class="btn btn-dark btn-ecomm ms-auto rounded-0">More Products<i class='bx bx-chevron-right'></i></a>
+                <a href="{{route('product.grid')}}" class="btn btn-dark btn-ecomm ms-auto rounded-0">More Products<i class='bx bx-chevron-right'></i></a>
             </div>
             <hr />
             <div class="product-grid">
@@ -381,143 +356,27 @@
         <div class="container">
             <div class="d-flex align-items-center">
                 <h5 class="text-uppercase mb-0">Browse Catergory</h5>
-                <a href="{{route('product.grid')}}" class="btn btn-dark ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+                <a href="" class="btn btn-dark ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
             </div>
             <hr />
             <div class="product-grid">
                 <div class="browse-category owl-carousel owl-theme">
+                    @php
+                    $categories = App\Models\Category::orderBy('category_name', 'DESC')->limit(6)->get();
+                    @endphp
+                    @foreach($categories as $category)
                     <div class="item">
                         <div class="card rounded-0 product-card border">
                             <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/01.png')}}" class="img-fluid" alt="...">
+                                <img src="{{asset($category->category_image)}}" class="img-fluid" alt="...">
                             </div>
                             <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Fashion</h6>
+                                <h6 class="mb-1 text-uppercase">{{$category->category_name}}</h6>
                                 <p class="mb-0 font-12 text-uppercase">10 Products</p>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/02.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Watches</h6>
-                                <p class="mb-0 font-12 text-uppercase">8 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/03.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Shoes</h6>
-                                <p class="mb-0 font-12 text-uppercase">14 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/04.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Bags</h6>
-                                <p class="mb-0 font-12 text-uppercase">6 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/05.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Electronis</h6>
-                                <p class="mb-0 font-12 text-uppercase">6 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/06.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Headphones</h6>
-                                <p class="mb-0 font-12 text-uppercase">5 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/07.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Furniture</h6>
-                                <p class="mb-0 font-12 text-uppercase">20 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/08.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Jewelry</h6>
-                                <p class="mb-0 font-12 text-uppercase">16 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/09.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Sports</h6>
-                                <p class="mb-0 font-12 text-uppercase">28 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/10.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Vegetable</h6>
-                                <p class="mb-0 font-12 text-uppercase">15 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/11.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Medical</h6>
-                                <p class="mb-0 font-12 text-uppercase">24 Products</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card border">
-                            <div class="card-body">
-                                <img src="{{asset('frontend/assets/images/categories/12.png')}}" class="img-fluid" alt="...">
-                            </div>
-                            <div class="card-footer text-center">
-                                <h6 class="mb-1 text-uppercase">Sunglasses</h6>
-                                <p class="mb-0 font-12 text-uppercase">18 Products</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

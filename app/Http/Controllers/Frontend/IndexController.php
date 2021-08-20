@@ -17,11 +17,13 @@ class IndexController extends Controller
 {
     public function index()
     {
+        $categories = Category::orderBy('category_name', 'DESC')->get();
+        $product = Product::where('status', 1)->orderBy('id', 'DESC')->limit(4)->get();
         $featured = Product::where('featured', 1)->orderBy('id', 'DESC')->limit(6)->get();
         $hot_deals = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->limit(6)->get();
         $special_offers = Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(7)->get();
         $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(7)->get();
-        return view('frontend.index', compact('featured', 'hot_deals', 'special_offers', 'special_deals'));
+        return view('frontend.index', compact('featured', 'hot_deals', 'special_offers', 'special_deals', 'categories', 'product'));
     }
 
     public function UserLogout()
@@ -64,7 +66,7 @@ class IndexController extends Controller
     {
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
-        $product = Product::latest()->get();
+        $product = Product::where('status', 1)->orderBy('id', 'DESC')->limit(4)->get();
         return view('frontend.product.product_grid', compact('categories', 'brands', 'product'));
     }
 
@@ -72,7 +74,7 @@ class IndexController extends Controller
     {
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
-        $product = Product::latest()->limit(4)->get();
+        $product = Product::where('status', 1)->orderBy('id', 'DESC')->limit(4)->get();
         $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(4)->get();
         return view('frontend.product.product_list', compact('categories', 'brands', 'product', 'special_deals'));
     }
