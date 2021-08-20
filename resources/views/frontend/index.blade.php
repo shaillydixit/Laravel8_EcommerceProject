@@ -381,7 +381,7 @@
         <div class="container">
             <div class="d-flex align-items-center">
                 <h5 class="text-uppercase mb-0">Browse Catergory</h5>
-                <a href="shop-categories.html" class="btn btn-dark ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+                <a href="{{route('product.grid')}}" class="btn btn-dark ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
             </div>
             <hr />
             <div class="product-grid">

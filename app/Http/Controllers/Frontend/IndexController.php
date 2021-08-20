@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\MultiImage;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use App\Models\Brand;
 
 class IndexController extends Controller
 {
@@ -56,5 +58,22 @@ class IndexController extends Controller
         $multiImg = MultiImage::where('product_id', $id)->get();
         $hot_deals = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->limit(6)->get();
         return view('frontend.product.product_details', compact('product', 'multiImg', 'hot_deals'));
+    }
+
+    public function ProductGrid()
+    {
+        $categories = Category::orderBy('category_name', 'DESC')->get();
+        $brands = Brand::orderBy('brand_image', 'DESC')->get();
+        $product = Product::latest()->get();
+        return view('frontend.product.product_grid', compact('categories', 'brands', 'product'));
+    }
+
+    public function ProductList()
+    {
+        $categories = Category::orderBy('category_name', 'DESC')->get();
+        $brands = Brand::orderBy('brand_image', 'DESC')->get();
+        $product = Product::latest()->limit(4)->get();
+        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(4)->get();
+        return view('frontend.product.product_list', compact('categories', 'brands', 'product', 'special_deals'));
     }
 }

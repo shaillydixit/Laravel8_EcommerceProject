@@ -168,11 +168,13 @@
     <script src="{{asset('frontend/assets/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js')}}"></script>
     <script src="{{asset('frontend/assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
     <script src="{{asset('frontend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
+    <script src="{{asset('frontend/assets/plugins/nouislider/nouislider.min.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/price-slider.js')}}"></script>
+    <script src="{{asset('frontend/assets/js/product-gallery.js')}}"></script>
     <!--app JS-->
     <script src="{{asset('frontend/assets/js/app.js')}}"></script>
     <script src="{{asset('frontend/assets/js/index.js')}}"></script>
     <script src="{{asset('frontend/assets/js/show-hide-password.js')}}"></script>
-
 
 </body>
 

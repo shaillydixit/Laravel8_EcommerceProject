@@ -108,3 +108,5 @@ Route::get('/user/address', [IndexController::class, 'UserAddress'])->name('user
 //product details
 
 Route::get('/product/details/{id}', [IndexController::class, 'ProductDetails']);
+Route::get('/product/grid', [IndexController::class, 'ProductGrid'])->name('product.grid');
+Route::get('/product/list', [IndexController::class, 'ProductList'])->name('product.list');
