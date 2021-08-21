@@ -57,9 +57,19 @@ class IndexController extends Controller
     public function ProductDetails($id)
     {
         $product = Product::findOrFail($id);
+        $colors = $product->product_color;
+        $product_color = explode(',', $colors);
+        $sizes = $product->product_size;
+        $product_size = explode(',', $sizes);
         $multiImg = MultiImage::where('product_id', $id)->get();
         $hot_deals = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->limit(6)->get();
-        return view('frontend.product.product_details', compact('product', 'multiImg', 'hot_deals'));
+        return view('frontend.product.product_details', compact(
+            'product',
+            'multiImg',
+            'hot_deals',
+            'product_color',
+            'product_size'
+        ));
     }
 
     public function ProductGrid()

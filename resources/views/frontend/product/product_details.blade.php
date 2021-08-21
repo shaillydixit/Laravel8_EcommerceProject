@@ -85,21 +85,18 @@
                                     <div class="col">
                                         <label class="form-label">Size</label>
                                         <select class="form-select form-select-sm">
-                                            <option>S</option>
-                                            <option>M</option>
-                                            <option>L</option>
-                                            <option>XS</option>
-                                            <option>XL</option>
+                                            @foreach($product_size as $size)
+                                            <option value="{{$size}}">{{$size}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col">
                                         <label class="form-label">Colors</label>
-                                        <div class="color-indigators d-flex align-items-center gap-2">
-                                            <div class="color-indigator-item bg-primary"></div>
-                                            <div class="color-indigator-item bg-danger"></div>
-                                            <div class="color-indigator-item bg-success"></div>
-                                            <div class="color-indigator-item bg-warning"></div>
-                                        </div>
+                                        <select class="form-select form-select-sm">
+                                            @foreach($product_color as $color)
+                                            <option value="{{$color}}">{{$color}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <!--end row-->
