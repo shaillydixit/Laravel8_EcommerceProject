@@ -44,7 +44,7 @@
         <!--end footer section-->
         <!--start quick view product-->
         <!-- Modal -->
-
+        @include('frontend.body.quick_view')
 
         <!--end quick view product-->
         <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
