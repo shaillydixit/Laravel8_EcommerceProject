@@ -106,13 +106,14 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <img src="{{asset($row->product_thumbnail)}}" class="card-img-top" alt="...">
+                                        <a href="{{url('product/details/' .$product->id)}}">
+                                            <img src="{{asset($row->product_thumbnail)}}" class="card-img-top" alt="..."></a>
                                         <div class="card-body">
                                             <div class="product-info">
                                                 <a href="javascript:;">
                                                     <p class="product-catergory font-13 mb-1">Catergory Name</p>
                                                 </a>
-                                                <a href="javascript:;">
+                                                <a href="{{url('product/details/' .$product->id)}}">
                                                     <h6 class="product-name mb-2">{{$row->product_name}}</h6>
                                                 </a>
                                                 <div class="d-flex align-items-center">

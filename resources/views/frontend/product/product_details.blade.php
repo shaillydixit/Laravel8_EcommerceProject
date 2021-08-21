@@ -297,12 +297,12 @@
                                     </a>
                                 </div>
                             </div>
-                            <a href="product-details.html">
+                            <a href="{{url('product/details/' .$product->id)}}">
                                 <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
                                 <div class="product-info">
-                                    <a href="javascript:;">
+                                    <a href="{{url('product/details/' .$product->id)}}">
                                         <h6 class="product-name mb-2">{{$product->product_name}}</h6>
                                     </a>
                                     <div class="d-flex align-items-center">

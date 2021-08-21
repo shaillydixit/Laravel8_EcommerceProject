@@ -51,26 +51,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="footer-section3 mb-3">
-                        <h6 class="mb-3 text-uppercase">Popular Tags</h6>
-                        <div class="tags-box"> <a href="javascript:;" class="tag-link">Cloths</a>
-                            <a href="javascript:;" class="tag-link">Electronis</a>
-                            <a href="javascript:;" class="tag-link">Furniture</a>
-                            <a href="javascript:;" class="tag-link">Sports</a>
-                            <a href="javascript:;" class="tag-link">Men Wear</a>
-                            <a href="javascript:;" class="tag-link">Women Wear</a>
-                            <a href="javascript:;" class="tag-link">Laptops</a>
-                            <a href="javascript:;" class="tag-link">Formal Shirts</a>
-                            <a href="javascript:;" class="tag-link">Topwear</a>
-                            <a href="javascript:;" class="tag-link">Headphones</a>
-                            <a href="javascript:;" class="tag-link">Bottom Wear</a>
-                            <a href="javascript:;" class="tag-link">Bags</a>
-                            <a href="javascript:;" class="tag-link">Sofa</a>
-                            <a href="javascript:;" class="tag-link">Shoes</a>
-                        </div>
-                    </div>
-                </div>
+                @include('frontend.product.product_tags')
                 <div class="col">
                     <div class="footer-section4 mb-3">
                         <h6 class="mb-3 text-uppercase">Stay informed</h6>

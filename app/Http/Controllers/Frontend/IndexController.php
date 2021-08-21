@@ -78,4 +78,19 @@ class IndexController extends Controller
         $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(4)->get();
         return view('frontend.product.product_list', compact('categories', 'brands', 'product', 'special_deals'));
     }
+
+    public function ProductTagWise($tag)
+    {
+        $products = Product::where('status', 1)->where('product_tags', $tag)->orderBy('id', 'DESC')->get();
+        $categories = Category::orderBy('category_name', 'DESC')->get();
+        $brands = Brand::orderBy('brand_image', 'DESC')->get();
+        return view('frontend.product.tags_view', compact('products', 'categories', 'brands'));
+    }
+
+    public function ProductCategories()
+    {
+        $categories = Category::orderBy('category_name', 'DESC')->get();
+        $brands = Brand::orderBy('brand_image', 'DESC')->get();
+        return view('frontend.product.product_categories', compact('categories', 'brands'));
+    }
 }

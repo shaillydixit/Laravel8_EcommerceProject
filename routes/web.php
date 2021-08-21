@@ -110,3 +110,5 @@ Route::get('/user/address', [IndexController::class, 'UserAddress'])->name('user
 Route::get('/product/details/{id}', [IndexController::class, 'ProductDetails']);
 Route::get('/product/grid', [IndexController::class, 'ProductGrid'])->name('product.grid');
 Route::get('/product/list', [IndexController::class, 'ProductList'])->name('product.list');
+Route::get('/product/tags/{tag}', [IndexController::class, 'ProductTagWise']);
+Route::get('/product/categories', [IndexController::class, 'ProductCategories'])->name('product.categories');
