@@ -86,7 +86,7 @@
                                         <label class="form-label">Size</label>
                                         <select class="form-select form-select-sm">
                                             @foreach($product_size as $size)
-                                            <option value="{{$size}}">{{$size}}</option>
+                                            <option value="{{$size}}">{{ucwords($size)}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -94,7 +94,7 @@
                                         <label class="form-label">Colors</label>
                                         <select class="form-select form-select-sm">
                                             @foreach($product_color as $color)
-                                            <option value="{{$color}}">{{$color}}</option>
+                                            <option value="{{$color}}">{{ucwords($color)}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -275,7 +275,7 @@
     <section class="py-4">
         <div class="container">
             <div class="d-flex align-items-center">
-                <h5 class="text-uppercase mb-0">Hot Deals</h5>
+                <h5 class="text-uppercase mb-0">Similar Products</h5>
                 <div class="d-flex align-items-center gap-0 ms-auto"> <a href="javascript:;" class="owl_prev_item fs-2"><i class='bx bx-chevron-left'></i></a>
                     <a href="javascript:;" class="owl_next_item fs-2"><i class='bx bx-chevron-right'></i></a>
                 </div>
@@ -283,7 +283,7 @@
             <hr />
             <div class="product-grid">
                 <div class="new-arrivals owl-carousel owl-theme">
-                    @foreach($hot_deals as $product)
+                    @foreach($similar_product as $product)
                     <div class="item">
                         <div class="card rounded-0 product-card">
                             <div class="card-header bg-transparent border-bottom-0">

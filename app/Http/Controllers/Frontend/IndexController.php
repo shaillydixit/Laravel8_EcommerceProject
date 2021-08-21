@@ -61,14 +61,15 @@ class IndexController extends Controller
         $product_color = explode(',', $colors);
         $sizes = $product->product_size;
         $product_size = explode(',', $sizes);
+        $subsubcat_id = $product->subsubcategory_id;
+        $similar_product = Product::where('subsubcategory_id', $subsubcat_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
         $multiImg = MultiImage::where('product_id', $id)->get();
-        $hot_deals = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->limit(6)->get();
         return view('frontend.product.product_details', compact(
             'product',
             'multiImg',
-            'hot_deals',
             'product_color',
-            'product_size'
+            'product_size',
+            'similar_product'
         ));
     }
 
