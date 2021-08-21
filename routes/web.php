@@ -112,3 +112,6 @@ Route::get('/product/grid', [IndexController::class, 'ProductGrid'])->name('prod
 Route::get('/product/list', [IndexController::class, 'ProductList'])->name('product.list');
 Route::get('/product/tags/{tag}', [IndexController::class, 'ProductTagWise']);
 Route::get('/product/categories', [IndexController::class, 'ProductCategories'])->name('product.categories');
+
+//subcategorieswise data
+Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'ProductSubcategoryWise']);

@@ -1,6 +1,6 @@
 <div class="discount-alert d-none d-lg-block">
     <div class="alert alert-dismissible fade show shadow-none rounded-0 mb-0 border-bottom">
-         <div class="d-lg-flex align-items-center gap-2 justify-content-center">
+        <div class="d-lg-flex align-items-center gap-2 justify-content-center">
             <p class="mb-0">Get Up to <strong>40% OFF</strong> New-Season Styles</p>
             <a href="javascript:;" class="bg-dark text-white px-1 font-13 cursor-pointer">Men</a>
             <a href="javascript:;" class="bg-dark text-white px-1 font-13 cursor-pointer">Women</a>
@@ -297,7 +297,7 @@
                                 <div class="col-md-4">
                                     <ul class="">
                                         <li>
-                                            <h6><a href="#">{{$subcategory->subcategory_name}}</a></h6>
+                                            <h6><a href="{{url('subcategory/product/' .$subcategory->id. '/' .$subcategory->subcategory_slug)}}">{{$subcategory->subcategory_name}}</a></h6>
                                             @php
                                             $subsubcategories = App\Models\SubSubCategory::where('subcategory_id', $subcategory->id)->orderBy('subsubcategory_name', 'DESC')->get();
                                             @endphp

@@ -116,6 +116,7 @@
                         <div class="product-grid">
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
                                 @foreach($products as $product)
+
                                 <div class="col">
                                     <div class="card rounded-0 product-card">
                                         <div class="card-header bg-transparent border-bottom-0">
@@ -134,14 +135,6 @@
                                             <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="..."></a>
                                         <div class="card-body">
                                             <div class="product-info">
-                                                <!-- @php
-                                                $categories = App\Models\Category::where('category_name',$product->id)->orderBy('category_name','ASC')->get();
-                                                @endphp
-                                                @foreach($categories as $category)
-                                                <a href="javascript:;">
-                                                    <p class="product-catergory font-13 mb-1">{{$category->category_name}}</p>
-                                                </a>
-                                                @endforeach -->
                                                 <a href="{{url('product/details/' .$product->id)}}">
                                                     <h6 class="product-name mb-2">{{$product->product_name}}</h6>
                                                 </a>
@@ -166,8 +159,10 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 @endforeach
+
                             </div>
                             <!--end row-->
                         </div>
