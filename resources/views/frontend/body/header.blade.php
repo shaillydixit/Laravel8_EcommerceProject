@@ -303,7 +303,7 @@
                                             @endphp
                                             @foreach($subsubcategories as $subsubcategory)
                                             <ul class="">
-                                                <li><a href="#">{{$subsubcategory->subsubcategory_name}}</a>
+                                                <li><a href="{{url('subsubcategory/product/' .$subsubcategory->id. '/' .$subsubcategory->subsubcategory_slug)}}">{{$subsubcategory->subsubcategory_name}}</a>
                                             </ul>
                                             @endforeach
                                         </li>
