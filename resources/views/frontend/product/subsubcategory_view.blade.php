@@ -65,10 +65,9 @@
                                     <ul class="list-unstyled mb-0 categories-list">
                                         @foreach($brands as $brand)
                                         <li>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="Adidas">
+                                            <a href="{{url('brand/product/' .$brand->id)}}">
                                                 <label class="form-check-label" for="Adidas">{{$brand->brand_name}}</label>
-                                            </div>
+                                            </a>
                                         </li>
                                         @endforeach
                                     </ul>

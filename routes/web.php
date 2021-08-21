@@ -118,3 +118,6 @@ Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, '
 
 //subsubcategorieswise data
 Route::get('/subsubcategory/product/{subsubcat_id}/{slug}', [IndexController::class, 'ProductSubsubcategoryWise']);
+
+//brandwise data
+Route::get('/brand/product/{brand_id}', [IndexController::class, 'ProductBrandwise']);

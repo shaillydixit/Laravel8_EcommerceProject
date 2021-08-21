@@ -118,6 +118,15 @@ class IndexController extends Controller
         $products = Product::where('status', 1)->where('subsubcategory_id', $subsubcat_id)->orderBy('id', 'DESC')->get();
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
+
         return view('frontend.product.subsubcategory_view', compact('products', 'categories', 'brands'));
+    }
+
+    public function ProductBrandwise($brand_id)
+    {
+        $products = Product::where('status', 1)->where('brand_id', $brand_id)->orderBy('id', 'DESC')->get();
+        $categories = Category::orderBy('category_name', 'DESC')->get();
+        $brands = Brand::orderBy('brand_name', 'DESC')->get();
+        return view('frontend.product.brand_view', compact('products', 'categories', 'brands'));
     }
 }
