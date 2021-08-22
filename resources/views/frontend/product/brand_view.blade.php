@@ -62,15 +62,21 @@
                                 <hr>
                                 <div class="product-brands">
                                     <h6 class="text-uppercase mb-3">Brands</h6>
+                                    @foreach($categories as $category)
                                     <ul class="list-unstyled mb-0 categories-list">
-                                        @foreach($brands as $brand)
-                                        <li>
-                                            <a href="{{url('brand/product/' .$brand->id)}}">
-                                                <label class="form-check-label" for="Adidas">{{$brand->brand_name}}</label>
-                                            </a>
+                                        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{{$category->category_name}}</a>
+                                            <ul class="dropdown-menu dropdown-menu-lg-end">
+                                                @php
+                                                $brands = App\Models\Brand::where('category_id', $category->id)->orderBy('brand_name', 'DESC')->get();
+                                                @endphp
+                                                @foreach($brands as $brand)
+                                                <li><a class="dropdown-item" href="{{url('brand/product/' .$brand->id)}}">{{$brand->brand_name}}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
                                         </li>
-                                        @endforeach
                                     </ul>
+                                    @endforeach
                                 </div>
                                 <hr>
                             </div>
