@@ -5,6 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <!--favicon-->
     <link rel="icon" href="{{asset('frontend/assets/images/favicon-32x32.png')}}" type="image/png" />
     <!--plugins-->
@@ -68,6 +70,127 @@
     <script src="{{asset('frontend/assets/js/app.js')}}"></script>
     <script src="{{asset('frontend/assets/js/index.js')}}"></script>
     <script src="{{asset('frontend/assets/js/show-hide-password.js')}}"></script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><strong><span id="pname"></span></strong></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card" style="width: 10rem;">
+                                <img src=" " class="card-img-top" alt="..." style="height: 240px; width: 200px;" id="pimage">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">Product Price: <strong class="text-danger">$<span id="pprice"></span></strong>
+                                    <del id="oldprice">$</del>
+                                </li>
+                                <li class="list-group-item">Product Code: <strong id="pcode"></strong> </li>
+                                <li class="list-group-item">Category: <strong id="pcategory"></strong> </li>
+                                <li class="list-group-item">Brand: <strong id="pbrand"></strong> </li>
+                                <li class="list-group-item">Stock:
+                                    <span class="badge badge-pill badge-success" id="available" style="background: green; color: white;"></span>
+                                    <span class="badge badge-pill badge-danger" id="outofstock" style="background: red; color: white;"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Choose Color</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="color">
+                                    <option></option>
+                                </select>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Choose Size</label>
+                                    <select class="form-control" id="exampleFormControlSelect1" name="size">
+                                        <option></option>
+                                    </select>
+                                </div> <!-- // end form group -->
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Quantity</label>
+                                    <input type="number" class="form-control" id="exampleFormControlInput1" value="1" min="1">
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary mt-3">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            //start product view 
+            function productView(id) {
+                // alert(id)
+                $.ajax({
+                    type: 'GET',
+                    url: '/product/view/model/' + id,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                        $('#pname').text(data.product.product_name);
+                        $('#price').text(data.product.selling_price);
+                        $('#pcode').text(data.product.product_code);
+                        $('#pcategory').text(data.product.category.category_name);
+                        $('#pbrand').text(data.product.brand.brand_name);
+                        $('#pimage').attr('src', '/' + data.product.product_thumbnail);
+
+                        //product price
+                        if (data.product.discount_price == null) {
+                            $('#pprice').text('')
+                            $('#oldprice').text('')
+                            $('#pprice').text(data.product.selling_price)
+                        } else {
+                            $('#pprice').text(data.product.discount_price)
+                            $('#oldprice').text(data.product.selling_price)
+                        }
+
+                        //product color
+                        $('select[name="color"]').empty();
+                        $.each(data.color, function(key, value) {
+                            $('select[name="color"]').append('<option value=" ' + value + ' "> ' + value + ' </option>')
+                        })
+
+                        //product size
+                        $('select[name="size"]').empty();
+                        $.each(data.size, function(key, value) {
+                            $('select[name="size"]').append('<option value=" ' + value + '">' + value + '</option>')
+                            if (data.size == "") {
+                                $('#sizeArea').hide();
+                            } else {
+                                $('#sizeArea').show();
+                            }
+                        })
+
+                        //product stock
+                        if (data.product.product_quantity > 0) {
+                            $('#available').text('')
+                            $('#outofstock').text('')
+                            $('#available').text('Available')
+                        } else {
+                            $('#available').text('')
+                            $('#outofstock').text('')
+                            $('#outofstock').text('Out of Stock')
+                        }
+
+                    }
+                })
+            }
+        </script>
 
 </body>
 

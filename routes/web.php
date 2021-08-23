@@ -121,3 +121,6 @@ Route::get('/subsubcategory/product/{subsubcat_id}/{slug}', [IndexController::cl
 
 //brandwise data
 Route::get('/brand/product/{brand_id}', [IndexController::class, 'ProductBrandwise']);
+
+//productviewmodel
+Route::get('/product/view/model/{id}', [IndexController::class, 'ProductViewAjax']);
