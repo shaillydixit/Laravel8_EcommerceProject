@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 /*
 |--------------------------------------------------------------------------
@@ -124,3 +125,6 @@ Route::get('/brand/product/{brand_id}', [IndexController::class, 'ProductBrandwi
 
 //productviewmodel
 Route::get('/product/view/model/{id}', [IndexController::class, 'ProductViewAjax']);
+
+//add to cart
+Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);

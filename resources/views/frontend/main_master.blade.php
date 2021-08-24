@@ -77,7 +77,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><strong><span id="pname"></span></strong></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModel"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -102,22 +102,23 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">Choose Color</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name="color">
+                                <label for="color">Choose Color</label>
+                                <select class="form-control" id="color" name="color">
                                     <option></option>
                                 </select>
                                 <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Choose Size</label>
-                                    <select class="form-control" id="exampleFormControlSelect1" name="size">
+                                    <label for="size">Choose Size</label>
+                                    <select class="form-control" id="size" name="size">
                                         <option></option>
                                     </select>
                                 </div> <!-- // end form group -->
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Quantity</label>
-                                    <input type="number" class="form-control" id="exampleFormControlInput1" value="1" min="1">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" class="form-control" id="quantity" value="1" min="1">
                                 </div>
                                 <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-primary mt-3">Add to Cart</button>
+                                    <input type="hidden" id="product_id">
+                                    <button type="submit" class="btn btn-primary mt-3" onclick="addToCart()">Add to Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -149,6 +150,8 @@
                         $('#pbrand').text(data.product.brand.brand_name);
                         $('#pimage').attr('src', '/' + data.product.product_thumbnail);
 
+                        $('#product_id').val(id)
+                        $('#quantity').val(1)
                         //product price
                         if (data.product.discount_price == null) {
                             $('#pprice').text('')
@@ -187,6 +190,29 @@
                             $('#outofstock').text('Out of Stock')
                         }
 
+                    }
+                })
+            }
+
+            function addToCart() {
+                var product_name = $('#pname').text()
+                var id = $('#product_id').val()
+                var color = $('#color option:selected').text()
+                var size = $('#size option:selected').text()
+                var quantity = $('#quantity').val()
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        color: color,
+                        size: size,
+                        quantity: quantity,
+                        product_name: product_name,
+                    },
+                    url: '/cart/data/store/' + id,
+                    success: function(data) {
+                        $('#closeModel').click()
+                        console.log(data)
                     }
                 })
             }
