@@ -25,7 +25,7 @@
     <section class="py-4">
         <div class="container">
             <div class="product-categories">
-                <div class="row row-cols-1 row-cols-lg-4 g-4">
+                <div class="row row-cols-1 row-cols-lg-3 g-3">
                     @foreach($categories as $category)
                     <div class="col">
                         <div class="card rounded-0 product-card">
@@ -39,7 +39,7 @@
                                     $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name','ASC')->get();
                                     @endphp
                                     @foreach($subcategories as $subcategory)
-                                </a> <a href="javascript:;" class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                                </a> <a href="{{url('subcategory/product/' .$subcategory->id. '/' .$subcategory->subcategory_slug)}}" class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
                                     {{$subcategory->subcategory_name}}
                                     <span class="badge bg-primary rounded-pill">14</span>
                                 </a>
