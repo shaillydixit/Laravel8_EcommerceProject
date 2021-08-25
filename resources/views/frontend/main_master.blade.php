@@ -114,7 +114,7 @@
                                 </div> <!-- // end form group -->
                                 <div class="form-group">
                                     <label for="quantity">Quantity</label>
-                                    <input type="number" class="form-control" id="quantity" value="1" min="1">
+                                    <input type="number" class="form-control" id="qty" value="1" min="1">
                                 </div>
                                 <div class="form-group text-center">
                                     <input type="hidden" id="product_id">
@@ -199,7 +199,7 @@
                 var id = $('#product_id').val()
                 var color = $('#color option:selected').text()
                 var size = $('#size option:selected').text()
-                var quantity = $('#quantity').val()
+                var quantity = $('#qty').val();
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
