@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-12 col-lg-7">
                             <div class="product-info-section p-3">
-                                <h3 class="mt-3 mt-lg-0 mb-0">{{$product->product_name}}</h3>
+                                <h3 class="mt-3 mt-lg-0 mb-0" id="pname">{{$product->product_name}}</h3>
                                 <div class="product-rating d-flex align-items-center mt-2">
                                     <div class="rates cursor-pointer font-13"> <i class="bx bxs-star text-warning"></i>
                                         <i class="bx bxs-star text-warning"></i>
@@ -60,8 +60,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center mt-3 gap-2">
-                                    <h5 class="mb-0 text-decoration-line-through text-light-3">${{$product->selling_price}}</h5>
-                                    <h4 class="mb-0">${{$product->discount_price}}</h4>
+                                    <h5 class="mb-0 text-decoration-line-through text-light-3" id="price">${{$product->selling_price}}</h5>
+                                    <h4 class="mb-0" id="dprice">${{$product->discount_price}}</h4>
                                 </div>
                                 <div class="mt-3">
                                     <h6>Discription :</h6>
@@ -69,30 +69,31 @@
                                 </div>
                                 <dl class="row mt-3">
                                     <dt class="col-sm-3">Product id</dt>
-                                    <dd class="col-sm-9">{{$product->product_code}}</dd>
+                                    <dd class="col-sm-9" id="pcode">{{$product->product_code}}</dd>
                                 </dl>
                                 <div class="row row-cols-auto align-items-center mt-3">
                                     <div class="col">
-                                        <label class="form-label">Quantity</label>
-                                        <select class="form-select form-select-sm">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
+                                        <div class="form-group">
+                                            <label for="quantity">Quantity</label>
+                                            <input type="number" class="form-control" id="qty" value="1" min="1">
+                                        </div>
                                     </div>
                                     <div class="col">
+                                        @if($product->product_size == NULL)
+
+                                        @else
                                         <label class="form-label">Size</label>
-                                        <select class="form-select form-select-sm">
+                                        <select class="form-select form-select-sm" id="size">
                                             @foreach($product_size as $size)
                                             <option value="{{$size}}">{{ucwords($size)}}</option>
                                             @endforeach
                                         </select>
+                                        @endif
+
                                     </div>
                                     <div class="col">
                                         <label class="form-label">Colors</label>
-                                        <select class="form-select form-select-sm">
+                                        <select class="form-select form-select-sm" id="color">
                                             @foreach($product_color as $color)
                                             <option value="{{$color}}">{{ucwords($color)}}</option>
                                             @endforeach
@@ -101,7 +102,9 @@
                                 </div>
                                 <!--end row-->
                                 <div class="d-flex gap-2 mt-3">
-                                    <a href="javascript:;" class="btn btn-white btn-ecomm"> <i class="bx bxs-cart-add"></i>Add to Cart</a> <a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
+                                    <input type="hidden" id="product_id" value="{{$product->id}}" min="1">
+                                    <button type="submit" class="btn btn-white btn-ecomm" onclick="addToCart()"> <i class="bx bxs-cart-add"></i>Add to Cart</button>
+                                    <a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
                                 </div>
                                 <hr />
                                 <div class="product-sharing">
