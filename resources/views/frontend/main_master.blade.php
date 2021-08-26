@@ -212,6 +212,7 @@
                     },
                     url: '/cart/data/store/' + id,
                     success: function(data) {
+                        miniCart()
                         $('#closeModel').click()
                         // console.log(data)
 
@@ -237,7 +238,71 @@
                 })
             }
         </script>
+        <script type="text/javascript">
+            function miniCart() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/product/mini/cart',
+                    dataType: 'json',
+                    success: function(response) {
+                        // console.log(response)
+                        $('span[id="cartSubTotal"]').text(response.cartTotal)
+                        $('span[id="cartQty"]').text(response.cartQty)
+                        var miniCart = ""
+                        $.each(response.carts, function(key, value) {
+                            miniCart += ` <a class="dropdown-item" href="javascript:;">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="cart-product-title">${value.name}</h6>
+                                                        <p class="cart-product-price">${value.price} * ${value.qty}</p>
+                                                    </div>
+                                                    <div class="position-relative">
+                                                        <button type="submit" class="cart-product-cancel position-absolute" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class='bx bx-x'></i>
+                                                        </button>
+                                                        <div class="cart-product">
+                                                            <img src="/${value.options.image}" class="" alt="product image">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>`
+                        })
+                        $('#miniCart').html(miniCart);
+                    }
+                })
+            }
+            miniCart()
 
+            // mini cart remove
+            function miniCartRemove(rowId) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/minicart/product/remove/' + rowId,
+                    dataType: 'json',
+                    success: function(data) {
+                        miniCart()
+
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                type: 'success',
+                                title: data.success
+                            })
+                        } else {
+                            Toast.fire({
+                                type: 'error',
+                                title: data.error
+                            })
+                        }
+                    }
+                })
+            }
+        </script>
 </body>
 
 </html>
