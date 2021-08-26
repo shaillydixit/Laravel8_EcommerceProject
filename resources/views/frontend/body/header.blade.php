@@ -118,7 +118,7 @@
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item"><a href="{{route('dashboard')}}" class="nav-link cart-link"><i class='bx bx-user'></i></a>
                                 </li>
-                                <li class="nav-item"><a href="wishlist.html" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
+                                <li class="nav-item"><a href="{{route('wishlist')}}" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
                                 </li>
                                 <li class="nav-item dropdown dropdown-large">
                                     <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count" id="cartQty">8</span>
@@ -162,7 +162,7 @@
                     <h5 class="py-2">Navigation</h5>
                 </div>
                 <ul class="navbar-nav">
-                    <li class="nav-item active"> <a class="nav-link" href="index.html">Home </a>
+                    <li class="nav-item active"> <a class="nav-link" href="{{url('/')}}">Home </a>
                     </li>
                     <!-- get category data  -->
                     @php

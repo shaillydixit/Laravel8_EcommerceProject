@@ -338,6 +338,90 @@
             }
         </script>
         <!-- end wishlist -->
+
+        <!-- wishlist data  -->
+
+        <script type="text/javascript">
+            function wishlist() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/get/wishlist',
+                    dataType: 'json',
+                    success: function(response) {
+                        // console.log(response)
+                        var rows = ""
+                        $.each(response, function(key, value) {
+                            rows += ` <div class="card rounded-0 product-card">
+                            <a href="">
+                                <img src="/${value.product.product_thumbnail}" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <div class="product-info">
+                                    <a href="">
+                                        <h6 class="product-name mb-2">${value.product.product_name}</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">${value.product.selling_price}</span>
+                                            <span class="fs-5">${value.product.discount_price}</span>
+                                        </div>
+                                        <div class="cursor-pointer ms-auto">
+                                            <i class="bx bxs-star text-warning"></i>
+                                            <i class="bx bxs-star text-warning"></i>
+                                            <i class="bx bxs-star text-warning"></i>
+                                            <i class="bx bxs-star text-warning"></i>
+                                            <i class="bx bxs-star text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                        <a href="javascript:;" class="btn btn-dark btn-ecomm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
+										<button type="submit" class="btn btn-light btn-ecomm" id="${value.id}" onclick="wishlistRemove(this.id)" ><i class='bx bx-zoom-in'></i>Remove From List</button>                                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
+                        })
+                        $('#wishlist').html(rows);
+                    }
+                })
+            }
+            wishlist()
+
+            // wishlist remove
+            function wishlistRemove(id) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/wishlist-remove/' + id,
+                    dataType: 'json',
+                    success: function(data) {
+                        wishlist();
+                        // Start Message 
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                type: 'success',
+                                icon: 'success',
+                                title: data.success
+                            })
+                        } else {
+                            Toast.fire({
+                                type: 'error',
+                                icon: 'error',
+                                title: data.error
+                            })
+                        }
+                        // End Message 
+                    }
+                });
+            }
+        </script>
+        <!-- end wishlist data -->
 </body>
 
 </html>
