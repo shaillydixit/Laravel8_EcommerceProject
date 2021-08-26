@@ -132,3 +132,5 @@ Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 Route::get('/product/mini/cart/', [CartController::class, 'AddMiniCart']);
 
 Route::get('/minicart/product/remove/{id}', [CartController::class, 'RemoveMiniCart']);
+
+Route::post('/add/wishlist/{product_id}', [CartController::class, 'AddToWishlist']);

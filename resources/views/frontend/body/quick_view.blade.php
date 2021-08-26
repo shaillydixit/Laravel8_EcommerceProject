@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="QuickViewProduct">
     <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
         <div class="modal-content rounded-0 border-0">
