@@ -468,8 +468,11 @@
                                         </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="cart-action text-center">
-                                        <div class="row">            
-                                        <button type="submit" class="btn btn-danger btn-sm" style="width: 40px;" id="${value.rowId}" onclick="cartDecrement(this.id)">-</button>
+                                        <div class="row">   
+                                        ${value.qty > 1
+                                        ? `<button type="submit" class="btn btn-danger btn-sm" style="width: 40px;" id="${value.rowId}" onclick="cartDecrement(this.id)">-</button>`
+                                        : `<button type="submit" class="btn btn-danger btn-sm" style="width: 40px;" disabled>-</button>`
+                                            }         
                                         <input type="text" class="form-control" value="${value.qty}" min="1" max="10" disabled="" style="width: 40px;">    
                                         <button type="submit" class="btn btn-success btn-sm" style="width: 40px;" id="${value.rowId}" onclick="cartIncrement(this.id)">+</button>
                                             </div>
@@ -529,7 +532,19 @@
 
 
             // cart decrement
+            function cartDecrement(rowId) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/cart/decrement/' + rowId,
+                    dataType: 'json',
 
+                    success: function(data) {
+                        cart()
+                        miniCart()
+
+                    }
+                })
+            }
             //cart increment
             function cartIncrement(rowId) {
                 $.ajax({
@@ -540,7 +555,7 @@
                     success: function(data) {
                         cart()
                         miniCart()
-                        
+
                     }
                 })
             }
