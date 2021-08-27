@@ -125,7 +125,7 @@
                                         <i class='bx bx-shopping-bag'></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="javascript:;">
+                                        <a href="{{ route('mycart') }}">
                                             <div class="cart-header">
                                                 <p class="cart-header-title mb-0"> <span id="cartQty"></span> Items</p>
                                                 <p class="cart-header-clear ms-auto mb-0">VIEW CART</p>
