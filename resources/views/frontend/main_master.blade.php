@@ -437,40 +437,54 @@
             function cart() {
                 $.ajax({
                     type: 'GET',
-                    url: '/user/get-cart-product',
+                    url: '/get-cart-product',
                     dataType: 'json',
                     success: function(response) {
                         var rows = ""
                         $.each(response.carts, function(key, value) {
                             rows += ` <div class="row align-items-center g-3">
-                            <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-lg-6">
                                         <div class="d-lg-flex align-items-center gap-2">
                                             <div class="cart-img text-center text-lg-start">
                                                 <img src="/${value.options.image}" width="130" alt="">
                                             </div>
                                             <div class="cart-detail text-center text-lg-start">
                                                 <h6 class="mb-2">${value.name}</h6>
-                                                <p class="mb-0">Size: <span>Regular</span>
+                                                <p class="mb-0">Size: 
+                                                ${value.options.size == null
+                                                    ? `<span>...</span>`
+                                                    :`<span>${value.options.size}</span>`
+                                                }
                                                 </p>
-                                                <p class="mb-2">Color: <span>White & Blue</span>
+                                                <p class="mb-2">Color:  
+                                                ${value.options.color == null
+                                                ? `<span>....</span>`
+                                                :` <span>${value.options.color}</span>` 
+                                                }
                                                 </p>
                                                 <h5 class="mb-0">$<span>${value.price}</span> </h5>
                                             </div>
                                         </div>
-                                    </div>
+                                        </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="cart-action text-center">
-                                            <input type="number" class="form-control rounded-0" value="2" min="1">
-                                        </div>
+                                        <div class="row">            
+                                        <button type="submit" class="btn btn-success btn-sm" style="width: 40px;">+</button>
+                                        <input type="text" class="form-control" value="${value.qty}" min="1" max="10" disabled="" style="width: 40px;">    
+                                        <button type="submit" class="btn btn-danger btn-sm" style="width: 40px;">-</button>
+                                            </div>
+                                            </div>
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <div class="text-center">
-                                            <div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-dark rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i> Remove</a>
-                                                <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-heart me-0'></i></a>
+                                            <div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-dark rounded-0 btn-ecomm" id="${value.rowId}" onclick="cartRemove(this.id)"><i class='bx bx-x-circle'></i> Remove</a>
+                                                <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm" ><i class='bx bx-heart me-0'></i></a>
                                             </div>
                                         </div>
                                         </div>
-                                    </div>`
+                                    </div>
+                                    <br>`
+
                         });
 
                         $('#cartPage').html(rows);
@@ -479,7 +493,39 @@
             }
             cart();
 
-            // End Wishlist remove   
+
+            function cartRemove(id) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/cart-remove/' + id,
+                    dataType: 'json',
+                    success: function(data) {
+                        cart()
+                        miniCart()
+                        // Start Message 
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                type: 'success',
+                                icon: 'success',
+                                title: data.success
+                            })
+                        } else {
+                            Toast.fire({
+                                type: 'error',
+                                icon: 'error',
+                                title: data.error
+                            })
+                        }
+                    }
+                });
+            }
         </script>
 </body>
 

@@ -27,4 +27,11 @@ class CartPageController extends Controller
 
         ));
     } //end method
+
+    public function CartRemove($rowId)
+    {
+        Cart::remove($rowId);
+
+        return response()->json(['success' => 'Product Removed From Cart Successfully']);
+    }
 }
