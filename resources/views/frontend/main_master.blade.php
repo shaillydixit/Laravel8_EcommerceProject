@@ -469,9 +469,9 @@
                                     <div class="col-12 col-lg-3">
                                         <div class="cart-action text-center">
                                         <div class="row">            
-                                        <button type="submit" class="btn btn-success btn-sm" style="width: 40px;">+</button>
+                                        <button type="submit" class="btn btn-danger btn-sm" style="width: 40px;" id="${value.rowId}" onclick="cartDecrement(this.id)">-</button>
                                         <input type="text" class="form-control" value="${value.qty}" min="1" max="10" disabled="" style="width: 40px;">    
-                                        <button type="submit" class="btn btn-danger btn-sm" style="width: 40px;">-</button>
+                                        <button type="submit" class="btn btn-success btn-sm" style="width: 40px;" id="${value.rowId}" onclick="cartIncrement(this.id)">+</button>
                                             </div>
                                             </div>
                                     </div>
@@ -494,10 +494,10 @@
             cart();
 
 
-            function cartRemove(id) {
+            function cartRemove(rowId) {
                 $.ajax({
                     type: 'GET',
-                    url: '/cart-remove/' + id,
+                    url: '/cart-remove/' + rowId,
                     dataType: 'json',
                     success: function(data) {
                         cart()
@@ -525,6 +525,24 @@
                         }
                     }
                 });
+            }
+
+
+            // cart decrement
+
+            //cart increment
+            function cartIncrement(rowId) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/cart/increment/' + rowId,
+                    dataType: 'json',
+
+                    success: function(data) {
+                        cart()
+                        miniCart()
+                        
+                    }
+                })
             }
         </script>
 </body>
