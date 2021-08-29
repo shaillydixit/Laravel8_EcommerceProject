@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CoupanController;
 use App\Http\Controllers\Backend\ProductController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -157,3 +158,11 @@ Route::get('/cart-remove/{rowId}', [CartPageController::class, 'CartRemove']);
 Route::get('/cart/increment/{rowId}', [CartPageController::class, 'CartIncrement']);
 
 Route::get('/cart/decrement/{rowId}', [CartPageController::class, 'CartDecrement']);
+
+//coupans backend
+
+Route::get('/coupans/manage', [CoupanController::class, 'ManageCoupan'])->name('manage.coupans');
+Route::post('/coupans/store', [CoupanController::class, 'StoreCoupan'])->name('store.coupan');
+Route::get('/coupans/edit/{id}', [CoupanController::class, 'EditCoupan'])->name('edit.coupan');
+Route::post('/coupans/update/{id}', [CoupanController::class, 'UpdateCoupan'])->name('update.coupan');
+Route::get('/coupans/delete/{id}', [CoupanController::class, 'DeleteCoupan'])->name('delete.coupan');
