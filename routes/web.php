@@ -166,3 +166,5 @@ Route::post('/coupans/store', [CoupanController::class, 'StoreCoupan'])->name('s
 Route::get('/coupans/edit/{id}', [CoupanController::class, 'EditCoupan'])->name('edit.coupan');
 Route::post('/coupans/update/{id}', [CoupanController::class, 'UpdateCoupan'])->name('update.coupan');
 Route::get('/coupans/delete/{id}', [CoupanController::class, 'DeleteCoupan'])->name('delete.coupan');
+
+Route::get();
