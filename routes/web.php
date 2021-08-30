@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CoupanController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ShippingController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Rules\Role;
@@ -167,4 +168,10 @@ Route::get('/coupans/edit/{id}', [CoupanController::class, 'EditCoupan'])->name(
 Route::post('/coupans/update/{id}', [CoupanController::class, 'UpdateCoupan'])->name('update.coupan');
 Route::get('/coupans/delete/{id}', [CoupanController::class, 'DeleteCoupan'])->name('delete.coupan');
 
-Route::get();
+
+//shipping backend
+Route::get('/manage/shipping/division', [ShippingController::class, 'ManageDivision'])->name('manage.division');
+Route::post('/store/shipping/division', [ShippingController::class, 'StoreDivision'])->name('store.division');
+Route::get('/edit/shipping/division/{id}', [ShippingController::class, 'EditDivision'])->name('edit.division');
+Route::post('/update/shipping/division/{id}', [ShippingController::class, 'UpdateDivision'])->name('update.division');
+Route::get('/delete/shipping/division/{id}', [ShippingController::class, 'DeleteDivision'])->name('delete.division');

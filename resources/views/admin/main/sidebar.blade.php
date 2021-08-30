@@ -82,6 +82,14 @@
                         <li><a href="{{route('manage.coupans')}}">Manage Coupans</a></li>
                     </ul>
                 </li>
+
+                <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Shipping</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('manage.division')}}">Shipping Division</a></li>
+                    </ul>
+                </li>
+
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-location-pin fa-fw"></i> <span class="hide-menu"> Maps</span></a>
                     <ul aria-expanded="false" class="collapse">
