@@ -7,6 +7,7 @@ use App\Models\ShippingDivision;
 use Illuminate\Http\Request;
 use App\Models\ShippingDistrict;
 use App\Models\ShippingState;
+use Carbon\Carbon;
 
 class ShippingController extends Controller
 {
@@ -23,6 +24,7 @@ class ShippingController extends Controller
         ]);
         ShippingDivision::insert([
             'division_name' => $request->division_name,
+            'created_at' => Carbon::now(),
         ]);
         $notification = [
             'message' => 'Division Name Added Successfully',
@@ -45,6 +47,7 @@ class ShippingController extends Controller
         ]);
         ShippingDivision::findOrFail($id)->update([
             'division_name' => $request->division_name,
+            'updated_at' => Carbon::now(),
         ]);
         $notification = [
             'message' => 'Division Name Updated Successfully',
@@ -83,6 +86,7 @@ class ShippingController extends Controller
         ShippingDistrict::insert([
             'division_id' => $request->division_id,
             'district_name' => $request->district_name,
+            'created_at' => Carbon::now(),
         ]);
         $notification = [
             'message' => 'District Name Added Successfully',
@@ -108,6 +112,7 @@ class ShippingController extends Controller
         ShippingDistrict::findOrFail($id)->update([
             'division_id' => $request->division_id,
             'district_name' => $request->district_name,
+            'updated_at' => Carbon::now(),
         ]);
         $notification = [
             'message' => 'District Name Updated Successfully',
@@ -153,6 +158,7 @@ class ShippingController extends Controller
             'division_id' => $request->division_id,
             'district_id' => $request->district_id,
             'state_name' => $request->state_name,
+            'created_at' => Carbon::now(),
         ]);
         $notification = [
             'message' => 'State Name Added Successfully',
@@ -181,6 +187,7 @@ class ShippingController extends Controller
             'division_id' => $request->division_id,
             'district_id' => $request->district_id,
             'state_name' => $request->state_name,
+            'updated_at' => Carbon::now(),
         ]);
         $notification = [
             'message' => 'State Name Updated Successfully',
