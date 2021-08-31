@@ -175,3 +175,10 @@ Route::post('/store/shipping/division', [ShippingController::class, 'StoreDivisi
 Route::get('/edit/shipping/division/{id}', [ShippingController::class, 'EditDivision'])->name('edit.division');
 Route::post('/update/shipping/division/{id}', [ShippingController::class, 'UpdateDivision'])->name('update.division');
 Route::get('/delete/shipping/division/{id}', [ShippingController::class, 'DeleteDivision'])->name('delete.division');
+
+//district
+Route::get('/manage/shipping/district', [ShippingController::class, 'ManageDistrict'])->name('manage.district');
+Route::post('/store/shipping/district', [ShippingController::class, 'StoreDistrict'])->name('store.district');
+Route::get('/edit/shipping/district/{id}', [ShippingController::class, 'EditDistrict'])->name('edit.district');
+Route::post('/update/shipping/district/{id}', [ShippingController::class, 'UpdateDistrict'])->name('update.district');
+Route::get('/delete/shipping/district/{id}', [ShippingController::class, 'DeleteDistrict'])->name('delete.district');

@@ -87,6 +87,7 @@
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Shipping</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('manage.division')}}">Shipping Division</a></li>
+                        <li><a href="{{route('manage.district')}}">Shipping District</a></li>
                     </ul>
                 </li>
 
