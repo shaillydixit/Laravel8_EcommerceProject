@@ -88,6 +88,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('manage.division')}}">Shipping Division</a></li>
                         <li><a href="{{route('manage.district')}}">Shipping District</a></li>
+                        <li><a href="{{route('manage.state')}}">Shipping State</a></li>
                     </ul>
                 </li>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ShippingDivision;
 use Illuminate\Http\Request;
 use App\Models\ShippingDistrict;
+use App\Models\ShippingState;
 
 class ShippingController extends Controller
 {
@@ -120,6 +121,79 @@ class ShippingController extends Controller
         ShippingDistrict::findOrFail($id)->delete();
         $notification = [
             'message' => 'District Name Deleted Successfully',
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
+
+    //state
+
+    public function ManageState()
+    {
+        $divisions = ShippingDivision::orderBy('division_name', 'ASC')->get();
+        $districts = ShippingDistrict::orderBy('district_name', 'ASC')->get();
+        $states = ShippingState::with('division', 'district')->orderBy('id', 'DESC')->get();
+        return view('backend.shipping.state.state_view', compact('districts', 'divisions', 'states'));
+    }
+    public function GetDistrict($division_id)
+    {
+        $district = ShippingDistrict::where('division_id', $division_id)->orderBy('district_name', 'ASC')->get();
+        return json_encode($district);
+    }
+    public function StoreState(Request $request)
+    {
+        $request->validate([
+            'division_id' => 'required',
+            'district_id' => 'required',
+            'state_name' => 'required',
+        ]);
+
+        ShippingState::insert([
+            'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
+            'state_name' => $request->state_name,
+        ]);
+        $notification = [
+            'message' => 'State Name Added Successfully',
+            'alert-type' => 'success'
+        ];
+        return redirect()->back()->with($notification);
+    }
+
+    public function EditState($id)
+    {
+        $divisions = ShippingDivision::orderBy('division_name', 'ASC')->get();
+        $districts = ShippingDistrict::orderBy('district_name', 'ASC')->get();
+        $states = ShippingState::findOrFail($id);
+        return view('backend.shipping.state.state_edit', compact('districts', 'divisions', 'states'));
+    }
+
+    public function UpdateState(Request $request, $id)
+    {
+        $request->validate([
+            'division_id' => 'required',
+            'district_id' => 'required',
+            'state_name' => 'required',
+        ]);
+
+        ShippingState::findOrFail($id)->update([
+            'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
+            'state_name' => $request->state_name,
+        ]);
+        $notification = [
+            'message' => 'State Name Updated Successfully',
+            'alert-type' => 'success'
+        ];
+        return redirect()->route('manage.state')->with($notification);
+    }
+
+    public function DeleteState($id)
+    {
+        ShippingState::findOrFail($id)->delete();
+        $notification = [
+            'message' => 'State Name Deleted Successfully',
             'alert-type' => 'success'
         ];
         return redirect()->back()->with($notification);

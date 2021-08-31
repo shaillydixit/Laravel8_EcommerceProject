@@ -182,3 +182,11 @@ Route::post('/store/shipping/district', [ShippingController::class, 'StoreDistri
 Route::get('/edit/shipping/district/{id}', [ShippingController::class, 'EditDistrict'])->name('edit.district');
 Route::post('/update/shipping/district/{id}', [ShippingController::class, 'UpdateDistrict'])->name('update.district');
 Route::get('/delete/shipping/district/{id}', [ShippingController::class, 'DeleteDistrict'])->name('delete.district');
+
+//state
+Route::get('/manage/shipping/state', [ShippingController::class, 'ManageState'])->name('manage.state');
+Route::post('/store/shipping/state', [ShippingController::class, 'StoreState'])->name('store.state');
+Route::get('/division/district/ajax/{division_id}', [ShippingController::class, 'GetDistrict']);
+Route::get('/edit/shipping/state/{id}', [ShippingController::class, 'EditState'])->name('edit.state');
+Route::post('/update/shipping/state/{id}', [ShippingController::class, 'UpdateState'])->name('update.state');
+Route::get('/delete/shipping/state/{id}', [ShippingController::class, 'DeleteState'])->name('delete.state');
