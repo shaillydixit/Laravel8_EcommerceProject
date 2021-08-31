@@ -190,3 +190,8 @@ Route::get('/division/district/ajax/{division_id}', [ShippingController::class, 
 Route::get('/edit/shipping/state/{id}', [ShippingController::class, 'EditState'])->name('edit.state');
 Route::post('/update/shipping/state/{id}', [ShippingController::class, 'UpdateState'])->name('update.state');
 Route::get('/delete/shipping/state/{id}', [ShippingController::class, 'DeleteState'])->name('delete.state');
+
+//frontend coupan
+Route::post('/coupan-apply', [CartController::class, 'CoupanApply']);
+Route::get('/coupan-calculation', [CartController::class, 'CoupanCalculation']);
+Route::get('/coupan-remove', [CartController::class, 'CoupanRemove']);

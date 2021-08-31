@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupan;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Wishlist;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function AddToCart(Request $request, $id)
     {
+        if (Session::has('coupan')) {
+            Session::forget('coupan');
+        }
         $product = Product::findOrFail($id);
         if ($product->discount_price == NULL) {
             Cart::add([
@@ -83,5 +88,52 @@ class CartController extends Controller
         } else {
             return response()->json(['error' => 'First Login To Your Account']);
         }
+    }
+
+    //coupan
+    public function CoupanApply(Request $request)
+    {
+        $coupan = Coupan::where('coupan_name', $request->coupan_name)->where('coupan_validity', '>=', Carbon::now()->format('Y-m-d'))->first();
+        $getTotal = Cart::total();
+        $removeDot = str_replace('.', '', $getTotal);
+        $removeComma = str_replace(',', '', $removeDot);
+        $cartTotal = $removeComma / 100;
+        if ($coupan) {
+            Session::put('coupan', [
+                'coupan_name' => $coupan->coupan_name,
+                'coupan_discount' => $coupan->coupan_discount,
+                'discount_amount' => round($cartTotal * $coupan->coupan_discount / 100),
+                'total_amount' => round($cartTotal - $cartTotal * $coupan->coupan_discount / 100),
+            ]);
+
+            return response()->json(array(
+                'success' => 'Coupan Applied Successfully'
+            ));
+        } else {
+            return response()->json(['error' => 'Invalid Coupan']);
+        }
+    }
+
+    public function CoupanCalculation()
+    {
+        if (Session::has('coupan')) {
+            return response()->json(array(
+                'subtotal' => Cart::total(),
+                'coupan_name' => session()->get('coupan')['coupan_name'],
+                'coupan_discount' => session()->get('coupan')['coupan_discount'],
+                'discount_amount' => session()->get('coupan')['discount_amount'],
+                'total_amount' => session()->get('coupan')['total_amount']
+            ));
+        } else {
+            return response()->json(array(
+                'total' => Cart::total(),
+            ));
+        }
+    }
+
+    public function CoupanRemove()
+    {
+        Session::forget('coupan');
+        return response()->json(['success' => 'Coupan Removed Successfully']);
     }
 }

@@ -503,8 +503,11 @@
                     url: '/cart-remove/' + rowId,
                     dataType: 'json',
                     success: function(data) {
+                        coupanCalculation()
                         cart()
                         miniCart()
+                        $('#coupanField').show()
+                        $('#coupan_name').val('')
                         // Start Message 
                         const Toast = Swal.mixin({
                             toast: true,
@@ -539,6 +542,7 @@
                     dataType: 'json',
 
                     success: function(data) {
+                        coupanCalculation()
                         cart()
                         miniCart()
 
@@ -553,6 +557,7 @@
                     dataType: 'json',
 
                     success: function(data) {
+                        coupanCalculation()
                         cart()
                         miniCart()
 
@@ -560,6 +565,132 @@
                 })
             }
         </script>
+
+
+        <!-- apply coupan -->
+        <script type="text/javascript">
+            function applyCoupan() {
+                var coupan_name = $('#coupan_name').val();
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        coupan_name: coupan_name
+                    },
+                    url: "{{url('/coupan-apply')}}",
+                    success: function(data) {
+                        coupanCalculation()
+                        $('#coupanField').hide();
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                type: 'success',
+                                icon: 'success',
+                                title: data.success
+                            })
+                        } else {
+                            Toast.fire({
+                                type: 'error',
+                                icon: 'error',
+                                title: data.error
+                            })
+                        }
+                    }
+                })
+            }
+
+
+            // !--coupan calculation-- >
+            function coupanCalculation() {
+                $.ajax({
+                    type: 'GET',
+                    url: "{{url('/coupan-calculation')}}",
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data)
+                        if (data.total) {
+                            $('#coupanCalculation').html(
+                                `   <div class="card-body">
+                                    <p class="mb-2">Subtotal: <span class="float-end">${data.total}</span>
+                                    </p>
+                                    <div class="my-3 border-top"></div>
+                                    <h5 class="mb-0">Order Total: <span class="float-end">$ ${data.total}</span></h5>
+                                    <div class="my-4"></div>
+                                    <div class="d-grid"> <a href="javascript:;" class="btn btn-dark btn-ecomm">Proceed to Checkout</a>
+                                    </div>
+                                </div>`
+                            )
+                        } else {
+                            $('#coupanCalculation').html(
+                                ` <div class="card-body">
+                                    <p class="mb-2">Subtotal: <span class="float-end">${data.subtotal}</span>
+                                    </p>
+                                    <p class="mb-2">Shipping: <span class="float-end">FREE</span>
+                                    </p>
+                                    <p class="mb-2">Coupon: <span class="float-end">${data.coupan_name}</span>
+                                    <button type="submit" onclick="coupanRemove()">Remove Coupan</button>
+                                    </p>
+                                    <p class="mb-0">Discount: <span class="float-end">$ ${data.discount_amount}</span>
+                                    </p>
+                                    <div class="my-3 border-top"></div>
+                                    <h5 class="mb-0">Order Total: <span class="float-end">$ ${data.total_amount}</span></h5>
+                                    <div class="my-4"></div>
+                                    <div class="d-grid"> <a href="javascript:;" class="btn btn-dark btn-ecomm">Proceed to Checkout</a>
+                                    </div>
+                                </div>`
+                            )
+                        }
+                    }
+                })
+            }
+            coupanCalculation()
+            // !--end coupan calculation-- >
+        </script>
+
+        <!-- end apply coupan -->
+
+        <!-- coupan remove -->
+        <script type="text/javascript">
+            function coupanRemove() {
+                $.ajax({
+                    type: 'GET',
+                    url: "{{url('/coupan-remove')}}",
+                    dataType: 'json',
+                    success: function(data) {
+                        coupanCalculation()
+                        $('#coupanField').show()
+                        $('#coupan_name').val('')
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                                type: 'success',
+                                icon: 'success',
+                                title: data.success
+                            })
+                        } else {
+                            Toast.fire({
+                                type: 'error',
+                                icon: 'error',
+                                title: data.error
+                            })
+                        }
+                    }
+                })
+            }
+        </script>
+        <!-- end coupan remove -->
 </body>
 
 </html>
