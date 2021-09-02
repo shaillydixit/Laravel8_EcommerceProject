@@ -136,4 +136,31 @@ class CartController extends Controller
         Session::forget('coupan');
         return response()->json(['success' => 'Coupan Removed Successfully']);
     }
+
+    //checkout coupan
+
+    public function CheckoutCreate()
+    {
+        if (Auth::check()) {
+            if (Cart::total() > 0) {
+                $carts = Cart::content();
+                $cartQty = Cart::count();
+                $cartTotal = Cart::total();
+                return view('frontend.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal'));
+            } else {
+                $notification = [
+                    'message' => 'First Add Product In The Cart',
+                    'alert-type' => 'error'
+                ];
+                return redirect()->to('/')->with($notification);
+            }
+        } else {
+            $notification = [
+                'message' => 'You Need To Login Fisrt',
+                'alert-type' => 'error'
+            ];
+
+            return redirect()->route('login')->with($notification);
+        }
+    }
 }

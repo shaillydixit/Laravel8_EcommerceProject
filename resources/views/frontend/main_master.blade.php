@@ -621,9 +621,6 @@
                                     </p>
                                     <div class="my-3 border-top"></div>
                                     <h5 class="mb-0">Order Total: <span class="float-end">$ ${data.total}</span></h5>
-                                    <div class="my-4"></div>
-                                    <div class="d-grid"> <a href="javascript:;" class="btn btn-dark btn-ecomm">Proceed to Checkout</a>
-                                    </div>
                                 </div>`
                             )
                         } else {
@@ -639,10 +636,7 @@
                                     <p class="mb-0">Discount: <span class="float-end">$ ${data.discount_amount}</span>
                                     </p>
                                     <div class="my-3 border-top"></div>
-                                    <h5 class="mb-0">Order Total: <span class="float-end">$ ${data.total_amount}</span></h5>
-                                    <div class="my-4"></div>
-                                    <div class="d-grid"> <a href="javascript:;" class="btn btn-dark btn-ecomm">Proceed to Checkout</a>
-                                    </div>
+                                    <h5 class="mb-0">Order Total: <span class="float-end">$ ${data.total_amount}</span></h5>                        
                                 </div>`
                             )
                         }

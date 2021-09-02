@@ -57,6 +57,9 @@ My Cart Page
                             <div class="card rounded-0 border bg-transparent mb-0 shadow-none" id="coupanCalculation">
 
                             </div>
+                            <div class="my-4"></div>
+                            <div class="d-grid"> <a href="{{route('checkout')}}" type="submit" class="btn btn-dark btn-ecomm">Proceed to Checkout</a>
+                            </div>
                         </div>
                     </div>
                 </div>

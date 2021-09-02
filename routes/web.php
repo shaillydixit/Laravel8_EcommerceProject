@@ -195,3 +195,4 @@ Route::get('/delete/shipping/state/{id}', [ShippingController::class, 'DeleteSta
 Route::post('/coupan-apply', [CartController::class, 'CoupanApply']);
 Route::get('/coupan-calculation', [CartController::class, 'CoupanCalculation']);
 Route::get('/coupan-remove', [CartController::class, 'CoupanRemove']);
+Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');

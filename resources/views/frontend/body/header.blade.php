@@ -142,7 +142,7 @@
                                                     $</h5>
                                             </div>
                                         </a>
-                                        <div class="d-grid p-3 border-top"> <a href="javascript:;" class="btn btn-dark btn-ecomm">CHECKOUT</a>
+                                        <div class="d-grid p-3 border-top"> <a href="{{route('checkout')}}" type="submit" class="btn btn-dark btn-ecomm">CHECKOUT</a>
                                         </div>
                                     </div>
                                 </li>
