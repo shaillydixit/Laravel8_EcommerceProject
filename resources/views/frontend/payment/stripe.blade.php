@@ -221,7 +221,16 @@
                                                     @csrf
                                                     <div class="form-row">
                                                         <label for="card-element">
-                                                            Credit or debit card
+                                                            <input type="hidden" name="first_name" value="{{$data['first_name']}}">
+                                                            <input type="hidden" name="last_name" value="{{$data['last_name']}}">
+                                                            <input type="hidden" name="shipping_email" value="{{$data['shipping_email']}}">
+                                                            <input type="hidden" name="shipping_phone" value="{{$data['shipping_phone']}}">
+                                                            <input type="hidden" name="shipping_zipcode" value="{{$data['shipping_zipcode']}}">
+                                                            <input type="hidden" name="shipping_address" value="{{$data['shipping_address']}}">
+                                                            <input type="hidden" name="shipping_landmark" value="{{$data['shipping_landmark']}}">
+                                                            <input type="hidden" name="division_id" value="{{$data['division_id']}}">
+                                                            <input type="hidden" name="district_id" value="{{$data['district_id']}}">
+                                                            <input type="hidden" name="state_id" value="{{$data['state_id']}}">
                                                         </label>
 
                                                         <div id="card-element">
