@@ -8,6 +8,7 @@ use App\Models\ShippingDistrict;
 use App\Models\ShippingState;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\facades\Cart;
 
 class CheckoutController extends Controller
 {
@@ -29,33 +30,22 @@ class CheckoutController extends Controller
     public function CheckoutStore(Request $request)
     {
         // dd($request)->all();
-        // $data = array();
-        // $data['first_name'] = $request->first_name;
-        // $data['last_name'] = $request->last_name;
-        // $data['shipping_email'] = $request->shipping_email;
-        // $data['shipping_phone'] = $request->shipping_phone;
-        // $data['shipping_zipcode'] = $request->shipping_zipcode;
-        // $data['shipping_address'] = $request->shipping_address;
-        // $data['shipping_landmark'] = $request->shipping_landmark;
-        // $data['division_id'] = $request->division_id;
-        // $data['district_id'] = $request->district_id;
-        // $data['state_id'] = $request->state_id;
-
-        $data = ShippingAddress::insert([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'shipping_email' => $request->shipping_email,
-            'shipping_phone' => $request->shipping_phone,
-            'shipping_zipcode' => $request->shipping_zipcode,
-            'shipping_address' => $request->shipping_address,
-            'shipping_landmark' => $request->shipping_landmark,
-            'division_id' => $request->division_id,
-            'district_id' => $request->district_id,
-            'state_id' => $request->state_id,
-            'created_at' => Carbon::now(),
-        ]);
+        $data = array();
+        $data['first_name'] = $request->first_name;
+        $data['last_name'] = $request->last_name;
+        $data['shipping_email'] = $request->shipping_email;
+        $data['shipping_phone'] = $request->shipping_phone;
+        $data['shipping_zipcode'] = $request->shipping_zipcode;
+        $data['shipping_address'] = $request->shipping_address;
+        $data['shipping_landmark'] = $request->shipping_landmark;
+        $data['division_id'] = $request->division_id;
+        $data['district_id'] = $request->district_id;
+        $data['state_id'] = $request->state_id;
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+        $cartTotal = Cart::total();
         if ($request->payment_method == 'stripe') {
-            return view('frontend.payment.stripe', compact('data'));
+            return view('frontend.payment.stripe', compact('data', 'carts', 'cartQty', 'cartTotal'));
         } elseif ($request->payment_method == 'card') {
             return 'card';
         } else {

@@ -25,6 +25,8 @@
     <link href="{{asset('frontend/assets/css/icons.css')}}" rel="stylesheet">
     <title>Shopingo - eCommerce HTML Template</title>
 
+    <!-- stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>

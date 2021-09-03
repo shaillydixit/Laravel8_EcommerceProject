@@ -44,18 +44,14 @@
                                             </div>
                                             <div class="step-label"><i class='bx bx-user-circle'></i>Details</div>
                                         </a>
-                                        <a class="step-item" href="checkout-shipping.html">
-                                            <div class="step-progress"><span class="step-count">3</span>
-                                            </div>
-                                            <div class="step-label"><i class='bx bx-cube'></i>Shipping</div>
-                                        </a>
+
                                         <a class="step-item" href="checkout-payment.html">
-                                            <div class="step-progress"><span class="step-count">4</span>
+                                            <div class="step-progress"><span class="step-count">3</span>
                                             </div>
                                             <div class="step-label"><i class='bx bx-credit-card'></i>Payment</div>
                                         </a>
                                         <a class="step-item" href="checkout-review.html">
-                                            <div class="step-progress"><span class="step-count">5</span>
+                                            <div class="step-progress"><span class="step-count">4</span>
                                             </div>
                                             <div class="step-label"><i class='bx bx-check-circle'></i>Review</div>
                                         </a>
