@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Coupan;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ShippingDistrict;
+use App\Models\ShippingDivision;
+use App\Models\ShippingState;
 use App\Models\Wishlist;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -146,7 +149,8 @@ class CartController extends Controller
                 $carts = Cart::content();
                 $cartQty = Cart::count();
                 $cartTotal = Cart::total();
-                return view('frontend.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal'));
+                $divisons = ShippingDivision::orderBy('division_name', 'ASC')->get();
+                return view('frontend.checkout.checkout_view', compact('divisons', 'carts', 'cartQty', 'cartTotal'));
             } else {
                 $notification = [
                     'message' => 'First Add Product In The Cart',

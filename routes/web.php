@@ -17,6 +17,8 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
+use App\Http\Controllers\User\CheckoutController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -195,4 +197,8 @@ Route::get('/delete/shipping/state/{id}', [ShippingController::class, 'DeleteSta
 Route::post('/coupan-apply', [CartController::class, 'CoupanApply']);
 Route::get('/coupan-calculation', [CartController::class, 'CoupanCalculation']);
 Route::get('/coupan-remove', [CartController::class, 'CoupanRemove']);
+
 Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
+Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
+Route::post('/checkout/store/data', [CheckoutController::class, 'CheckoutStore'])->name('checkout.storedata');
