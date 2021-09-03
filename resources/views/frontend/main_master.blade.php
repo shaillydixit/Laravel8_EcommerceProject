@@ -582,7 +582,9 @@
                     url: "{{url('/coupan-apply')}}",
                     success: function(data) {
                         coupanCalculation()
-                        $('#coupanField').hide();
+                        if (data.validity == true) {
+                            $('#coupanField').hide()
+                        }
                         const Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -632,7 +634,7 @@
                                     </p>
                                     <p class="mb-2">Shipping: <span class="float-end">FREE</span>
                                     </p>
-                                    <p class="mb-2">Coupon: <span class="float-end">${data.coupan_name}</span>
+                                    <p class="mb-2">Coupon: <span class="float-end">${data.coupan_name} (${data.coupan_discount})%</span>
                                     <button type="submit" onclick="coupanRemove()">Remove Coupan</button>
                                     </p>
                                     <p class="mb-0">Discount: <span class="float-end">$ ${data.discount_amount}</span>
