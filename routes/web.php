@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CheckoutController;
@@ -107,11 +108,7 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
 })->name('dashboard');
 
 Route::get('/', [IndexController::class, 'index']);
-Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
-Route::get('/user/profile', [IndexController::class, 'UserProfile'])->name('user.profile');
-Route::get('/user/payment', [IndexController::class, 'UserPayment'])->name('user.payment');
-Route::get('/user/orders', [IndexController::class, 'UserOrders'])->name('user.orders');
-Route::get('/user/address', [IndexController::class, 'UserAddress'])->name('user.address');
+
 
 //product details
 
@@ -146,12 +143,18 @@ Route::post('/add/wishlist/{product_id}', [CartController::class, 'AddToWishlist
 
 Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' => 'User'], function () {
     Route::get('/product/wishlist/', [WishlistController::class, 'ViewWishlist'])->name('wishlist');
-
     Route::get('/get/wishlist', [WishlistController::class, 'GetWishlist']);
-
     Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct']);
 
     Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');
+
+    Route::get('/logout', [AllUserController::class, 'UserLogout'])->name('user.logout');
+    Route::get('/profile', [AllUserController::class, 'UserProfile'])->name('user.profile');
+    Route::get('/payment', [AllUserController::class, 'UserPayment'])->name('user.payment');
+    Route::get('/orders', [AllUserController::class, 'UserOrders'])->name('user.orders');
+    Route::get('/address', [AllUserController::class, 'UserAddress'])->name('user.address');
+
+    Route::get('/order-details/{order_id}', [AllUserController::class, 'OrderDetails']);
 });
 
 //cart

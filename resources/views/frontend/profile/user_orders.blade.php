@@ -32,7 +32,7 @@
                             <div class="card shadow-none mb-3 mb-lg-0 border">
                                 <div class="card-body">
                                     <div class="list-group list-group-flush"> <a href="{{route('dashboard')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Dashboard <i class='bx bx-tachometer fs-5'></i></a>
-                                    <a href="{{route('user.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Orders <i class='bx bx-cart-alt fs-5'></i></a>
+                                        <a href="{{route('user.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Orders <i class='bx bx-cart-alt fs-5'></i></a>
                                         <a href="{{route('user.address')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Addresses <i class='bx bx-home-smile fs-5'></i></a>
                                         <a href="{{route('user.payment')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Payment Methods <i class='bx bx-credit-card fs-5'></i></a>
                                         <a href="{{route('user.profile')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Account Details <i class='bx bx-user-circle fs-5'></i></a>
@@ -48,104 +48,34 @@
                                         <table class="table">
                                             <thead class="table-light">
                                                 <tr>
-                                                    <th>Order</th>
+                                                    <th>Order ID</th>
                                                     <th>Date</th>
-                                                    <th>Status</th>
+                                                    <th>Payment</th>
+                                                    <th>Invoice No</th>
                                                     <th>Total</th>
+                                                    <th>Status</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach($orders as $order)
                                                 <tr>
-                                                    <td>#800</td>
-                                                    <td>Novermber 15, 2021</td>
+                                                    <td>{{$order->order_number}}</td>
+                                                    <td>{{$order->order_date}}</td>
+                                                    <td>{{$order->payment_method}}</td>
+                                                    <td>{{$order->invoice_no}}</td>
                                                     <td>
-                                                        <div class="badge rounded-pill bg-success w-100">Completed</div>
+                                                        <div class="badge rounded-pill bg-info w-100">{{$order->status}}</div>
                                                     </td>
-                                                    <td>$100.00 for 1 item</td>
+                                                    <td>${{$order->amount}}</td>
                                                     <td>
-                                                        <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">View</a>
+                                                        <div class="d-flex gap-2">
+                                                            <a href="{{ url('user/order-details/'.$order->id ) }}" class="btn btn-dark btn-sm rounded-0">View</a>
+                                                            <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">Invoice</a>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#796</td>
-                                                    <td>Novermber 12, 2021</td>
-                                                    <td>
-                                                        <div class="badge rounded-pill bg-danger w-100">Failed</div>
-                                                    </td>
-                                                    <td>$100.00 for 1 item</td>
-                                                    <td>
-                                                        <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">View</a>
-                                                            <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">Pay</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#859</td>
-                                                    <td>Novermber 10, 2021</td>
-                                                    <td>
-                                                        <div class="badge rounded-pill bg-danger w-100">Failed</div>
-                                                    </td>
-                                                    <td>$100.00 for 1 item</td>
-                                                    <td>
-                                                        <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">View</a>
-                                                            <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">Pay</a>
-                                                            <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">Cancel</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#869</td>
-                                                    <td>Novermber 9, 2021</td>
-                                                    <td>
-                                                        <div class="badge rounded-pill bg-danger w-100">Cancelled</div>
-                                                    </td>
-                                                    <td>$120.00 for 1 item</td>
-                                                    <td>
-                                                        <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">View</a>
-                                                            <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">Pay</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#829</td>
-                                                    <td>Novermber 8, 2021</td>
-                                                    <td>
-                                                        <div class="badge rounded-pill bg-success w-100">Completed</div>
-                                                    </td>
-                                                    <td>$224.00 for 2 item</td>
-                                                    <td>
-                                                        <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">View</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#879</td>
-                                                    <td>Novermber 8, 2021</td>
-                                                    <td>
-                                                        <div class="badge rounded-pill bg-success w-100">Completed</div>
-                                                    </td>
-                                                    <td>$126.00 for 3 item</td>
-                                                    <td>
-                                                        <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">View</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#863</td>
-                                                    <td>Novermber 4, 2021</td>
-                                                    <td>
-                                                        <div class="badge rounded-pill bg-danger w-100">Failed</div>
-                                                    </td>
-                                                    <td>$200.00 for 2 item</td>
-                                                    <td>
-                                                        <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">View</a>
-                                                            <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">Pay</a>
-                                                            <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">Cancel</a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -14,4 +14,19 @@ class Order extends Model
     {
         return $this->belongsTo(ShippingDivision::class, 'division_id', 'id');
     }
+
+    public function district()
+    {
+        return $this->belongsTo(ShippingDistrict::class, 'district_id', 'id');
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(ShippingState::class, 'state_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
