@@ -71,7 +71,7 @@
                                                     <td>
                                                         <div class="d-flex gap-2">
                                                             <a href="{{ url('user/order-details/'.$order->id ) }}" class="btn btn-dark btn-sm rounded-0">View</a>
-                                                            <a href="javascript:;" class="btn btn-dark btn-sm rounded-0">Invoice</a>
+                                                            <a target="_blank" href="{{url('user/invoice-download/' .$order->id)}}" class="btn btn-dark btn-sm rounded-0">Invoice</a>
                                                         </div>
                                                     </td>
                                                 </tr>

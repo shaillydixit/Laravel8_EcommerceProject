@@ -158,6 +158,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/order-details/{order_id}', [AllUserController::class, 'OrderDetails']);
 
     Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
+
+    Route::get('/invoice-download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
 });
 
 //cart
