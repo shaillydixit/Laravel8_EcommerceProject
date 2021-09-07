@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CoupanController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ShippingController;
 use GuzzleHttp\Middleware;
@@ -213,3 +214,13 @@ Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checko
 Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 Route::post('/checkout/store/data', [CheckoutController::class, 'CheckoutStore'])->name('checkout.storedata');
+
+//orders backend
+Route::get('/pending/orders', [OrderController::class, 'PendingOrders'])->name('pending.orders');
+Route::get('/pending/order/details/{order_id}', [OrderController::class, 'PendingOrderDetails'])->name('pending.order.details');
+Route::get('/confirmed/orders', [OrderController::class, 'ConfirmedOrders'])->name('confirmed.orders');
+Route::get('/processing/orders', [OrderController::class, 'ProcessingOrders'])->name('processing.orders');
+Route::get('/pickedup/orders', [OrderController::class, 'PickedUpOrders'])->name('pickedup.orders');
+Route::get('/shipped/orders', [OrderController::class, 'ShippedOrders'])->name('shipped.orders');
+Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->name('delivered.orders');
+Route::get('/cancelled/orders', [OrderController::class, 'CancelledOrders'])->name('cancelled.orders');

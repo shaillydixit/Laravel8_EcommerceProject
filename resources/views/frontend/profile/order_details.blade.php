@@ -180,6 +180,16 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                <h6>Order Return Reason:</h6>
+                                                            </label>
+                                                            <textarea name="return_reason" id="" class="form-control" cols="20" rows="05">Return Reason</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

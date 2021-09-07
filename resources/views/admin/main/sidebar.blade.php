@@ -91,7 +91,18 @@
                         <li><a href="{{route('manage.state')}}">Shipping State</a></li>
                     </ul>
                 </li>
-
+                <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Orders</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('pending.orders')}}">Pending Orders</a></li>
+                        <li><a href="{{route('confirmed.orders')}}">Confirmed Orders</a></li>
+                        <li><a href="{{route('processing.orders')}}">Processing Orders</a></li>
+                        <li><a href="{{route('pickedup.orders')}}">PickedUp Orders</a></li>
+                        <li><a href="{{route('shipped.orders')}}">Shipped Orders</a></li>
+                        <li><a href="{{route('delivered.orders')}}">Delivered Orders</a></li>
+                        <li><a href="{{route('cancelled.orders')}}">Cancelled Orders</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-location-pin fa-fw"></i> <span class="hide-menu"> Maps</span></a>
                     <ul aria-expanded="false" class="collapse">
