@@ -224,3 +224,5 @@ Route::get('/pickedup/orders', [OrderController::class, 'PickedUpOrders'])->name
 Route::get('/shipped/orders', [OrderController::class, 'ShippedOrders'])->name('shipped.orders');
 Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->name('delivered.orders');
 Route::get('/cancelled/orders', [OrderController::class, 'CancelledOrders'])->name('cancelled.orders');
+// status update
+Route::get('/pending/confirm/{order_id}', [OrderController::class, 'PendingConfirm'])->name('pending.confirm');
