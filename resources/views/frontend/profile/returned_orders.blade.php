@@ -64,6 +64,7 @@
                                                     <td>{{$order->invoice_no}}</td>
                                                     <td>
                                                         <div class="badge rounded-pill bg-info w-100">{{$order->status}}</div>
+                                                        <span class="badge rounded-pill bg-danger w-100">Return Requested</span>
                                                     </td>
                                                     <td>${{$order->amount}}</td>
                                                     <td>

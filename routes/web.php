@@ -154,6 +154,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/profile', [AllUserController::class, 'UserProfile'])->name('user.profile');
     Route::get('/payment', [AllUserController::class, 'UserPayment'])->name('user.payment');
     Route::get('/orders', [AllUserController::class, 'UserOrders'])->name('user.orders');
+    Route::get('/returned/orders', [AllUserController::class, 'ReturnedOrders'])->name('returned.orders');
+    Route::get('/cancelled/orders', [AllUserController::class, 'CancelledOrders'])->name('cancelled.orders');
     Route::get('/address', [AllUserController::class, 'UserAddress'])->name('user.address');
 
     Route::get('/order-details/{order_id}', [AllUserController::class, 'OrderDetails']);
@@ -161,6 +163,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
 
     Route::get('/invoice-download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
+
+    Route::post('/return-order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
 });
 
 //cart
