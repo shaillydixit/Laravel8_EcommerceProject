@@ -114,9 +114,15 @@
                                             <th>
                                                 @if($order->status == 'Pending')
                                                 <a href="{{ route('pending.confirm',$order->id) }}" class="btn btn-block btn-info" style="color: white;" id="confirm">Confirm Order</a>
-
+                                                @elseif($order->status == 'confirmed')
+                                                <a href="{{ route('confirm.processing',$order->id) }}" class="btn btn-block btn-info" style="color: white;" id="processing">Processing Order</a>
+                                                @elseif($order->status == 'processing')
+                                                <a href="{{ route('processing.pickedup',$order->id) }}" class="btn btn-block btn-info" style="color: white;" id="pickedup">PickedUp Order</a>
+                                                @elseif($order->status == 'pickedup')
+                                                <a href="{{ route('pickedup.shipped',$order->id) }}" class="btn btn-block btn-info" style="color: white;" id="shipped">Shipped Order</a>
+                                                @elseif($order->status == 'shipped')
+                                                <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-info" style="color: white;" id="delivered">Delivered Order</a>
                                                 @endif
-
                                             </th>
                                         </tr>
                                     </table>

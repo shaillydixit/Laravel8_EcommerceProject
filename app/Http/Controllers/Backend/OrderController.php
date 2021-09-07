@@ -38,7 +38,7 @@ class OrderController extends Controller
 
     public function PickedUpOrders()
     {
-        $orders = Order::where('status', 'processing')->orderBy('id', 'DESC')->get();
+        $orders = Order::where('status', 'pickedup')->orderBy('id', 'DESC')->get();
         return view('backend.orders.pickedup_orders', compact('orders'));
     }
 
@@ -70,5 +70,49 @@ class OrderController extends Controller
         );
 
         return redirect()->route('pending.orders')->with($notification);
+    }
+
+    public function ConfirmProcessing($order_id)
+    {
+        Order::findOrFail($order_id)->update(['status' => 'processing']);
+        $notification = array(
+            'message' => 'Order Processed Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('confirmed.orders')->with($notification);
+    }
+
+    public function ProcessingPickedup($order_id)
+    {
+        Order::findOrFail($order_id)->update(['status' => 'pickedup']);
+        $notification = array(
+            'message' => 'Order PickedUp Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('processing.orders')->with($notification);
+    }
+
+    public function PickedupShipped($order_id)
+    {
+        Order::findOrFail($order_id)->update(['status' => 'shipped']);
+        $notification = array(
+            'message' => 'Order Shipped Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('pickedup.orders')->with($notification);
+    }
+
+    public function ShippedDelivered($order_id)
+    {
+        Order::findOrFail($order_id)->update(['status' => 'delivered']);
+        $notification = array(
+            'message' => 'Order Delivered Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('delivered.orders')->with($notification);
     }
 }
