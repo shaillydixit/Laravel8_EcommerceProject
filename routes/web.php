@@ -224,9 +224,13 @@ Route::get('/pickedup/orders', [OrderController::class, 'PickedUpOrders'])->name
 Route::get('/shipped/orders', [OrderController::class, 'ShippedOrders'])->name('shipped.orders');
 Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->name('delivered.orders');
 Route::get('/cancelled/orders', [OrderController::class, 'CancelledOrders'])->name('cancelled.orders');
+
 // status update
 Route::get('/pending/confirm/{order_id}', [OrderController::class, 'PendingConfirm'])->name('pending.confirm');
 Route::get('/confirm/processing{order_id}', [OrderController::class, 'ConfirmProcessing'])->name('confirm.processing');
 Route::get('/processing/pickedup/{order_id}', [OrderController::class, 'ProcessingPickedup'])->name('processing.pickedup');
 Route::get('/pickedup/shipped/{order_id}', [OrderController::class, 'PickedupShipped'])->name('pickedup.shipped');
 Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedDelivered'])->name('shipped.delivered');
+
+// confirmed order Invoice Download
+Route::get('/invoice/download/{order_id}', [OrderController::class, 'InvoiceDownload'])->name('invoice.download');

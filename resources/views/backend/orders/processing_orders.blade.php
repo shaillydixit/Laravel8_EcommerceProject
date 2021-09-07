@@ -28,7 +28,7 @@
                                     <td>${{ $item->amount }}</td>
                                     <td> <span class="label label-success font-weight-100">{{ $item->status }}</span> </td>
                                     <td><a href="{{route('pending.order.details', $item->id)}}" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="fa fa-eye"></i></a>
-                                        <a href="{{route('delete.coupan', $item->id)}}" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a>
+                                        <a href="{{route('invoice.download', $item->id)}}" class="text-inverse" title="Download Invoice" data-toggle="tooltip"><i class="ti-download"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
