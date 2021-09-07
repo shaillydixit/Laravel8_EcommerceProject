@@ -34,7 +34,7 @@
                                     <div class="list-group list-group-flush"> <a href="{{route('dashboard')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Dashboard <i class='bx bx-tachometer fs-5'></i></a>
                                         <a href="{{route('user.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Orders <i class='bx bx-cart-alt fs-5'></i></a>
                                         <a href="{{route('returned.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Returned Orders <i class='bx bx-cart-alt fs-5'></i></a>
-                                        <a href="{{route('cancelled.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Cancelled Orders <i class='bx bx-cart-alt fs-5'></i></a>
+                                        <a href="{{route('cancelled.orders.list')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Cancelled Orders <i class='bx bx-cart-alt fs-5'></i></a>
                                     </div>
                                 </div>
                             </div>

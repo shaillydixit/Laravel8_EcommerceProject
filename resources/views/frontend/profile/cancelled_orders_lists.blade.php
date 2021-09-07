@@ -5,7 +5,7 @@
     <section class="py-3 border-bottom border-top d-none d-md-flex bg-light">
         <div class="container">
             <div class="page-breadcrumb d-flex align-items-center">
-                <h3 class="breadcrumb-title pe-3">Returned Orders</h3>
+                <h3 class="breadcrumb-title pe-3">Cancelled Orders</h3>
                 <div class="ms-auto">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
@@ -13,7 +13,7 @@
                             </li>
                             <li class="breadcrumb-item"><a href="javascript:;">My Orders</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Returned Orders</li>
+                            <li class="breadcrumb-item active" aria-current="page">Cancelled Orders</li>
                         </ol>
                     </nav>
                 </div>
@@ -34,7 +34,7 @@
                                     <div class="list-group list-group-flush"> <a href="{{route('dashboard')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Dashboard <i class='bx bx-tachometer fs-5'></i></a>
                                         <a href="{{route('user.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Orders <i class='bx bx-cart-alt fs-5'></i></a>
                                         <a href="{{route('returned.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Returned Orders <i class='bx bx-cart-alt fs-5'></i></a>
-                                        <a href="{{route('cancelled.orders')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Cancelled Orders <i class='bx bx-cart-alt fs-5'></i></a>
+                                        <a href="{{route('cancelled.orders.list')}}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Cancelled Orders <i class='bx bx-cart-alt fs-5'></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($orders as $order)
+                                                @forelse($orders as $order)
                                                 <tr>
                                                     <td>{{$order->order_number}}</td>
                                                     <td>{{$order->order_date}}</td>
@@ -64,7 +64,6 @@
                                                     <td>{{$order->invoice_no}}</td>
                                                     <td>
                                                         <div class="badge rounded-pill bg-info w-100">{{$order->status}}</div>
-                                                        <span class="badge rounded-pill bg-danger w-100">Return Requested</span>
                                                     </td>
                                                     <td>${{$order->amount}}</td>
                                                     <td>
@@ -74,7 +73,10 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                @endforeach
+                                                @empty
+                                                <h2 class="text-danger">No Orders Found</h2>
+
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>

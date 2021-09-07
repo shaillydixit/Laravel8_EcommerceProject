@@ -155,7 +155,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/payment', [AllUserController::class, 'UserPayment'])->name('user.payment');
     Route::get('/orders', [AllUserController::class, 'UserOrders'])->name('user.orders');
     Route::get('/returned/orders', [AllUserController::class, 'ReturnedOrders'])->name('returned.orders');
-    Route::get('/cancelled/orders', [AllUserController::class, 'CancelledOrders'])->name('cancelled.orders');
+    Route::get('/cancelled/orders/list', [AllUserController::class, 'CancelledOrdersList'])->name('cancelled.orders.list');
     Route::get('/address', [AllUserController::class, 'UserAddress'])->name('user.address');
 
     Route::get('/order-details/{order_id}', [AllUserController::class, 'OrderDetails']);
