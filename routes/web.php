@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CoupanController;
@@ -244,7 +245,10 @@ Route::get('/invoice/download/{order_id}', [OrderController::class, 'InvoiceDown
 // backend reports
 
 Route::get('all.reports', [ReportController::class, 'AllReports'])->name('all.reports');
-
 Route::post('/search/by/date', [ReportController::class, 'SearchByDate'])->name('search.by.date');
 Route::post('/search/by/month', [ReportController::class, 'SearchByMonth'])->name('search.by.month');
 Route::post('/search/by/year', [ReportController::class, 'SearchByYear'])->name('search.by.year');
+
+// users in admin backend
+
+Route::get('/all/users', [AdminProfileController::class, 'AllUsers'])->name('all.users');
