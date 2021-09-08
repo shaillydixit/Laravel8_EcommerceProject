@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CoupanController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ShippingController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -238,3 +239,12 @@ Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedDel
 
 // confirmed order Invoice Download
 Route::get('/invoice/download/{order_id}', [OrderController::class, 'InvoiceDownload'])->name('invoice.download');
+
+
+// backend reports
+
+Route::get('all.reports', [ReportController::class, 'AllReports'])->name('all.reports');
+
+Route::post('/search/by/date', [ReportController::class, 'SearchByDate'])->name('search.by.date');
+Route::post('/search/by/month', [ReportController::class, 'SearchByMonth'])->name('search.by.month');
+Route::post('/search/by/year', [ReportController::class, 'SearchByYear'])->name('search.by.year');
