@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CoupanController;
@@ -252,3 +253,18 @@ Route::post('/search/by/year', [ReportController::class, 'SearchByYear'])->name(
 // users in admin backend
 
 Route::get('/all/users', [AdminProfileController::class, 'AllUsers'])->name('all.users');
+
+
+// blog backend
+Route::get('/blog/category', [BlogController::class, 'BlogCategory'])->name('blog.category');
+Route::post('/store/blog/category', [BlogController::class, 'StoreBlogCategory'])->name('store.blog.category');
+Route::get('/edit/blog/category/{id}', [BlogController::class, 'EditBlogCategory'])->name('edit.blog.category');
+Route::post('/update/blog/category/{id}', [BlogController::class, 'UpdateBlogCategory'])->name('update.blog.category');
+Route::get('/delete/blog/category/{id}', [BlogController::class, 'DeleteBlogCategory'])->name('delete.blog.category');
+
+Route::get('/add/blog/post', [BlogController::class, 'AddBlogPost'])->name('add.blog.post');
+Route::get('/list/blog/post', [BlogController::class, 'ListBlogPost'])->name('list.blog.post');
+Route::post('/store/blog/post', [BlogController::class, 'StoreBlogPost'])->name('store.blog.post');
+Route::get('/edit/blog/post/{id}', [BlogController::class, 'EditBlogPost'])->name('edit.blog.post');
+Route::post('/update/blog/post/{id}', [BlogController::class, 'UpdateBlogPost'])->name('update.blog.post');
+Route::get('/delete/blog/post/{id}', [BlogController::class, 'DeleteBlogPost'])->name('delete.blog.post');

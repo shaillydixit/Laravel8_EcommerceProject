@@ -5,6 +5,7 @@
     <div class="col-lg-12">
         <div class="white-box">
             <h3 class="box-title m-b-0">All Users</h3>
+            <h6 style="float:right;">Total Users: <span class="badge badge-pill badge-danger"> {{count($users)}}</span></h6>
 
             <table class="tablesaw table-striped table-hover table-bordered table tablesaw-columntoggle" data-tablesaw-mode="columntoggle" id="table-7981">
                 <thead>

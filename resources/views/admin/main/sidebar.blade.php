@@ -112,6 +112,14 @@
                 </li>
 
                 <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-user fa-fw"></i> <span class="hide-menu">Manage Blogs</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('blog.category')}}">Blog Category</a></li>
+                        <li><a href="{{route('add.blog.post')}}">Add Blog Post</a></li>
+                        <li><a href="{{route('list.blog.post')}}">List Blog Post</a></li>
+                    </ul>
+                </li>
+                <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">All Users</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('all.users')}}">All Users</a></li>

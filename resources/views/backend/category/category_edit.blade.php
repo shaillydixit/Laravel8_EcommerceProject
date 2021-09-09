@@ -9,6 +9,8 @@
                 <div class="col-sm-12 col-xs-12">
                     <form method="post" action="{{route('update.category', $categories->id)}}" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="old_image" value="{{$categories->category_image}}">
+
                         <div class="form-group">
                             <label for="exampleInputEmail1">Category Name</label>
                             <input type="text" class="form-control" name="category_name" placeholder="Enter category name" value="{{$categories->category_name}}">
