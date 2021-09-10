@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ShippingController;
+use App\Http\Controllers\Backend\SiteSettingController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Rules\Role;
@@ -276,3 +277,8 @@ Route::get('/blog/view', [FrontendBlogController::class, 'BlogView'])->name('blo
 Route::get('/single/blog/{id}', [FrontendBlogController::class, 'SingleBlog'])->name('single.blog');
 Route::get('/blog/category/post/{category_id}', [FrontendBlogController::class, 'CategoryBlog']);
 Route::post('/blog/comment', [FrontendBlogController::class, 'BlogComment'])->name('blog.comment');
+
+
+// site settings backend
+Route::get('/site/settings', [SiteSettingController::class, 'SiteSettings'])->name('site.settings');
+Route::post('/store/settings/{setting_id}', [SiteSettingController::class, 'StoreSettings'])->name('store.settings');
