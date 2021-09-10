@@ -22,7 +22,7 @@
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="shop-categories.html">Our Stores</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="blog.html">Blog</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('blog.view')}}">Blog</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="contact-us.html">Contact</a>
                     </li>

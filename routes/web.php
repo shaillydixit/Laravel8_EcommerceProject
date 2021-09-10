@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\User\AllUserController;
@@ -268,3 +269,8 @@ Route::post('/store/blog/post', [BlogController::class, 'StoreBlogPost'])->name(
 Route::get('/edit/blog/post/{id}', [BlogController::class, 'EditBlogPost'])->name('edit.blog.post');
 Route::post('/update/blog/post/{id}', [BlogController::class, 'UpdateBlogPost'])->name('update.blog.post');
 Route::get('/delete/blog/post/{id}', [BlogController::class, 'DeleteBlogPost'])->name('delete.blog.post');
+
+
+// blog frontend
+Route::get('/blog/view', [FrontendBlogController::class, 'BlogView'])->name('blog.view');
+Route::get('/single/blog/{id}', [FrontendBlogController::class, 'SingleBlog'])->name('single.blog');
