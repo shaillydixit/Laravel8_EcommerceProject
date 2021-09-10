@@ -14,7 +14,10 @@
     <div class="top-menu border-bottom">
         <div class="container">
             <nav class="navbar navbar-expand">
-                <div class="shiping-title text-uppercase font-13 d-none d-sm-flex">Welcome to our eTrans store!</div>
+                @php
+                $setting = App\Models\SiteSetting::find(1);
+                @endphp
+                <div class="shiping-title text-uppercase font-13 d-none d-sm-flex">Welcome to our {{$setting->company_name}}!</div>
                 <ul class="navbar-nav ms-auto d-none d-lg-flex">
                     <li class="nav-item"> <a class="nav-link" href="order-tracking.html">Track Order</a>
                     </li>
@@ -83,9 +86,12 @@
                     <div class="d-flex align-items-center">
                         <div class="mobile-toggle-menu d-lg-none px-lg-2" data-trigger="#navbar_main"><i class='bx bx-menu'></i>
                         </div>
+                        @php
+                        $setting = App\Models\SiteSetting::find(1);
+                        @endphp
                         <div class="logo d-none d-lg-flex">
                             <a href="index.html">
-                                <img src="{{asset('frontend/assets/images/logo-icon.png')}}" class="logo-icon" alt="" />
+                                <img src="{{asset($setting->logo)}}" class="logo-icon" alt="" style="width:80px; height:60px;" />
                             </a>
                         </div>
                     </div>
