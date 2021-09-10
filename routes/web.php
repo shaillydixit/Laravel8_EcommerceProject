@@ -274,3 +274,5 @@ Route::get('/delete/blog/post/{id}', [BlogController::class, 'DeleteBlogPost'])-
 // blog frontend
 Route::get('/blog/view', [FrontendBlogController::class, 'BlogView'])->name('blog.view');
 Route::get('/single/blog/{id}', [FrontendBlogController::class, 'SingleBlog'])->name('single.blog');
+Route::get('/blog/category/post/{category_id}', [FrontendBlogController::class, 'CategoryBlog']);
+Route::post('/blog/comment', [FrontendBlogController::class, 'BlogComment'])->name('blog.comment');

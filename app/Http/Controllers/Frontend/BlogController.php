@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog\BlogPostCategory;
+use App\Models\BlogComments;
 use App\Models\BlogPost;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -24,5 +27,27 @@ class BlogController extends Controller
         return view('frontend.blog.single_blog', compact('blogcategory', 'blogpost', 'blogpostt'));
     }
 
-    
+    public function CategoryBlog($category_id)
+    {
+
+        $blogcategory =  BlogPostCategory::latest()->get();
+        $blogpost = BlogPost::where('category_id', $category_id)->orderBy('id', 'DESC')->get();
+        return view('frontend.blog.category_blog', compact('blogcategory', 'blogpost'));
+    }
+
+    public function BlogComment(Request $request)
+    {
+        BlogComments::insert([
+            'user_id' => Auth::user()->name,
+            'comment' => $request->comment,
+            'created_at' => Carbon::now(),
+        ]);
+
+        $notification = [
+            'message' => 'Comment Send Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

@@ -41,42 +41,31 @@
                                     <div class="">
                                         <h6 class="mb-0 text-uppercase">Share This Post</h6>
                                     </div>
-                                    <div class="list-inline blog-sharing"> <a href="javascript:;" class="list-inline-item"><i class='bx bxl-facebook'></i></a>
-                                        <a href="javascript:;" class="list-inline-item"><i class='bx bxl-twitter'></i></a>
-                                        <a href="javascript:;" class="list-inline-item"><i class='bx bxl-linkedin'></i></a>
-                                        <a href="javascript:;" class="list-inline-item"><i class='bx bxl-instagram'></i></a>
-                                        <a href="javascript:;" class="list-inline-item"><i class='bx bxl-tumblr'></i></a>
+                                    <div class="list-inline blog-sharing">
+                                        <a href="https://www.facebook.com/" class="list-inline-item"><i class='bx bxl-facebook'></i></a>
+                                        <a href="https://twitter.com/" class="list-inline-item"><i class='bx bxl-twitter'></i></a>
+                                        <a href="https://www.linkedin.com/" class="list-inline-item"><i class='bx bxl-linkedin'></i></a>
+                                        <a href="https://instagram.com/" class="list-inline-item"><i class='bx bxl-instagram'></i></a>
                                     </div>
                                 </div>
                                 <div class="author d-flex align-items-center gap-3 py-4">
                                     <img src="assets/images/avatars/avatar-1.png" alt="" width="80">
                                     <div class="">
-                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <h6 class="mb-0">shailly</h6>
                                         <p class="mb-0">Donec egestas metus non vehicula accumsan. Pellentesque sit amet tempor nibh. Mauris in risus lorem. Cras malesuada gravida massa eget viverra. Suspendisse vitae dolor erat. Morbi id rhoncus enim. In hac habitasse platea dictumst. Aenean lorem diam, venenatis nec venenatis id, adipiscing ac massa.</p>
                                     </div>
                                 </div>
                                 <div class="reply-form p-4 border bg-dark-1">
                                     <h6 class="mb-0">Leave a Reply</h6>
-                                    <p>Your email address will not be published. Required fields are marked *</p>
-                                    <form>
+                                    <form action="{{route('blog.comment')}}" method="POST">
+                                        @csrf
                                         <div class="mb-3">
                                             <label class="form-label">Comment</label>
-                                            <textarea class="form-control" rows="4"></textarea>
+                                            <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
                                         </div>
+
                                         <div class="mb-3">
-                                            <label class="form-label">Name</label>
-                                            <input type="text" class="form-control" placeholder="">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Website</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="mb-3">
-                                            <button type="button" class="btn btn-light btn-ecomm">Post Comment</button>
+                                            <button type="submit" class="btn btn-light btn-ecomm">Post Comment</button>
                                         </div>
                                     </form>
                                 </div>
