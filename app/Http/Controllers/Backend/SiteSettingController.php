@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\SeoSetting;
 use App\Models\SiteSetting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -67,5 +68,14 @@ class SiteSettingController extends Controller
                 'alert-type' => 'success',
             ];
         }
+    }
+
+
+    // seo
+
+    public function SeoSettings()
+    {
+        $seo = SeoSetting::find(1);
+        return view('backend.settings.seo_update', compact('seo'));
     }
 }

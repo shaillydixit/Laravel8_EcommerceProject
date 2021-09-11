@@ -9,7 +9,7 @@
             <h3 class="box-title m-b-2">Website Settings</h3>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <form method="post" action="{{route('store.settings', $setting->id)}}" enctype="multipart/form-data">
+                    <form method="post" action="{{route('store.settings')}}" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{ $setting->id }}">
                         <div class="form-group">

@@ -281,4 +281,5 @@ Route::post('/blog/comment', [FrontendBlogController::class, 'BlogComment'])->na
 
 // site settings backend
 Route::get('/site/settings', [SiteSettingController::class, 'SiteSettings'])->name('site.settings');
-Route::post('/store/settings/{setting_id}', [SiteSettingController::class, 'StoreSettings'])->name('store.settings');
+Route::post('/store/settings', [SiteSettingController::class, 'StoreSettings'])->name('store.settings');
+Route::get('/seo/settings', [SiteSettingController::class, 'SeoSettings'])->name('seo.settings');

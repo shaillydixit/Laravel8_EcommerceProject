@@ -129,6 +129,7 @@
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Website Settings</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('site.settings')}}">Site Settings</a></li>
+                        <li><a href="{{route('seo.settings')}}">SEO Settings</a></li>
                     </ul>
                 </li>
                 <li>
