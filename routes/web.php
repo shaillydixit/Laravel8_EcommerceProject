@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CoupanController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ShippingController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use GuzzleHttp\Middleware;
@@ -284,3 +285,10 @@ Route::get('/site/settings', [SiteSettingController::class, 'SiteSettings'])->na
 Route::post('/store/settings', [SiteSettingController::class, 'StoreSettings'])->name('store.settings');
 Route::get('/seo/settings', [SiteSettingController::class, 'SeoSettings'])->name('seo.settings');
 Route::post('/seo/update', [SiteSettingController::class, 'SeoUpdate'])->name('seo.update');
+
+
+// return order backend
+
+Route::get('/admin/return/request', [ReturnController::class, 'ReturnRequest'])->name('return.request');
+Route::get('/admin/all/return/request', [ReturnController::class, 'AllReturnRequest'])->name('all.request');
+Route::get('/admin/return/approve/{order_id}', [ReturnController::class, 'ReturnApprove'])->name('return.approve');
