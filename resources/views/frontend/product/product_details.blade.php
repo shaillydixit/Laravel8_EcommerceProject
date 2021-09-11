@@ -174,8 +174,10 @@
                                 $reviews = App\Models\Review::where('product_id', $product->id)->latest()->limit(4)->get();
                                 @endphp
                                 <div class="product-review">
-                                    <h5 class="mb-4">{{count($reviews)}} Reviews For The Product</h5>
                                     @foreach($reviews as $item)
+                                    @if($item->status == 0)
+                                    @else
+                                    <h5 class="mb-4">{{count($reviews)}} Reviews For The Product</h5>
                                     <div class="review-list">
                                         <div class="d-flex align-items-start">
                                             <div class="review-user">
@@ -184,8 +186,6 @@
                                             <div class="review-content ms-3">
                                                 <div class="d-flex align-items-center mb-2">
                                                     <h6 class="mb-0">{{ $item->user->name }}</h6>
-                                                </div>
-                                                <div class="d-flex">
                                                     <p class="mb-0 ms-auto">{{Carbon\Carbon::parse($item->created_at)->diffForHumans()}}</p>
                                                 </div>
                                                 <h6>{{$item->comment}}</h6>
@@ -193,8 +193,8 @@
                                             </div>
                                         </div>
                                         <hr />
-
                                     </div>
+                                    @endif
                                     @endforeach
                                 </div>
                             </div>

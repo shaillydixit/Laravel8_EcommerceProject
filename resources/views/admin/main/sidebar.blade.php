@@ -140,6 +140,13 @@
                     </ul>
                 </li>
                 <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Product Reviews</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('pending.reviews')}}">Pending Reviews</a></li>
+                        <li><a href="{{route('publish.reviews')}}">Publish Reviews</a></li>
+                    </ul>
+                </li>
+                <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-location-pin fa-fw"></i> <span class="hide-menu"> Maps</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li> <a href="map-google.html">Google Map</a> </li>

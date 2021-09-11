@@ -296,3 +296,7 @@ Route::get('/admin/return/approve/{order_id}', [ReturnController::class, 'Return
 
 // frontend product review
 Route::post('/review/store', [ReviewController::class, 'StoreReview'])->name('review.store');
+Route::get('/pending/reviews', [ReviewController::class, 'PendingReview'])->name('pending.reviews');
+Route::get('/review/approve/{id}', [ReviewController::class, 'ReviewApprove'])->name('review.approve');
+Route::get('/review/delete/{id}', [ReviewController::class, 'ReviewDelete'])->name('review.delete');
+Route::get('/publish/reviews', [ReviewController::class, 'PublishReview'])->name('publish.reviews');
