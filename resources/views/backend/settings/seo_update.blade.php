@@ -7,7 +7,7 @@
             <h3 class="box-title m-b-2">SEO Settings</h3>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <form method="post" action="" enctype="multipart/form-data">
+                    <form method="post" action="{{route('seo.update')}}">
                         @csrf
                         <input type="hidden" name="id" value="{{ $seo->id }}">
 

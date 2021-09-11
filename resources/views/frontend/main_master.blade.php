@@ -1,12 +1,23 @@
 <!doctype html>
 <html lang="en">
+@php
+$seo = App\Models\SeoSetting::find(1);
+@endphp
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="description" content="{{ $seo->meta_description }}">
     <meta name="csrf-token" content="{{csrf_token()}}">
+    <meta name="author" content="{{ $seo->meta_author }}">
+    <meta name="keywords" content="{{ $seo->meta_keyword }}">
+    <!-- /// Google Analytics Code // -->
+    <script>
+    {{ $seo->google_analytics }}
+    </script>
+    <!-- /// Google Analytics Code // -->
+    <title>Shailly Ecommerce</title>
     <!--favicon-->
     <link rel="icon" href="{{asset('frontend/assets/images/favicon-32x32.png')}}" type="image/png" />
     <!--plugins-->
@@ -23,7 +34,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="{{asset('frontend/assets/css/app.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/assets/css/icons.css')}}" rel="stylesheet">
-    <title>Shopingo - eCommerce HTML Template</title>
+
 
     <!-- stripe -->
     <script src="https://js.stripe.com/v3/"></script>

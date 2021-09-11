@@ -283,3 +283,4 @@ Route::post('/blog/comment', [FrontendBlogController::class, 'BlogComment'])->na
 Route::get('/site/settings', [SiteSettingController::class, 'SiteSettings'])->name('site.settings');
 Route::post('/store/settings', [SiteSettingController::class, 'StoreSettings'])->name('store.settings');
 Route::get('/seo/settings', [SiteSettingController::class, 'SeoSettings'])->name('seo.settings');
+Route::post('/seo/update', [SiteSettingController::class, 'SeoUpdate'])->name('seo.update');
