@@ -190,23 +190,25 @@
                                                 @endphp
 
                                                 @if($order)
-                                                <form action="{{route('return.order', $order->id)}}" method="post">
-                                                    @csrf
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label class="control-label">
-                                                                    <h6>Order Return Reason:</h6>
-                                                                </label>
-                                                                <textarea name="return_reason" id="" class="form-control" cols="20" rows="05">Return Reason</textarea>
+                                                <div class="row">
+                                                    <form action="{{route('return.order', $order->id)}}" method="post">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label class="control-label">
+                                                                        <h6>Order Return Reason:</h6>
+                                                                    </label>
+                                                                    <textarea name="return_reason" id="" class="form-control" cols="20" rows="05">Return Reason</textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <br>
-                                                    <button type="submit" class="btn btn-danger">Submit</button>
-                                                </form>
-                                                @else
-                                                <span class="badge badge-pill badge-warning" style="background: red">You Have send return request for this product</span>
+                                                        <br>
+                                                        <button type="submit" class="btn btn-danger">Return Order</button>
+                                                    </form>
+                                                    @else
+                                                    <span class="badge badge-pill badge-warning" style="background: red">You Have send return request for this product</span>
+                                                </div>
                                                 @endif
 
                                                 @endif

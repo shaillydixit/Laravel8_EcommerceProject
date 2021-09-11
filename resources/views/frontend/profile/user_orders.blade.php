@@ -63,7 +63,24 @@
                                                     <td>{{$order->payment_method}}</td>
                                                     <td>{{$order->invoice_no}}</td>
                                                     <td>
-                                                        <div class="badge rounded-pill bg-info w-100">{{$order->status}}</div>
+                                                        @if($order->status == 'pending')
+                                                        <div class="badge badge-pill badge-warning" style="background: #800080;">{{$order->status}}</div>
+                                                        @elseif($order->status == 'confirmed')
+                                                        <div class="badge badge-pill badge-warning" style="background: #0000FF;">{{$order->status}}</div>
+                                                        @elseif($order->status == 'processing')
+                                                        <div class="badge badge-pill badge-warning" style="background: #FFA500;">{{$order->status}}</div>
+                                                        @elseif($order->status == 'pickedup')
+                                                        <div class="badge badge-pill badge-warning" style="background: #808000;">{{$order->status}}</div>
+                                                        @elseif($order->status == 'shipped')
+                                                        <div class="badge badge-pill badge-warning" style="background: #808080;">{{$order->status}}</div>
+                                                        @elseif($order->status == 'delivered')
+                                                        <div class="badge badge-pill badge-warning" style="background: #008000;">{{$order->status}}</div>
+                                                        @if($order->return_order == 1)
+                                                        <span class="badge badge-pill badge-warning" style="background:red;">Return Requested </span>
+                                                        @endif
+                                                        @elseif($order->status == 'cancelled')
+                                                        <div class="badge badge-pill badge-warning" style="background: #FF0000;">{{$order->status}}</div>
+                                                        @endif
                                                     </td>
                                                     <td>${{$order->amount}}</td>
                                                     <td>

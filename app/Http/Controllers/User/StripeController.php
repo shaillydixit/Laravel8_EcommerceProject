@@ -58,7 +58,7 @@ class StripeController extends Controller
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
-            'status' => 'Pending',
+            'status' => 'pending',
             'created_at' => Carbon::now(),
         ]);
         // for email php artisan make:mail OrderMail

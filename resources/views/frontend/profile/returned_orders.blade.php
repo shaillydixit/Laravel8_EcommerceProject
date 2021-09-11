@@ -50,9 +50,9 @@
                                                     <th>Date</th>
                                                     <th>Payment</th>
                                                     <th>Invoice No</th>
+                                                    <th>Return Reason</th>
                                                     <th>Total</th>
                                                     <th>Status</th>
-                                                    <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -62,17 +62,19 @@
                                                     <td>{{$order->order_date}}</td>
                                                     <td>{{$order->payment_method}}</td>
                                                     <td>{{$order->invoice_no}}</td>
+                                                    <td>{{$order->return_reason}}</td>
                                                     <td>
-                                                        <div class="badge rounded-pill bg-info w-100">{{$order->status}}</div>
-                                                        <span class="badge rounded-pill bg-danger w-100">Return Requested</span>
+                                                        @if($order->return_order == 0)
+                                                        <span class="badge badge-pill badge-warning" style="background: #418DB9;"> No Return Request </span>
+                                                        @elseif($order->return_order == 1)
+                                                        <span class="badge badge-pill badge-warning" style="background: #800000;"> Pending </span>
+                                                        <span class="badge badge-pill badge-warning" style="background:red;">Return Requested </span>
+                                                        @elseif($order->return_order == 2)
+                                                        <span class="badge badge-pill badge-warning" style="background: #008000;">Success </span>
+                                                        @endif
                                                     </td>
                                                     <td>${{$order->amount}}</td>
-                                                    <td>
-                                                        <div class="d-flex gap-2">
-                                                            <a href="{{ url('user/order-details/'.$order->id ) }}" class="btn btn-dark btn-sm rounded-0">View</a>
-                                                            <a target="_blank" href="{{url('user/invoice-download/' .$order->id)}}" class="btn btn-dark btn-sm rounded-0">Invoice</a>
-                                                        </div>
-                                                    </td>
+
                                                 </tr>
                                                 @endforeach
                                             </tbody>
