@@ -27,6 +27,7 @@ use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\StripeController;
 
 /*
@@ -288,7 +289,10 @@ Route::post('/seo/update', [SiteSettingController::class, 'SeoUpdate'])->name('s
 
 
 // return order backend
-
 Route::get('/admin/return/request', [ReturnController::class, 'ReturnRequest'])->name('return.request');
 Route::get('/admin/all/return/request', [ReturnController::class, 'AllReturnRequest'])->name('all.request');
 Route::get('/admin/return/approve/{order_id}', [ReturnController::class, 'ReturnApprove'])->name('return.approve');
+
+
+// frontend product review
+Route::post('/review/store', [ReviewController::class, 'StoreReview'])->name('review.store');

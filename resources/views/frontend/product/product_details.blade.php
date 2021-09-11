@@ -152,7 +152,7 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="tab" href="#reviews" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-title text-uppercase fw-500">(3) Reviews</div>
+                                <div class="tab-title text-uppercase fw-500">Reviews</div>
                             </div>
                         </a>
                     </li>
@@ -170,99 +170,63 @@
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="row">
                             <div class="col col-lg-8">
+                                @php
+                                $reviews = App\Models\Review::where('product_id', $product->id)->latest()->limit(4)->get();
+                                @endphp
                                 <div class="product-review">
-                                    <h5 class="mb-4">3 Reviews For The Product</h5>
+                                    <h5 class="mb-4">{{count($reviews)}} Reviews For The Product</h5>
+                                    @foreach($reviews as $item)
                                     <div class="review-list">
                                         <div class="d-flex align-items-start">
                                             <div class="review-user">
-                                                <img src="{{asset('')}}frontend/assets/images/avatars/avatar-1.png" width="65" height="65" class="rounded-circle" alt="" />
+                                                <img src="{{ (!empty($item->user->profile_photo_path))? url('upload/user_images/'.$item->user->profile_photo_path):url('upload/no_image.jpg') }}" width="65" height="65" class="rounded-circle" alt="" />
                                             </div>
                                             <div class="review-content ms-3">
-                                                <div class="rates cursor-pointer fs-6"> <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                </div>
                                                 <div class="d-flex align-items-center mb-2">
-                                                    <h6 class="mb-0">James Caviness</h6>
-                                                    <p class="mb-0 ms-auto">February 16, 2021</p>
+                                                    <h6 class="mb-0">{{ $item->user->name }}</h6>
                                                 </div>
-                                                <p>Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan</p>
+                                                <div class="d-flex">
+                                                    <p class="mb-0 ms-auto">{{Carbon\Carbon::parse($item->created_at)->diffForHumans()}}</p>
+                                                </div>
+                                                <h6>{{$item->comment}}</h6>
+                                                <p>{{$item->summary}}</p>
                                             </div>
                                         </div>
                                         <hr />
-                                        <div class="d-flex align-items-start">
-                                            <div class="review-user">
-                                                <img src="{{asset('')}}frontend/assets/images/avatars/avatar-2.png" width="65" height="65" class="rounded-circle" alt="" />
-                                            </div>
-                                            <div class="review-content ms-3">
-                                                <div class="rates cursor-pointer fs-6"> <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                </div>
-                                                <div class="d-flex align-items-center mb-2">
-                                                    <h6 class="mb-0">David Buckley</h6>
-                                                    <p class="mb-0 ms-auto">February 22, 2021</p>
-                                                </div>
-                                                <p>Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan</p>
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="d-flex align-items-start">
-                                            <div class="review-user">
-                                                <img src="{{asset('')}}frontend/assets/images/avatars/avatar-3.png" width="65" height="65" class="rounded-circle" alt="" />
-                                            </div>
-                                            <div class="review-content ms-3">
-                                                <div class="rates cursor-pointer fs-6"> <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                </div>
-                                                <div class="d-flex align-items-center mb-2">
-                                                    <h6 class="mb-0">Peter Costanzo</h6>
-                                                    <p class="mb-0 ms-auto">February 26, 2021</p>
-                                                </div>
-                                                <p>Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan</p>
-                                            </div>
-                                        </div>
+
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col col-lg-4">
                                 <div class="add-review bg-dark-1">
+                                    @guest
+                                    <p> <b> For Add Product Review. <br>
+                                            You Need to Login First
+                                            <a href="{{ route('login') }}">Login Here</a>
+                                        </b> </p>
+                                    @else
                                     <div class="form-body p-3">
                                         <h4 class="mb-4">Write a Review</h4>
-                                        <div class="mb-3">
-                                            <label class="form-label">Your Name</label>
-                                            <input type="text" class="form-control rounded-0">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Your Email</label>
-                                            <input type="text" class="form-control rounded-0">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Rating</label>
-                                            <select class="form-select rounded-0">
-                                                <option selected>Choose Rating</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="3">4</option>
-                                                <option value="3">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Example textarea</label>
-                                            <textarea class="form-control rounded-0" rows="3"></textarea>
-                                        </div>
-                                        <div class="d-grid">
-                                            <button type="button" class="btn btn-light btn-ecomm">Submit a Review</button>
-                                        </div>
+                                        <form action="{{route('review.store')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+
+                                            <div class="mb-3">
+                                                <label class="form-label">Your Comment</label>
+                                                <input type="text" name="comment" id="comment" class="form-control rounded-0">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label">Product Summary</label>
+                                                <textarea class="form-control rounded-0" rows="3" name="summary" id="summary"></textarea>
+                                            </div>
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-light btn-ecomm">Submit a Review</button>
+                                            </div>
+                                        </form>
                                     </div>
+                                    @endguest
                                 </div>
                             </div>
                         </div>
