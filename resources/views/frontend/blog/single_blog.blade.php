@@ -41,12 +41,8 @@
                                     <div class="">
                                         <h6 class="mb-0 text-uppercase">Share This Post</h6>
                                     </div>
-                                    <div class="list-inline blog-sharing">
-                                        <a href="https://www.facebook.com/" class="list-inline-item"><i class='bx bxl-facebook'></i></a>
-                                        <a href="https://twitter.com/" class="list-inline-item"><i class='bx bxl-twitter'></i></a>
-                                        <a href="https://www.linkedin.com/" class="list-inline-item"><i class='bx bxl-linkedin'></i></a>
-                                        <a href="https://instagram.com/" class="list-inline-item"><i class='bx bxl-instagram'></i></a>
-                                    </div>
+                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                    <div class="addthis_inline_share_toolbox_lv5b"></div>
                                 </div>
                                 <div class="author d-flex align-items-center gap-3 py-4">
                                     <img src="assets/images/avatars/avatar-1.png" alt="" width="80">
@@ -148,4 +144,6 @@
     </section>
     <!--end start page content-->
 </div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-613d309a16b19820"></script>
 @endsection

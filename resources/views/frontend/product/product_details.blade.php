@@ -106,21 +106,10 @@
                                     <button type="submit" class="btn btn-white btn-ecomm" onclick="addToCart()"> <i class="bx bxs-cart-add"></i>Add to Cart</button>
                                     <a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
                                 </div>
+                                <br>
+                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                <div class="addthis_inline_share_toolbox_lv5b"></div>
                                 <hr />
-                                <div class="product-sharing">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item"> <a href="javascript:;"><i class='bx bxl-facebook'></i></a>
-                                        </li>
-                                        <li class="list-inline-item"> <a href="javascript:;"><i class='bx bxl-linkedin'></i></a>
-                                        </li>
-                                        <li class="list-inline-item"> <a href="javascript:;"><i class='bx bxl-twitter'></i></a>
-                                        </li>
-                                        <li class="list-inline-item"> <a href="javascript:;"><i class='bx bxl-instagram'></i></a>
-                                        </li>
-                                        <li class="list-inline-item"> <a href="javascript:;"><i class='bx bxl-google'></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -130,6 +119,11 @@
         </div>
     </section>
     <!--end product detail-->
+    <div>
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    </div>
+
     <!--start product more info-->
     <section class="py-4">
         <div class="container">
@@ -295,4 +289,6 @@
     @include('frontend.body.brands')
     <!--end similar products-->
 </div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-613d309a16b19820"></script>
 @endsection

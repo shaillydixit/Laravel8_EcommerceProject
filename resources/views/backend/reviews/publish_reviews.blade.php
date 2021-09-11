@@ -4,7 +4,7 @@
 <div class="container">
     <div class="col-lg-12">
         <div class="white-box">
-            <h3 class="box-title m-b-0">Pending Reviews</h3>
+            <h3 class="box-title m-b-0">Published Reviews</h3>
             <div class="row">
                 <div class="white-box">
                     <div class="table-responsive">
