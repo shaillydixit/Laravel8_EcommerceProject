@@ -300,3 +300,8 @@ Route::get('/pending/reviews', [ReviewController::class, 'PendingReview'])->name
 Route::get('/review/approve/{id}', [ReviewController::class, 'ReviewApprove'])->name('review.approve');
 Route::get('/review/delete/{id}', [ReviewController::class, 'ReviewDelete'])->name('review.delete');
 Route::get('/publish/reviews', [ReviewController::class, 'PublishReview'])->name('publish.reviews');
+
+
+// Stock Backend
+
+Route::get('/product/stock', [ProductController::class, 'ProductStock'])->name('product.stock');

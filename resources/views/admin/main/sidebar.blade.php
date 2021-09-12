@@ -146,6 +146,14 @@
                         <li><a href="{{route('publish.reviews')}}">Publish Reviews</a></li>
                     </ul>
                 </li>
+
+                <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Product Stocks</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('product.stock')}}">Manage Products</a></li>
+                    </ul>
+                </li>
+
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-location-pin fa-fw"></i> <span class="hide-menu"> Maps</span></a>
                     <ul aria-expanded="false" class="collapse">
