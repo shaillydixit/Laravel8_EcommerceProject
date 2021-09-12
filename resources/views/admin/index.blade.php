@@ -1,14 +1,27 @@
 @extends('admin.master')
 @section('content')
+
+@php
+$date = date('d-m-y');
+$today = App\Models\Order::where('order_date', $date)->sum('amount');
+
+$month = date('F');
+$month = App\Models\Order::where('order_month', $month)->sum('amount');
+
+$year = date('Y');
+$year = App\Models\Order::where('order_year', $year)->sum('amount');
+
+$pending = App\Models\Order::where('status', 'pending')->get();
+@endphp
+
 <div class="container-fluid">
     <div class="row colorbox-group-widget">
         <div class="col-md-3 col-sm-6 info-color-box">
             <div class="white-box">
                 <div class="media bg-primary">
                     <div class="media-body">
-                        <h3 class="info-count">154 <span class="pull-right"><i class="mdi mdi-checkbox-marked-circle-outline"></i></span></h3>
-                        <p class="info-text font-12">Bookings</p>
-                        <p class="info-ot font-15">Target<span class="label label-rounded">198</span></p>
+                        <h3 class="info-count">{{$today}}/ INR<span class="pull-right"><i class="mdi mdi-checkbox-marked-circle-outline"></i></span></h3>
+                        <p class="info-text font-12">Today's Sale</p>
                     </div>
                 </div>
             </div>
@@ -17,9 +30,8 @@
             <div class="white-box">
                 <div class="media bg-success">
                     <div class="media-body">
-                        <h3 class="info-count">68 <span class="pull-right"><i class="mdi mdi-comment-text-outline"></i></span></h3>
-                        <p class="info-text font-12">Complaints</p>
-                        <p class="info-ot font-15">Total Pending<span class="label label-rounded">154</span></p>
+                        <h3 class="info-count">{{$month}}/ INR<span class="pull-right"><i class="mdi mdi-checkbox-marked-circle-outline"></i></span></h3>
+                        <p class="info-text font-12">Monthly Sale</p>
                     </div>
                 </div>
             </div>
@@ -28,9 +40,8 @@
             <div class="white-box">
                 <div class="media bg-danger">
                     <div class="media-body">
-                        <h3 class="info-count">&#36;9475 <span class="pull-right"><i class="mdi mdi-coin"></i></span></h3>
-                        <p class="info-text font-12">Profit</p>
-                        <p class="info-ot font-15">Pending<span class="label label-rounded">236</span></p>
+                        <h3 class="info-count">{{$year}}/ INR<span class="pull-right"><i class="mdi mdi-coin"></i></span></h3>
+                        <p class="info-text font-12">Yearly Sale</p>
                     </div>
                 </div>
             </div>
@@ -39,9 +50,8 @@
             <div class="white-box">
                 <div class="media bg-warning">
                     <div class="media-body">
-                        <h3 class="info-count">&#36;124,356 <span class="pull-right"><i class="mdi mdi-coin"></i></span></h3>
-                        <p class="info-text font-12">Total Profit</p>
-                        <p class="info-ot font-15">Pending<span class="label label-rounded">782</span></p>
+                        <h3 class="info-count">{{count($pending)}}<span class="pull-right"><i class="mdi mdi-checkbox-marked-circle-outline"></i></span></h3>
+                        <p class="info-text font-12">Pending Orders</p>
                     </div>
                 </div>
             </div>
@@ -97,161 +107,39 @@
             <div class="white-box user-table">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="box-title">Table Format/User Data</h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <ul class="list-inline">
-                            <li>
-                                <a href="javascript:void(0);" class="btn btn-default btn-outline font-16"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="btn btn-default btn-outline font-16"><i class="fa fa-commenting" aria-hidden="true"></i></a>
-                            </li>
-                        </ul>
-                        <select class="custom-select">
-                            <option selected>Sort by</option>
-                            <option value="1">Name</option>
-                            <option value="2">Location</option>
-                            <option value="3">Type</option>
-                            <option value="4">Role</option>
-                            <option value="5">Action</option>
-                        </select>
+                        <h4 class="box-title">All Recent Orders</h4>
                     </div>
                 </div>
+                @php
+                $orders = App\Models\Order::where('status','pending')->orderBy('id', 'DESC')->get();
+                @endphp
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>
-                                    <div class="checkbox checkbox-info">
-                                        <input id="c1" type="checkbox">
-                                        <label for="c1"></label>
-                                    </div>
-                                </th>
-                                <th>Name</th>
-                                <th>Location</th>
-                                <th>Type</th>
-                                <th>Role</th>
-                                <th>Action</th>
+                                <th>Date</th>
+                                <th>Invoice</th>
+                                <th>Amount</th>
+                                <th>Payment</th>
+                                <th>Status</th>
+                                <th>Process</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($orders as $item)
                             <tr>
-                                <td>
-                                    <div class="checkbox checkbox-info">
-                                        <input id="c2" type="checkbox">
-                                        <label for="c2"></label>
-                                    </div>
-                                </td>
-                                <td><a href="javascript:void(0);" class="text-link">Daniel Kristeen</a></td>
-                                <td>Texas, US</td>
-                                <td>Posts 564</td>
-                                <td><span class="label label-success">Admin</span></td>
-                                <td>
-                                    <select class="custom-select">
-                                        <option value="1">Modulator</option>
-                                        <option value="2">Admin</option>
-                                        <option value="3">Staff</option>
-                                        <option value="4">User</option>
-                                        <option value="5">General</option>
-                                    </select>
+                                <td>{{ Carbon\Carbon::parse($item->order_date)->diffForHumans() }} </td>
+                                <td>{{ $item->invoice_no }}</td>
+                                <td> ${{ $item->amount }}</td>
+                                <td>{{ $item->payment_method }}</td>
+                                <td> <span class="label label-success font-weight-100">{{ $item->status }}</span> </td>
+                                <td><a href="{{route('pending.order.details', $item->id)}}" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="fa fa-arrow-right"></i></a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="checkbox checkbox-info">
-                                        <input id="c3" type="checkbox">
-                                        <label for="c3"></label>
-                                    </div>
-                                </td>
-                                <td><a href="javascript:void(0);" class="text-link">Hanna Gover</a></td>
-                                <td>Los Angeles, US</td>
-                                <td>Posts 451</td>
-                                <td><span class="label label-info">Staff</span> </td>
-                                <td>
-                                    <select class="custom-select">
-                                        <option value="1">Modulator</option>
-                                        <option value="2">Admin</option>
-                                        <option value="3">Staff</option>
-                                        <option value="4">User</option>
-                                        <option value="5">General</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="checkbox checkbox-info">
-                                        <input id="c4" type="checkbox">
-                                        <label for="c4"></label>
-                                    </div>
-                                </td>
-                                <td><a href="javascript:void(0);" class="text-link">Jeffery Brown</a></td>
-                                <td>Houston, US</td>
-                                <td>Posts 978</td>
-                                <td><span class="label label-danger">User</span> </td>
-                                <td>
-                                    <select class="custom-select">
-                                        <option value="1">Modulator</option>
-                                        <option value="2">Admin</option>
-                                        <option value="3">Staff</option>
-                                        <option value="4">User</option>
-                                        <option value="5">General</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="checkbox checkbox-info">
-                                        <input id="c5" type="checkbox">
-                                        <label for="c5"></label>
-                                    </div>
-                                </td>
-                                <td><a href="javascript:void(0);" class="text-link">Elliot Dugteren</a></td>
-                                <td>San Antonio, US</td>
-                                <td>Posts 34</td>
-                                <td><span class="label label-warning">General</span> </td>
-                                <td>
-                                    <select class="custom-select">
-                                        <option value="1">Modulator</option>
-                                        <option value="2">Admin</option>
-                                        <option value="3">Staff</option>
-                                        <option value="4">User</option>
-                                        <option value="5">General</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="checkbox checkbox-info">
-                                        <input id="c6" type="checkbox">
-                                        <label for="c6"></label>
-                                    </div>
-                                </td>
-                                <td><a href="javascript:void(0);" class="text-link">Sergio Milardovich</a></td>
-                                <td>Jacksonville, US</td>
-                                <td>Posts 31</td>
-                                <td><span class="label label-primary">Partial</span> </td>
-                                <td>
-                                    <select class="custom-select">
-                                        <option value="1">Modulator</option>
-                                        <option value="2">Admin</option>
-                                        <option value="3">Staff</option>
-                                        <option value="4">User</option>
-                                        <option value="5">General</option>
-                                    </select>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
-                <ul class="pagination">
-                    <li class="disabled"> <a href="#">1</a> </li>
-                    <li class="active"> <a href="#">2</a> </li>
-                    <li> <a href="#">3</a> </li>
-                    <li> <a href="#">4</a> </li>
-                    <li> <a href="#">5</a> </li>
-                </ul>
-                <a href="javascript:void(0);" class="btn btn-success pull-right m-t-10 font-20">+</a>
             </div>
         </div>
     </div>
