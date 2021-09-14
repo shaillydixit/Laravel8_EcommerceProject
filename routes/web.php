@@ -179,6 +179,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['user', 'auth'], 'namespace' 
     Route::get('/invoice-download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
 
     Route::post('/return-order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
+
+    // track order
+    Route::post('/tracking/order', [AllUserController::class, 'OrderTracking'])->name('order.tracking');
 });
 
 //cart

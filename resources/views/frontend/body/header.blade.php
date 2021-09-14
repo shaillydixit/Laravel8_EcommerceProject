@@ -19,7 +19,7 @@
                 @endphp
                 <div class="shiping-title text-uppercase font-13 d-none d-sm-flex">Welcome to our {{$setting->company_name}}!</div>
                 <ul class="navbar-nav ms-auto d-none d-lg-flex">
-                    <li class="nav-item"> <a class="nav-link" href="order-tracking.html">Track Order</a>
+                    <li class="nav-item"> <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#ordertracking">Track Order</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="about-us.html">About</a>
                     </li>
@@ -222,6 +222,27 @@
 
                 </ul>
             </nav>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ordertracking" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Track Your Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('order.tracking')}}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <h6>Invoice Code</h6>
+                        <input type="text" name="code" required="" class="form-control" placeholder="Your Order Invoice Number">
+                    </div>
+                    <button class="btn btn-info" type="submit" style="margin-left: 17px;">Track Now</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
