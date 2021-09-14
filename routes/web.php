@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
@@ -305,3 +306,11 @@ Route::get('/publish/reviews', [ReviewController::class, 'PublishReview'])->name
 // Stock Backend
 
 Route::get('/product/stock', [ProductController::class, 'ProductStock'])->name('product.stock');
+
+// admin user roles
+Route::get('/all/admin/users', [AdminUserController::class, 'AllAdminUsers'])->name('all.admin.users');
+Route::get('/add/admin', [AdminUserController::class, 'AddAdminRole'])->name('add.admin');
+Route::post('/store/admin/user', [AdminUserController::class, 'StoreAdminUser'])->name('admin.user.store');
+Route::get('/edit/admin/user/{id}', [AdminUserController::class, 'EditAdminUser'])->name('edit.admin.user');
+Route::post('/update/admin/user/{id}', [AdminUserController::class, 'UpdateAdminUser'])->name('admin.user.update');
+Route::get('/delete/admin/user/{id}', [AdminUserController::class, 'DeleteAdminUser'])->name('delete.admin.user');
