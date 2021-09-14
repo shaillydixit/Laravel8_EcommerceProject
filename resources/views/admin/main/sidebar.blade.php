@@ -10,12 +10,12 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu animated flipInY">
-                        <li><a href="javascript:void(0);"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="{{route('admin.profile')}}"><i class="fa fa-user"></i> Profile</a></li>
                         <li><a href="javascript:void(0);"><i class="fa fa-inbox"></i> Inbox</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="javascript:void(0);"><i class="fa fa-cog"></i> Account Settings</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href=""><i class="fa fa-power-off"></i> Logout</a></li>
+                        <li><a href="{{route('admin.logout')}}"><i class="fa fa-power-off"></i> Logout</a></li>
                     </ul>
                 </div>
                 <p class="profile-text m-t-15 font-16"><a href="javascript:void(0);"> Shailly Dixit</a></p>

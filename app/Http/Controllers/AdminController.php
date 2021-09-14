@@ -29,7 +29,7 @@ class AdminController extends Controller
     protected $guard;
     public function loginForm()
     {
-        return view('auth.login', ['guard' => 'admin']);
+        return view('auth.admin-login', ['guard' => 'admin']);
     }
     /**
      * Create a new controller instance.

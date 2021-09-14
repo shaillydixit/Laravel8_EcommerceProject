@@ -55,9 +55,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin']], function ()
     Route::post('/login', [AdminController::class, 'store'])->name('admin.login');
 });
 
+
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
+Route::get('/admin/profile', [AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
+Route::get('/admin/profile/edit/{id}', [AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
+Route::post('/admin/profile/update/{id}', [AdminProfileController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
+Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+
 
 //category
 Route::get('/category/view', [CategoryController::class, 'AllCategory'])->name('all.category');
