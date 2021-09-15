@@ -323,3 +323,6 @@ Route::post('/store/admin/user', [AdminUserController::class, 'StoreAdminUser'])
 Route::get('/edit/admin/user/{id}', [AdminUserController::class, 'EditAdminUser'])->name('edit.admin.user');
 Route::post('/update/admin/user/{id}', [AdminUserController::class, 'UpdateAdminUser'])->name('admin.user.update');
 Route::get('/delete/admin/user/{id}', [AdminUserController::class, 'DeleteAdminUser'])->name('delete.admin.user');
+
+/// Product Search Route 
+Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product.search');

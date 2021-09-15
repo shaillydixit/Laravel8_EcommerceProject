@@ -96,19 +96,24 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col col-md order-4 order-md-2">
-                    <div class="input-group flex-nowrap px-xl-4">
-                        <input type="text" class="form-control w-100" placeholder="Search for Products">
-                        <select class="form-select flex-shrink-0" aria-label="Default select example" style="width: 10.5rem;">
-                            <option selected>All Categories</option>
-                            @php
-                            $categories = App\Models\Category::orderBy('category_name', 'DESC')->get();
-                            @endphp
-                            @foreach($categories as $category)
-                            <option value="1">{{$category->category_name}}</option>
-                            @endforeach
-                        </select> <span class="input-group-text cursor-pointer bg-transparent"><i class='bx bx-search'></i></span>
-                    </div>
+                    <form method="post" action="{{ route('product.search') }}">
+                        @csrf
+                        <div class="input-group flex-nowrap px-xl-4">
+                            <input type="text" name="search" class="form-control w-100" placeholder="Search for Products">
+                            <select class="form-select flex-shrink-0" aria-label="Default select example" style="width: 10.5rem;">
+                                <option selected>All Categories</option>
+                                @php
+                                $categories = App\Models\Category::orderBy('category_name', 'DESC')->get();
+                                @endphp
+                                @foreach($categories as $category)
+                                <option value="1">{{$category->category_name}}</option>
+                                @endforeach
+                            </select>
+                            <button class="input-group-text cursor-pointer bg-transparent" type="submit"><i class='bx bx-search'></i></button>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-4 col-md-auto order-3 d-none d-xl-flex align-items-center">
                     <div class="fs-1 text-white"><i class='bx bx-headphone'></i>

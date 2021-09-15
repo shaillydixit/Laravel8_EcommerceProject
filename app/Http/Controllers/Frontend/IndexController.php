@@ -146,4 +146,13 @@ class IndexController extends Controller
             'size' => $product_size,
         ));
     }
+
+    public function ProductSearch(Request $request)
+    {
+        $item = $request->search;
+        // echo "$item";
+        $categories = Category::orderBy('category_name', 'ASC')->get();
+        $products = Product::where('product_name', 'LIKE', "%$item%")->get();
+        return view('frontend.product.search', compact('products', 'categories'));
+    }
 }
