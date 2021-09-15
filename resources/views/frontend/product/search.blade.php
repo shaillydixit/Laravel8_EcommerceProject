@@ -1,7 +1,6 @@
 @extends('frontend.main_master')
 @section('content')
 <div class="page-content">
-    <!--start breadcrumb-->
     <section class="py-3 border-bottom border-top d-none d-md-flex bg-light">
         <div class="container">
             <div class="page-breadcrumb d-flex align-items-center">
@@ -20,11 +19,11 @@
             </div>
         </div>
     </section>
-    <!--end breadcrumb-->
-    <!--start shop area-->
+
     <section class="py-4">
         <div class="container">
             <div class="row">
+                <h4><b>Total Search </b><span class="badge badge-danger" style="background: #FF0000;"> {{ count($products) }} </span> Items </h4>
                 <div class="col-12 col-xl-3">
                     <div class="btn-mobile-filter d-xl-none"><i class='bx bx-slider-alt'></i>
                     </div>

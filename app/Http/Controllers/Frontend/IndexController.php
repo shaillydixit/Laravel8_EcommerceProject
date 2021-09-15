@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use App\Models\Brand;
+use App\Models\SubCategory;
+use App\Models\SubSubCategory;
 
 class IndexController extends Controller
 {
@@ -64,12 +66,14 @@ class IndexController extends Controller
         $subsubcat_id = $product->subsubcategory_id;
         $similar_product = Product::where('subsubcategory_id', $subsubcat_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->get();
         $multiImg = MultiImage::where('product_id', $id)->get();
+        $breadproduct = Product::with(['category', 'subcategory'])->where('id', $id)->get();
         return view('frontend.product.product_details', compact(
             'product',
             'multiImg',
             'product_color',
             'product_size',
-            'similar_product'
+            'similar_product',
+            'breadproduct'
         ));
     }
 
@@ -77,7 +81,7 @@ class IndexController extends Controller
     {
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
-        $product = Product::where('status', 1)->orderBy('id', 'DESC')->limit(4)->get();
+        $product = Product::with(['category', 'subcategory'])->where('status', 1)->orderBy('id', 'DESC')->limit(4)->get();
         return view('frontend.product.product_grid', compact('categories', 'brands', 'product'));
     }
 
@@ -86,7 +90,7 @@ class IndexController extends Controller
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
         $product = Product::where('status', 1)->orderBy('id', 'DESC')->limit(4)->get();
-        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(4)->get();
+        $special_deals = Product::with(['category', 'subcategory'])->where('special_deals', 1)->orderBy('id', 'DESC')->limit(4)->get();
         return view('frontend.product.product_list', compact('categories', 'brands', 'product', 'special_deals'));
     }
 
@@ -110,7 +114,8 @@ class IndexController extends Controller
         $products = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->get();
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
-        return view('frontend.product.subcategory_view', compact('products', 'categories', 'brands'));
+        $breadsubcat = SubCategory::with(['category'])->where('id', $subcat_id)->get();
+        return view('frontend.product.subcategory_view', compact('products', 'categories', 'brands', 'breadsubcat'));
     }
 
     public function ProductSubsubcategoryWise($subsubcat_id, $slug)
@@ -118,8 +123,8 @@ class IndexController extends Controller
         $products = Product::where('status', 1)->where('subsubcategory_id', $subsubcat_id)->orderBy('id', 'DESC')->get();
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
-
-        return view('frontend.product.subsubcategory_view', compact('products', 'categories', 'brands'));
+        $breadsubsubcat = SubSubCategory::with(['category', 'subcategory'])->where('id', $subsubcat_id)->get();
+        return view('frontend.product.subsubcategory_view', compact('products', 'categories', 'brands', 'breadsubsubcat'));
     }
 
     public function ProductBrandwise($brand_id)
