@@ -149,10 +149,19 @@ class IndexController extends Controller
 
     public function ProductSearch(Request $request)
     {
+        $request->validate(["search" => "required"]);
         $item = $request->search;
         // echo "$item";
         $categories = Category::orderBy('category_name', 'ASC')->get();
         $products = Product::where('product_name', 'LIKE', "%$item%")->get();
         return view('frontend.product.search', compact('products', 'categories'));
+    }
+
+    public function SearchProduct(Request $request)
+    {
+        $request->validate(["search" => "required"]);
+        $item = $request->search;
+        $products = Product::where('product_name', 'LIKE', "%$item%")->select('product_name', 'product_thumbnail', 'selling_price', 'id')->limit(5)->get();
+        return view('frontend.product.search_product', compact('products'));
     }
 }
