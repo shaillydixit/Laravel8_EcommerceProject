@@ -151,7 +151,7 @@
                             <div class="card-header bg-transparent border-bottom-0">
                                 <div class="d-flex align-items-center justify-content-end">
                                     <a href="javascript:;">
-                                        <div class="product-wishlist"> <i class='bx bx-heart'></i>
+                                        <div class="product-wishlist" id="{{$product->id}}" onclick="addToWishlist(this.id)"> <i class='bx bx-heart'></i>
                                         </div>
                                     </a>
                                 </div>
@@ -205,7 +205,7 @@
                             <div class="card-header bg-transparent border-bottom-0">
                                 <div class="d-flex align-items-center justify-content-end">
                                     <a href="javascript:;">
-                                        <div class="product-wishlist"> <i class='bx bx-heart'></i>
+                                        <div class="product-wishlist" id="{{$product->id}}" onclick="addToWishlist(this.id)"> <i class='bx bx-heart'></i>
                                         </div>
                                     </a>
                                 </div>
@@ -257,7 +257,7 @@
                             <div class="card-header bg-transparent border-bottom-0">
                                 <div class="d-flex align-items-center justify-content-end">
                                     <a href="javascript:;">
-                                        <div class="product-wishlist"> <i class='bx bx-heart'></i>
+                                        <div class="product-wishlist" id="{{$product->id}}" onclick="addToWishlist(this.id)"> <i class='bx bx-heart'></i>
                                         </div>
                                     </a>
                                 </div>

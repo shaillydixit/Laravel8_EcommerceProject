@@ -107,7 +107,7 @@
                                 <div class="d-flex gap-2 mt-3">
                                     <input type="hidden" id="product_id" value="{{$product->id}}" min="1">
                                     <button type="submit" class="btn btn-white btn-ecomm" onclick="addToCart()"> <i class="bx bxs-cart-add"></i>Add to Cart</button>
-                                    <a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
+                                    <a class="btn btn-light btn-ecomm" id="{{$product->id}}" onclick="addToWishlist(this.id)"><i class="bx bx-heart"></i>Add to Wishlist</a>
                                 </div>
                                 <br>
                                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
