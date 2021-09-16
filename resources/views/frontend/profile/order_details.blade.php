@@ -163,6 +163,7 @@
                                                                 <th>Size</th>
                                                                 <th>Quantity</th>
                                                                 <th>Price</th>
+                                                                <th>Download</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -175,6 +176,23 @@
                                                                 <td>{{ $item->size }}</td>
                                                                 <td>{{ $item->qty }}</td>
                                                                 <td>$ {{ $item->price * $item->qty}}</td>
+
+                                                                @php
+                                                                $file = App\Models\Product::where('id',$item->product_id)->first();
+                                                                @endphp
+
+                                                                <td class="col-md-1">
+                                                                    @if($order->status == 'pending')
+                                                                    <strong>
+                                                                        <span class="badge badge-pill badge-success" style="background: #418DB9;"> No File</span> </strong>
+
+                                                                    @elseif($order->status == 'confirmed')
+
+                                                                    <a target="_blank" href="{{ asset('upload/pdf/'.$file->digital_file) }}">
+                                                                        <strong>
+                                                                            <span class="badge badge-pill badge-success" style="background: #FF0000;"> Download </span> </strong> </a>
+                                                                    @endif
+                                                                </td>
                                                             </tr>
                                                             @endforeach
                                                         </tbody>

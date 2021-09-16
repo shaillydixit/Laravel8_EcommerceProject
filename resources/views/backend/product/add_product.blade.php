@@ -238,11 +238,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="white-box">
+                                        <label class="control-label">Upload Products <span class="text-danger">pdf,xlx,csv</span></label>
+                                        <input type="file" class="form-control" name="digital_file" id="digital_file" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions text-center">
+                            <input type="submit" class="btn btn-rounded btn-info mb-5" value="Add Product">
+                        </div>
+                    </form>
                 </div>
-                <div class="form-actions text-center">
-                    <input type="submit" class="btn btn-rounded btn-info mb-5" value="Add Product">
-                </div>
-                </form>
             </div>
         </div>
     </div>
