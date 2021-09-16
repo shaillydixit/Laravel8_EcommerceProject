@@ -42,15 +42,15 @@
                                             </span>
                                         </a> <a href="javascript:;" class="btn btn-white"><i class="bx bxl-facebook"></i>Sign in with Facebook</a>
                                     </div>
-                                    <div class="login-separater text-center mb-4"> <span>OR SIGN IN WITH EMAIL</span>
+                                    <div class="login-separater text-center mb-4"> <span>SIGN IN</span>
                                         <hr />
                                     </div>
                                     <div class="form-body">
                                         <form class="row g-3" method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
                                             @csrf
                                             <div class="col-12">
-                                                <label for="inputEmailAddress" class="form-label">Email Address</label>
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                                                <label for="inputEmailAddress" class="form-label">User Name</label>
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="User Name">
                                             </div>
                                             <div class="col-12">
                                                 <label for="inputChoosePassword" class="form-label">Enter Password</label>
