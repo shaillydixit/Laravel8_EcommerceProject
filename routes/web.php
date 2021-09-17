@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CartPageController;
@@ -329,3 +330,6 @@ Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product
 
 //Product advance search
 Route::post('search-product', [IndexController::class, 'SearchProduct']);
+
+// shop
+Route::get('/shop/page', [ShopController::class, 'ShopPage'])->name('shop.page');
