@@ -50,26 +50,22 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <hr>
+                                    @if(!empty($_GET['brand']))
+                                    @php
+                                    $filterBrand = explode(',',$_GET['brand']);
+                                    @endphp
+                                    @endif
+                                    <h6 class="text-uppercase mb-3">Brands</h6>
+                                    @foreach($brands as $brand)
                                     <div class="product-brands">
-                                        <h6 class="text-uppercase mb-3">Brands</h6>
-                                        @foreach($categories as $category)
-                                        <ul class="list-unstyled mb-0 categories-list">
-                                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{{$category->category_name}}</a>
-                                                <ul class="dropdown-menu dropdown-menu-lg-end">
-                                                    @php
-                                                    $brands = App\Models\Brand::where('category_id', $category->id)->orderBy('brand_name', 'DESC')->get();
-                                                    @endphp
-                                                    @foreach($brands as $brand)
-                                                    <li><a class="dropdown-item" href="{{url('brand/product/' .$brand->id)}}">{{$brand->brand_name}}</a>
-                                                    </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        @endforeach
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="brand[]" value="{{ $brand->brand_slug }}" @if(!empty($filterBrand) && in_array($brand->brand_slug,$filterBrand)) checked @endif onchange="this.form.submit()">
+                                            {{$brand->brand_name}}
+                                        </label>
                                     </div>
+                                    @endforeach
+
                                     <hr>
                                 </div>
                             </div>
@@ -161,7 +157,7 @@
                                 </div>
                             </div>
                             <hr>
-                            {{ $products->append($_GET)->links('vendor.pagination.custom')  }}
+                            {{ $products->appends($_GET)->links('vendor.pagination.custom')  }}
                         </div>
                     </div>
                 </div>
