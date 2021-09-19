@@ -22,6 +22,7 @@ class ReviewController extends Controller
         Review::insert([
             'product_id' => $product,
             'user_id' => Auth::id(),
+            'rating' => $request->rating,
             'comment' => $request->comment,
             'summary' => $request->summary,
             'created_at' => Carbon::now(),

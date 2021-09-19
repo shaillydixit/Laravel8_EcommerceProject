@@ -1,5 +1,11 @@
 @extends('frontend.main_master')
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
 <div class="page-content">
     <!--start breadcrumb-->
 
@@ -51,15 +57,43 @@
                         <div class="col-12 col-lg-7">
                             <div class="product-info-section p-3">
                                 <h3 class="mt-3 mt-lg-0 mb-0" id="pname">{{$product->product_name}}</h3>
+                                @php
+                                $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                                @endphp
                                 <div class="product-rating d-flex align-items-center mt-2">
-                                    <div class="rates cursor-pointer font-13"> <i class="bx bxs-star text-warning"></i>
-                                        <i class="bx bxs-star text-warning"></i>
-                                        <i class="bx bxs-star text-warning"></i>
-                                        <i class="bx bxs-star text-warning"></i>
-                                        <i class="bx bxs-star text-light-4"></i>
+                                    <div class="rates cursor-pointer font-13">
+                                        @if($avarage == 0)
+                                        No Rating Yet!
+                                        @elseif($avarage == 1 || $avarage < 2) <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            @elseif ($avarage == 2 || $avarage < 3) <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif ($avarage == 3 || $avarage < 4) <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    @elseif ($avarage == 4 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        @elseif ($avarage == 5 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            @endif
                                     </div>
                                     <div class="ms-1">
-                                        <p class="mb-0">(24 Ratings)</p>
+                                        <p class="mb-0">({{ count($reviewcount) }} Reviews)</p>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center mt-3 gap-2">
@@ -140,13 +174,6 @@
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="tab" href="#tags" role="tab" aria-selected="false">
-                            <div class="d-flex align-items-center">
-                                <div class="tab-title text-uppercase fw-500">Tags</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="tab" href="#reviews" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
                                 <div class="tab-title text-uppercase fw-500">Reviews</div>
@@ -158,44 +185,72 @@
                     <div class="tab-pane fade show active" id="discription" role="tabpanel">
                         <p>{!!$product->long_description!!}</p>
                     </div>
-
-                    <div class="tab-pane fade" id="tags" role="tabpanel">
-                        <div class="tags-box w-50"> <a href="javascript:;" class="tag-link">Cloths</a>
-                            <a href="javascript:;" class="tag-link">{{$product->product_tags}}</a>
-                        </div>
-                    </div>
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="row">
-                            <div class="col col-lg-8">
+                            <div class="col col-lg-6">
                                 @php
                                 $reviews = App\Models\Review::where('product_id', $product->id)->latest()->limit(4)->get();
                                 @endphp
-                                <div class="product-review">
-                                    @foreach($reviews as $item)
-                                    @if($item->status == 0)
-                                    @else
-                                    <h5 class="mb-4">{{count($reviews)}} Reviews For The Product</h5>
-                                    <div class="review-list">
-                                        <div class="d-flex align-items-start">
-                                            <div class="review-user">
-                                                <img src="{{ (!empty($item->user->profile_photo_path))? url('upload/user_images/'.$item->user->profile_photo_path):url('upload/no_image.jpg') }}" width="65" height="65" class="rounded-circle" alt="" />
-                                            </div>
-                                            <div class="review-content ms-3">
-                                                <div class="d-flex align-items-center mb-2">
-                                                    <h6 class="mb-0">{{ $item->user->name }}</h6>
-                                                    <p class="mb-0 ms-auto">{{Carbon\Carbon::parse($item->created_at)->diffForHumans()}}</p>
-                                                </div>
-                                                <h6>{{$item->comment}}</h6>
-                                                <p>{{$item->summary}}</p>
+                                <h5 class="mb-4">{{count($reviews)}} Reviews For The Product</h5>
+                                @foreach($reviews as $item)
+                                @if($item->status == 0)
+                                @else
+                                <div class="d-flex align-items-start">
+                                    <div class="review-user">
+                                        <img src="{{ (!empty($item->user->profile_photo_path))? url('upload/user_images/'.$item->user->profile_photo_path):url('upload/no_image.jpg') }}" width="65" height="65" class="rounded-circle" alt="" />
+                                    </div>
+
+                                    <div class="review-content ms-3">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <h6 class="mb-0">{{ $item->user->name }}</h6>
+                                            <div class="rates cursor-pointer fs-6">
+                                                @if($item->rating == NULL)
+
+                                                @elseif($item->rating == 1)
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif($item->rating == 2)
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif($item->rating == 3)
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif($item->rating == 4)
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif($item->rating == 5)
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                @endif
                                             </div>
                                         </div>
-                                        <hr />
+                                        <p class="mb-0 ms-auto">{{Carbon\Carbon::parse($item->created_at)->diffForHumans()}}</p>
+                                        <h6>{{$item->comment}}</h6>
+                                        <p>{{$item->summary}}</p>
                                     </div>
-                                    @endif
-                                    @endforeach
                                 </div>
+                                <hr />
+                                @endif
+                                @endforeach
                             </div>
-                            <div class="col col-lg-4">
+
+
+                            <div class="col col-lg-6">
                                 <div class="add-review bg-dark-1">
                                     @guest
                                     <p> <b> For Add Product Review. <br>
@@ -208,7 +263,32 @@
                                         <form action="{{route('review.store')}}" method="POST">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
+                                            <div class="mb-3">
+                                                <label class="form-label">Product Rating</label>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="cell-label">&nbsp;</th>
+                                                            <th>1 star</th>
+                                                            <th>2 stars</th>
+                                                            <th>3 stars</th>
+                                                            <th>4 stars</th>
+                                                            <th>5 stars</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="cell-label">Product Quality</td>
+                                                            <td><input type="radio" name="rating" class="radio" value="1"></td>
+                                                            <td><input type="radio" name="rating" class="radio" value="2"></td>
+                                                            <td><input type="radio" name="rating" class="radio" value="3"></td>
+                                                            <td><input type="radio" name="rating" class="radio" value="4"></td>
+                                                            <td><input type="radio" name="rating" class="radio" value="5"></td>
+                                                        </tr>
 
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Your Comment</label>
                                                 <input type="text" name="comment" id="comment" class="form-control rounded-0">
@@ -227,7 +307,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!--end row-->
                     </div>
                 </div>
             </div>
