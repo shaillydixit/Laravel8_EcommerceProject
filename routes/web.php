@@ -133,6 +133,9 @@ Route::get('/product/details/{id}', [IndexController::class, 'ProductDetails']);
 Route::get('/product/tags/{tag}', [IndexController::class, 'ProductTagWise']);
 Route::get('/product/categories', [IndexController::class, 'ProductCategories'])->name('product.categories');
 
+//categorieswise data
+Route::get('/category/product/{cat_id}/{slug}', [IndexController::class, 'ProductCategoryWise']);
+
 //subcategorieswise data
 Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'ProductSubcategoryWise']);
 

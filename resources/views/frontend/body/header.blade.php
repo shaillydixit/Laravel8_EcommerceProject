@@ -170,7 +170,8 @@
                     @endphp
 
                     @foreach($categories as $category)
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">{{$category->category_name}}<i class='bx bx-chevron-down'></i></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="" data-bs-toggle="dropdown">{{$category->category_name}}<i class='bx bx-chevron-down'></i></a>
                         <div class="dropdown-menu dropdown-large-menu">
                             <div class="row">
                                 @php

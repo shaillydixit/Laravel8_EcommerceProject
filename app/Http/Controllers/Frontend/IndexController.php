@@ -93,6 +93,15 @@ class IndexController extends Controller
         return view('frontend.product.product_categories', compact('categories', 'brands'));
     }
 
+    public function ProductCategoryWise($cat_id, $slug)
+    {
+        $products = Product::where('status', 1)->where('category_id', $cat_id)->orderBy('id', 'DESC')->paginate(3);
+        $categories = Category::orderBy('category_name', 'DESC')->get();
+        $brands = Brand::orderBy('brand_image', 'DESC')->get();
+        $breadcat = Category::where('id', $cat_id)->get();
+        return view('frontend.product.category_view', compact('products', 'categories', 'brands', 'breadcat'));
+    }
+
     public function ProductSubcategoryWise($subcat_id, $slug)
     {
         $products = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(3);
