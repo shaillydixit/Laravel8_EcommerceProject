@@ -336,3 +336,8 @@ Route::post('/shop/filter', [ShopController::class, 'ShopFilter'])->name('shop.f
 
 // product grid
 Route::get('/featured/view', [IndexController::class, 'FeaturedView'])->name('featured.view');
+
+
+Route::get('/special/deals', [IndexController::class, 'SpecialDeals'])->name('special.deals');
+
+Route::get('/hot/deals', [IndexController::class, 'HotDeals'])->name('hot.deals');

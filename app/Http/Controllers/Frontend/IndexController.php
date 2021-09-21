@@ -160,4 +160,16 @@ class IndexController extends Controller
         // dd($product);
         return view('frontend.product.featured_view', compact('product'));
     }
+
+    public function SpecialDeals()
+    {
+        $product = Product::with(['category', 'subcategory', 'brand'])->where('special_deals', 1)->orderBy('id', 'DESC')->paginate(4);
+        return view('frontend.product.specialdeals_view', compact('product'));
+    }
+
+    public function HotDeals()
+    {
+        $product = Product::with(['category', 'subcategory', 'brand'])->where('hot_deals', 1)->orderBy('id', 'DESC')->paginate(4);
+        return view('frontend.product.hotdeals_view', compact('product'));
+    }
 }
