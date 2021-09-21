@@ -29,17 +29,6 @@ class SiteSettingController extends Controller
 
             SiteSetting::findOrFail($setting_id)->update([
                 'logo' => $save_url,
-                'phone_one' => $request->phone_one,
-                'phone_two' => $request->phone_two,
-                'email' => $request->email,
-                'company_name' => $request->company_name,
-                'company_address' => $request->company_address,
-                'working_days' => $request->working_days,
-                'facebook' => $request->facebook,
-                'twitter' => $request->twitter,
-                'linkedin' => $request->linkedin,
-                'youtube' => $request->youtube,
-                'created_at' => Carbon::now(),
             ]);
 
             $notification = [

@@ -21,26 +21,12 @@
                 <ul class="navbar-nav ms-auto d-none d-lg-flex">
                     <li class="nav-item"> <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#ordertracking">Track Order</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="about-us.html">About</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="shop-categories.html">Our Stores</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="{{route('blog.view')}}">Blog</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="contact-us.html">Contact</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="javascript:;">Help & FAQs</a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">USD</a>
-                        <ul class="dropdown-menu dropdown-menu-lg-end">
-                            <li><a class="dropdown-item" href="#">USD</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">EUR</a>
-                            </li>
-                        </ul>
-                    </li>
+
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
@@ -91,13 +77,12 @@
                             $setting = App\Models\SiteSetting::find(1);
                             @endphp
                             <div class="logo d-none d-lg-flex">
-                                <a href="index.html">
+                                <a href="{{url('/')}}">
                                     <img src="{{asset($setting->logo)}}" class="logo-icon" alt="" style="width:80px; height:60px;" />
                                 </a>
                             </div>
                         </div>
                     </div>
-
                     <div class="col col-md order-4 order-md-2">
                         <form method="post" action="{{ route('product.search') }}">
                             @csrf
@@ -123,7 +108,7 @@
                         </div>
                         <div class="ms-2">
                             <p class="mb-0 font-13">CALL US NOW</p>
-                            <h5 class="mb-0">+011 5827918</h5>
+                            <h5 class="mb-0">+91 {{$setting->phone_one}}</h5>
                         </div>
                     </div>
                     <div class="col-4 col-md-auto order-2 order-md-4">
@@ -215,6 +200,7 @@
                         <!-- dropdown-large.// -->
                     </li>
                     @endforeach
+
 
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">My Account <i class='bx bx-chevron-down'></i></a>
                         <ul class="dropdown-menu">
