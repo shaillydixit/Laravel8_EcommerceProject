@@ -77,22 +77,6 @@ class IndexController extends Controller
         ));
     }
 
-    public function ProductGrid()
-    {
-        $categories = Category::orderBy('category_name', 'DESC')->get();
-        $brands = Brand::orderBy('brand_image', 'DESC')->get();
-        $product = Product::with(['category', 'subcategory'])->where('status', 1)->orderBy('id', 'DESC')->limit(4)->get();
-        return view('frontend.product.product_grid', compact('categories', 'brands', 'product'));
-    }
-
-    public function ProductList()
-    {
-        $categories = Category::orderBy('category_name', 'DESC')->get();
-        $brands = Brand::orderBy('brand_image', 'DESC')->get();
-        $product = Product::where('status', 1)->orderBy('id', 'DESC')->limit(4)->get();
-        $special_deals = Product::with(['category', 'subcategory'])->where('special_deals', 1)->orderBy('id', 'DESC')->limit(4)->get();
-        return view('frontend.product.product_list', compact('categories', 'brands', 'product', 'special_deals'));
-    }
 
     public function ProductTagWise($tag)
     {
