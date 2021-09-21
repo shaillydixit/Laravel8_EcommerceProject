@@ -153,4 +153,11 @@ class IndexController extends Controller
         $products = Product::where('product_name', 'LIKE', "%$item%")->select('product_name', 'product_thumbnail', 'selling_price', 'id')->limit(5)->get();
         return view('frontend.product.search_product', compact('products'));
     }
+
+    public function FeaturedView()
+    {
+        $product = Product::with(['category', 'subcategory', 'brand'])->where('featured', 1)->orderBy('id', 'DESC')->paginate(4);
+        // dd($product);
+        return view('frontend.product.featured_view', compact('product'));
+    }
 }

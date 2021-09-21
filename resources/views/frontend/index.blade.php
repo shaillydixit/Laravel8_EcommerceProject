@@ -76,27 +76,14 @@
         <div class="container">
             <div class="d-flex align-items-center">
                 <h5 class="text-uppercase mb-0">FEATURED PRODUCTS</h5>
-                <a href="" class="btn btn-dark btn-ecomm ms-auto rounded-0">More Products<i class='bx bx-chevron-right'></i></a>
+                <a href="{{route('featured.view')}}" class="btn btn-dark btn-ecomm ms-auto rounded-0">More Products<i class='bx bx-chevron-right'></i></a>
             </div>
             <hr />
             <div class="product-grid">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
                     @foreach($featured as $product)
-
                     <div class="col">
                         <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end gap-3">
-                                    <a href="javascript:;">
-                                        <div class="product-compare"><span><i class='bx bx-git-compare'></i> Compare</span>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist" id="{{$product->id}}" onclick="addToWishlist(this.id)"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
                             <a href="{{url('product/details/' .$product->id)}}">
                                 <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="...">
                             </a>
@@ -147,7 +134,7 @@
                                     <div class="product-action mt-2">
                                         <div class="d-grid gap-2">
                                             <a href="javascript:;" class="btn btn-dark btn-ecomm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
+                                            <a href="javascript:;" class="btn btn-light btn-ecomm" id="{{$product->id}}" onclick="addToWishlist(this.id)"><i class='bx bx-heart'></i>Add to Wishlist</a>
                                         </div>
                                     </div>
                                 </div>
@@ -175,14 +162,7 @@
                     @foreach($hot_deals as $product)
                     <div class="item">
                         <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist" id="{{$product->id}}" onclick="addToWishlist(this.id)"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+
                             <a href="{{url('product/details/' .$product->id)}}">
                                 <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="...">
                             </a>
@@ -233,7 +213,7 @@
                                     <div class="product-action mt-2">
                                         <div class="d-grid gap-2">
                                             <a href="javascript:;" class="btn btn-dark btn-ecomm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
+                                            <a href="javascript:;" class="btn btn-light btn-ecomm" id="{{$product->id}}" onclick="addToWishlist(this.id)"><i class='bx bx-heart'></i>Add to Wishlist</a>
                                         </div>
                                     </div>
                                 </div>
@@ -261,14 +241,6 @@
                     @foreach($special_offers as $product)
                     <div class="item">
                         <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist" id="{{$product->id}}" onclick="addToWishlist(this.id)"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
                             <a href="{{url('product/details/' .$product->id)}}">
                                 <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="...">
                             </a>
@@ -320,7 +292,7 @@
                                     <div class="product-action mt-2">
                                         <div class="d-grid gap-2">
                                             <a href="javascript:;" class="btn btn-dark btn-ecomm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
+                                            <a href="javascript:;" class="btn btn-light btn-ecomm" id="{{$product->id}}" onclick="addToWishlist(this.id)"><i class='bx bx-heart'></i>Add to Wishlist</a>
                                         </div>
                                     </div>
                                 </div>
@@ -345,14 +317,7 @@
                     @foreach($special_deals as $product)
                     <div class="item">
                         <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist" id="{{$product->id}}" onclick="addToWishlist(this.id)"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+
                             <a href="{{url('product/details/' .$product->id)}}">
                                 <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="...">
                             </a>
@@ -404,7 +369,7 @@
                                     <div class="product-action mt-2">
                                         <div class="d-grid gap-2">
                                             <a href="javascript:;" class="btn btn-dark btn-ecomm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
+                                            <a href="javascript:;" class="btn btn-light btn-ecomm" id="{{$product->id}}" onclick="addToWishlist(this.id)"><i class='bx bx-heart'></i>Add to Wishlist</a>
                                         </div>
                                     </div>
                                 </div>
