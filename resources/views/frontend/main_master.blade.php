@@ -34,7 +34,12 @@ $seo = App\Models\SeoSetting::find(1);
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="{{asset('frontend/assets/css/app.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/assets/css/icons.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
 
     <!-- stripe -->
     <script src="https://js.stripe.com/v3/"></script>
