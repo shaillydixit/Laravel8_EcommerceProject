@@ -25,7 +25,7 @@
                                     <td>{{ $item->order_date }} </td>
                                     <td>{{ $item->invoice_no }}</td>
                                     <td> ${{ $item->amount }}</td>
-                                    <td>${{ $item->payment_method }}</td>
+                                    <td>{{ $item->payment_method }}</td>
                                     <td>
                                         @if($item->return_order == 1)
                                         <span class="label label-success font-weight-100">pending</span>
@@ -42,6 +42,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{$orders->links('vendor.pagination.custom')}}
                     </div>
                 </div>
             </div>

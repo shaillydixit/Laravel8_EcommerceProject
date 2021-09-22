@@ -32,7 +32,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <!-- $coupans->links('pagination-links') -->
+            {{$states->links('vendor.pagination.custom')}}
         </div>
     </div>
 

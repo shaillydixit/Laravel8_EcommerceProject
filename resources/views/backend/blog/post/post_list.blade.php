@@ -33,6 +33,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{$blogpost->links('vendor.pagination.custom')}}
         </div>
     </div>
 </div>

@@ -11,7 +11,7 @@ class CoupanController extends Controller
 {
     public function ManageCoupan()
     {
-        $coupans = Coupan::orderBy('id', 'DESC')->get();
+        $coupans = Coupan::orderBy('id', 'DESC')->paginate(3);
         return view('backend.coupan.view_coupan', compact('coupans'));
     }
 

@@ -25,7 +25,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <!-- $coupans->links('pagination-links') -->
+            {{$shippings->links('vendor.pagination.custom')}}
         </div>
     </div>
 

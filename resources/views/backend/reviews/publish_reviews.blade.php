@@ -41,6 +41,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{$review->links('vendor.pagination.custom')}}
                     </div>
                 </div>
             </div>

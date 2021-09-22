@@ -63,7 +63,7 @@ class AdminProfileController extends Controller
 
     public function AllUsers()
     {
-        $users = User::latest()->get();
+        $users = User::latest()->paginate(3);
         return view('backend.users.all_users', compact('users'));
     }
 }

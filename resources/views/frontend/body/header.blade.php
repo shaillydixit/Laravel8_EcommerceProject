@@ -2,8 +2,7 @@
     <div class="alert alert-dismissible fade show shadow-none rounded-0 mb-0 border-bottom">
         <div class="d-lg-flex align-items-center gap-2 justify-content-center">
             <p class="mb-0">Get Up to <strong>40% OFF</strong> New-Season Styles</p>
-            <a href="javascript:;" class="bg-dark text-white px-1 font-13 cursor-pointer">Men</a>
-            <a href="javascript:;" class="bg-dark text-white px-1 font-13 cursor-pointer">Women</a>
+            <a href="{{route('shop.page')}}" class="bg-dark text-white px-1 font-13 cursor-pointer">Shop Now</a>
             <p class="mb-0 font-13">*Limited time only</p>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -18,7 +17,7 @@
                 $setting = App\Models\SiteSetting::find(1);
                 @endphp
                 <div class="shiping-title text-uppercase font-13 d-none d-sm-flex">Welcome to our {{$setting->company_name}}!</div>
-                <ul class="navbar-nav ms-auto d-none d-lg-flex">
+                <ul class=" navbar-nav ms-auto d-none d-lg-flex">
                     <li class="nav-item"> <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#ordertracking">Track Order</a>
                     </li>
                     </li>

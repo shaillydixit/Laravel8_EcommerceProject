@@ -31,7 +31,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{$categories->links('pagination-links')}}
+            {{$categories->links('vendor.pagination.custom')}}
 
         </div>
     </div>

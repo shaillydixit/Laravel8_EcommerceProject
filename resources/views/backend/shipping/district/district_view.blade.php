@@ -27,7 +27,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <!-- $coupans->links('pagination-links') -->
+            {{$districts->links('vendor.pagination.custom')}}
         </div>
     </div>
 

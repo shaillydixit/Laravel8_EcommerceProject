@@ -13,7 +13,7 @@ class AdminUserController extends Controller
 {
     public function AllAdminUsers()
     {
-        $adminuser = Admin::where('type', 2)->latest()->get();
+        $adminuser = Admin::where('type', 2)->latest()->paginate(4);
         return view('backend.roles.admin_users', compact('adminuser'));
     }
 

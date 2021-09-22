@@ -27,7 +27,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{$subcategories->links('pagination-links')}}
+            {{$subcategories->links('vendor.pagination.custom')}}
         </div>
     </div>
     <div class="col-md-4">

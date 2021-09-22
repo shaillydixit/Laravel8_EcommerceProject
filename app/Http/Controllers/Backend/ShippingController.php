@@ -13,7 +13,7 @@ class ShippingController extends Controller
 {
     public function ManageDivision()
     {
-        $shippings = ShippingDivision::orderBy('id', 'DESC')->get();
+        $shippings = ShippingDivision::orderBy('id', 'DESC')->paginate(6);
         return view('backend.shipping.division.division_view', compact('shippings'));
     }
 
@@ -72,7 +72,7 @@ class ShippingController extends Controller
     public function ManageDistrict()
     {
         $divisions = ShippingDivision::orderBy('division_name', 'ASC')->get();
-        $districts = ShippingDistrict::with('division')->orderBy('id', 'DESC')->get();
+        $districts = ShippingDistrict::with('division')->orderBy('id', 'DESC')->paginate(6);
         return view('backend.shipping.district.district_view', compact('districts', 'divisions'));
     }
 
@@ -138,7 +138,7 @@ class ShippingController extends Controller
     {
         $divisions = ShippingDivision::orderBy('division_name', 'ASC')->get();
         $districts = ShippingDistrict::orderBy('district_name', 'ASC')->get();
-        $states = ShippingState::with('division', 'district')->orderBy('id', 'DESC')->get();
+        $states = ShippingState::with('division', 'district')->orderBy('id', 'DESC')->paginate(6);
         return view('backend.shipping.state.state_view', compact('districts', 'divisions', 'states'));
     }
     public function GetDistrict($division_id)

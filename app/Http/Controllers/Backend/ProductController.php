@@ -92,7 +92,7 @@ class ProductController extends Controller
 
     public function ManageProduct()
     {
-        $products = Product::latest()->get();
+        $products = Product::latest()->paginate(6);
         return view('backend.product.manage_product', compact('products'));
     }
 
@@ -262,7 +262,7 @@ class ProductController extends Controller
 
     public function ProductStock()
     {
-        $products = Product::latest()->get();
+        $products = Product::latest()->paginate(5);
         return view('backend.product.product_stock', compact('products'));
     }
 }

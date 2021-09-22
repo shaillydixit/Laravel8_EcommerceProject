@@ -25,6 +25,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{$blogCategory->links('vendor.pagination.custom')}}
         </div>
     </div>
 

@@ -33,6 +33,8 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{$orders->links('vendor.pagination.custom')}}
+
                     </div>
                 </div>
             </div>

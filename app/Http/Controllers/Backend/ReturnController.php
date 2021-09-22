@@ -10,7 +10,7 @@ class ReturnController extends Controller
 {
     public function ReturnRequest()
     {
-        $orders = Order::where('return_order', 1)->orderBy('id', 'DESC')->get();
+        $orders = Order::where('return_order', 1)->orderBy('id', 'DESC')->paginate(6);
         return view('backend.returns.return_request', compact('orders'));
     }
 
@@ -28,7 +28,7 @@ class ReturnController extends Controller
 
     public function AllReturnRequest()
     {
-        $orders = Order::where('return_order', 2)->orderBy('id', 'DESC')->get();
+        $orders = Order::where('return_order', 2)->orderBy('id', 'DESC')->paginate(6);
         return view('backend.returns.all_request', compact('orders'));
     }
 }

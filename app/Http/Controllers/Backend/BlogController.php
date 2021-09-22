@@ -13,7 +13,7 @@ class BlogController extends Controller
 {
     public function BlogCategory()
     {
-        $blogCategory = BlogPostCategory::latest()->get();
+        $blogCategory = BlogPostCategory::latest()->paginate(6);
         return view('backend.blog.category.blog_category', compact('blogCategory'));
     }
 
@@ -81,7 +81,7 @@ class BlogController extends Controller
 
     public function ListBlogPost()
     {
-        $blogpost = BlogPost::with('blogcategory')->latest()->get();
+        $blogpost = BlogPost::with('blogcategory')->latest()->paginate(6);
         return view('backend.blog.post.post_list', compact('blogpost'));
     }
 

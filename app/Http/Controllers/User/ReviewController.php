@@ -68,7 +68,7 @@ class ReviewController extends Controller
 
     public function PublishReview()
     {
-        $review = Review::where('status', 1)->orderBy('id', 'DESC')->get();
+        $review = Review::where('status', 1)->orderBy('id', 'DESC')->paginate(6);
         return view('backend.reviews.publish_reviews', compact('review'));
     }
 }

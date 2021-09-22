@@ -87,7 +87,7 @@
 
                 @if($product == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Products</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fab fa-product-hunt"></i><span class="hide-menu">&nbsp &nbsp Products</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('add.product')}}">Add Product</a></li>
                         <li><a href="{{route('manage.product')}}">Manage Products</a></li>
@@ -98,7 +98,7 @@
 
                 @if($slider == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-bulb fa-fw"></i> <span class="hide-menu"> Slider</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fas fa-sliders-h"></i><span class="hide-menu">&nbsp &nbsp Slider</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li> <a href="{{route('manage.slider')}}">Manage Slider</a> </li>
                     </ul>
@@ -108,9 +108,9 @@
 
                 @if($coupan == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Coupans</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Coupons</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('manage.coupans')}}">Manage Coupans</a></li>
+                        <li><a href="{{route('manage.coupans')}}">Manage Coupons</a></li>
                     </ul>
                 </li>
                 @else
@@ -118,7 +118,7 @@
 
                 @if($shipping == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Shipping</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fas fa-truck"></i><span class="hide-menu">&nbsp &nbsp Shipping</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('manage.division')}}">Shipping Division</a></li>
                         <li><a href="{{route('manage.district')}}">Shipping District</a></li>
@@ -130,7 +130,7 @@
 
                 @if($orders == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Orders</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fas fa-box-open"></i> <span class="hide-menu">&nbsp &nbsp Orders</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('pending.orders')}}">Pending Orders</a></li>
                         <li><a href="{{route('confirmed.orders')}}">Confirmed Orders</a></li>
@@ -146,7 +146,7 @@
 
                 @if($reports == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-user fa-fw"></i> <span class="hide-menu">All Reports</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fas fa-file-alt "></i><span class="hide-menu">&nbsp &nbsp &nbsp All Reports</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('all.reports')}}">All Reports</a></li>
                     </ul>
@@ -156,7 +156,7 @@
 
                 @if($blog == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-user fa-fw"></i> <span class="hide-menu">Manage Blogs</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fab fa-blogger-b"></i></i> <span class="hide-menu">&nbsp &nbsp Manage Blogs</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('blog.category')}}">Blog Category</a></li>
                         <li><a href="{{route('add.blog.post')}}">Add Blog Post</a></li>
@@ -168,7 +168,7 @@
 
                 @if($all_user == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">All Users</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-user fa-fw"></i> <span class="hide-menu">All Users</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('all.users')}}">All Users</a></li>
                     </ul>
@@ -178,7 +178,7 @@
 
                 @if($admin_user_role == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Admin User Role</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fas fa-user-cog"></i><span class="hide-menu">&nbsp &nbsp Admin User Role</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('all.admin.users')}}">All Admin Users</a></li>
                     </ul>
@@ -188,7 +188,7 @@
 
                 @if($setting == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Website Settings</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fas fa-cogs"></i><span class="hide-menu">&nbsp &nbsp Website Settings</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('site.settings')}}">Site Settings</a></li>
                         <li><a href="{{route('seo.settings')}}">SEO Settings</a></li>
@@ -199,7 +199,7 @@
 
                 @if($return_order == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Return Order</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fas fa-people-carry"></i><span class="hide-menu">&nbsp &nbsp Return Order</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('return.request')}}">Return Request</a></li>
                         <li><a href="{{route('all.request')}}">All Request</a></li>
@@ -210,7 +210,7 @@
 
                 @if($review == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Product Reviews</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="far fa-comment-alt"></i> <span class="hide-menu">&nbsp &nbsp Product Reviews</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('pending.reviews')}}">Pending Reviews</a></li>
                         <li><a href="{{route('publish.reviews')}}">Publish Reviews</a></li>
@@ -221,7 +221,7 @@
 
                 @if($stock == true)
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-pie-chart fa-fw"></i> <span class="hide-menu">Product Stocks</span></a>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fas fa-archive"></i><span class="hide-menu">&nbsp &nbsp Product Stocks</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('product.stock')}}">Manage Products</a></li>
                     </ul>
