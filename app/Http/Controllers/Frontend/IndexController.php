@@ -21,10 +21,10 @@ class IndexController extends Controller
     {
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $product = Product::where('status', 1)->orderBy('id', 'DESC')->limit(4)->get();
-        $featured = Product::where('featured', 1)->orderBy('id', 'DESC')->limit(6)->get();
+        $featured = Product::where('featured', 1)->orderBy('id', 'DESC')->get();
         $hot_deals = Product::where('hot_deals', 1)->orderBy('id', 'DESC')->limit(6)->get();
-        $special_offers = Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(7)->get();
-        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(7)->get();
+        $special_offers = Product::where('special_offer', 1)->orderBy('id', 'DESC')->limit(5)->get();
+        $special_deals = Product::where('special_deals', 1)->orderBy('id', 'DESC')->limit(5)->get();
         return view('frontend.index', compact('featured', 'hot_deals', 'special_offers', 'special_deals', 'categories', 'product'));
     }
 

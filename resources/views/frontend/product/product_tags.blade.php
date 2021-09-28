@@ -1,5 +1,5 @@
 @php
-$tags = App\Models\Product::groupBy('product_tags')->select('product_tags')->get();
+$tags = App\Models\Product::groupBy('product_tags')->select('product_tags')->limit(7)->get();
 @endphp
 
 <div class="col">
