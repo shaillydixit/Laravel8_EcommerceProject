@@ -24,18 +24,6 @@
         <nav class="sidebar-nav">
             <ul id="side-menu">
                 <li>
-                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-basket fa-fw"></i> <span class="hide-menu"> eCommerce </span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li> <a href="index4.html">Dashboard</a> </li>
-                        <li> <a href="products.html">Products</a> </li>
-                        <li> <a href="product-detail.html">Product Detail</a> </li>
-                        <li> <a href="product-edit.html">Product Edit</a> </li>
-                        <li> <a href="product-orders.html">Product Orders</a> </li>
-                        <li> <a href="product-cart.html">Product Cart</a> </li>
-                        <li> <a href="product-checkout.html">Product Checkout</a> </li>
-                    </ul>
-                </li>
-                <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-envelope-letter fa-fw"></i> <span class="hide-menu"> Inbox <span class="label label-rounded label-primary pull-right">5</span></span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li> <a href="inbox.html">Mail Box</a> </li>
@@ -219,6 +207,7 @@
                 @else
                 @endif
 
+
                 @if($stock == true)
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fas fa-archive"></i><span class="hide-menu">&nbsp &nbsp Product Stocks</span></a>
@@ -228,6 +217,14 @@
                 </li>
                 @else
                 @endif
+
+                <li>
+                    <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="fab fa-buysellads"></i><span class="hide-menu">&nbsp &nbsp Advertisement</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('all.advertisement')}}">All Advertisement</a></li>
+                    </ul>
+                </li>
+
                 <li>
                     <a class="waves-effect" href="javascript:void(0);" aria-expanded="false"><i class="icon-location-pin fa-fw"></i> <span class="hide-menu"> Maps</span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -239,6 +236,9 @@
                 <li>
                     <a href="calendar.html" aria-expanded="false"><i class="icon-calender fa-fw"></i> <span class="hide-menu"> Calendar</span></a>
                 </li>
+
+
+
             </ul>
         </nav>
     </div>

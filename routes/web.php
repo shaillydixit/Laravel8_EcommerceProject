@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\AdminUserController;
+use App\Http\Controllers\Backend\AdsController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\BrandController;
@@ -344,3 +345,11 @@ Route::get('/featured/view', [IndexController::class, 'FeaturedView'])->name('fe
 Route::get('/special/deals', [IndexController::class, 'SpecialDeals'])->name('special.deals');
 
 Route::get('/hot/deals', [IndexController::class, 'HotDeals'])->name('hot.deals');
+
+
+// advertisement
+Route::get('/all/advertisement', [AdsController::class, 'AllAds'])->name('all.advertisement');
+Route::post('/add/advertisement', [AdsController::class, 'AddAds'])->name('add.advertisement');
+Route::get('/edit/advertisement/{id}', [AdsController::class, 'EditAds'])->name('edit.advertisement');
+Route::post('/update/advertisement/{id}', [AdsController::class, 'UpdateAds'])->name('update.advertisement');
+Route::get('/delete/advertisement/{id}', [AdsController::class, 'DeleteAds'])->name('delete.advertisement');
