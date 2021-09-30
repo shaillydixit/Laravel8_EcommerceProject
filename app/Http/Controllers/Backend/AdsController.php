@@ -20,7 +20,7 @@ class AdsController extends Controller
 
         $image = $request->file('ads_image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(80, 80)->save('upload/ads/' . $name_gen);
+        Image::make($image)->resize(1556, 1428)->save('upload/ads/' . $name_gen);
         $save_url = 'upload/ads/' . $name_gen;
 
         Advertisement::insert([
@@ -52,7 +52,7 @@ class AdsController extends Controller
             unlink($old_img);
             $image = $request->file('ads_image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(80, 80)->save('upload/ads/' . $name_gen);
+            Image::make($image)->resize(1556, 1428)->save('upload/ads/' . $name_gen);
             $save_url = 'upload/ads/' . $name_gen;
 
             Advertisement::findOrFail($id)->update([
@@ -95,6 +95,28 @@ class AdsController extends Controller
         $notification = [
             'message' => 'Advertisement deleted successfully',
             'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function InactiveAds($id)
+    {
+        Advertisement::findOrFail($id)->update(['status' => 0]);
+        $notification = [
+            'message' => 'Advertisement Inactive!',
+            'alert-type' => 'info',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function ActiveAds($id)
+    {
+        Advertisement::findOrFail($id)->update(['status' => 1]);
+        $notification = [
+            'message' => 'Advertisement Active!',
+            'alert-type' => 'info',
         ];
 
         return redirect()->back()->with($notification);

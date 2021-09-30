@@ -34,8 +34,13 @@
                             @endif
                         </td>
                         <td class="tablesaw-priority-2">
-                            <a href="{{route('edit.advertisement', $row->id)}}" class="btn btn-info">Edit</a>
-                            <a href="{{route('delete.advertisement', $row->id)}}" id="delete" class="btn btn-danger">Delete</a>
+                            <a href="{{route('edit.advertisement', $row->id)}}" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="{{route('delete.advertisement', $row->id)}}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            @if($row->status == 1)
+                            <a href="{{route('inactive.advertisement', $row->id)}}" class="btn btn-danger" title="Inactive now"><i class="fa fa-arrow-down"></i></a>
+                            @else
+                            <a href="{{route('active.advertisement', $row->id)}}" class="btn btn-success" title="Active now"><i class="fa fa-arrow-down"></i></a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

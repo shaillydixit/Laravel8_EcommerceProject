@@ -353,3 +353,5 @@ Route::post('/add/advertisement', [AdsController::class, 'AddAds'])->name('add.a
 Route::get('/edit/advertisement/{id}', [AdsController::class, 'EditAds'])->name('edit.advertisement');
 Route::post('/update/advertisement/{id}', [AdsController::class, 'UpdateAds'])->name('update.advertisement');
 Route::get('/delete/advertisement/{id}', [AdsController::class, 'DeleteAds'])->name('delete.advertisement');
+Route::get('/advertisement/inactive/{id}', [AdsController::class, 'InactiveAds'])->name('inactive.advertisement');
+Route::get('/advertisement/active/{id}', [AdsController::class, 'ActiveAds'])->name('active.advertisement');
