@@ -82,7 +82,7 @@
                         </div>
                     </div>
                 </form>
-                <form class="form-horizontal" id="recoverform" action="index.html">
+                <form class="form-horizontal" id="recoverform" action="{{route('update.change.password')}}">
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <h3>Recover Password</h3>

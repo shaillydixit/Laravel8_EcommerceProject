@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 class AdminProfileController extends Controller
 {
     public function AdminProfile()
@@ -61,9 +61,35 @@ class AdminProfileController extends Controller
         }
     }
 
+
+    public function AdminChangePassword(){
+        return view('admin.admin_change_password');
+    }
+
+    public function UpdateChangePassword(Request $request){
+        $validateData = $request->validate([
+			'oldpassword' => 'required',
+			'password' => 'required|confirmed',
+		]);
+
+		$hashedPassword = Auth::user()->password;
+		if (Hash::check($request->oldpassword,$hashedPassword)) {
+			$admin = Admin::find(Auth::id());
+			$admin->password = Hash::make($request->password);
+			$admin->save();
+			Auth::logout();
+			return redirect()->route('admin.logout');
+		}else{
+			return redirect()->back();
+		}
+
+
+    }
+
     public function AllUsers()
     {
         $users = User::latest()->paginate(3);
         return view('backend.users.all_users', compact('users'));
     }
+
 }
