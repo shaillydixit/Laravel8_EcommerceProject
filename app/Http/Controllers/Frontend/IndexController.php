@@ -181,4 +181,10 @@ class IndexController extends Controller
         $product = Product::with(['category', 'subcategory', 'brand'])->where('hot_deals', 1)->orderBy('id', 'DESC')->paginate(4);
         return view('frontend.product.hotdeals_view', compact('product'));
     }
+
+    public function SpecialOffer()
+    {
+        $product = Product::with(['category', 'subcategory', 'brand'])->where('special_offer', 1)->orderBy('id', 'DESC')->paginate(4);
+        return view('frontend.product.special_offer', compact('product'));
+    }
 }

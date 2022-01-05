@@ -97,7 +97,40 @@
                                         <div class="mb-1 product-price"><span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
                                             <span class="fs-5">{{$product->discount_price}}$</span>
                                         </div>
-                                   
+                                        @php
+                                        $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                        $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                                        @endphp
+                                        <div class="cursor-pointer ms-auto">
+                                            @if($avarage == 0)
+                                            No Rating Yet!
+                                            @elseif($avarage == 1 || $avarage < 2) <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif ($avarage == 2 || $avarage < 3) <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    @elseif ($avarage == 3 || $avarage < 4) <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        @elseif ($avarage == 4 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif ($avarage == 5 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                @endif
+                                        </div>
                                     </div>
                                     <div class="product-action mt-2">
                                         <div class="d-grid gap-2">
@@ -143,7 +176,40 @@
                                         <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
                                             <span class="fs-5">{{$product->discount_price}}$</span>
                                         </div>
-                     
+                                        @php
+                                        $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                        $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                                        @endphp
+                                        <div class="cursor-pointer ms-auto">
+                                            @if($avarage == 0)
+                                            No Rating Yet!
+                                            @elseif($avarage == 1 || $avarage < 2) <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif ($avarage == 2 || $avarage < 3) <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    @elseif ($avarage == 3 || $avarage < 4) <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        @elseif ($avarage == 4 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif ($avarage == 5 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                @endif
+                                        </div>
                                     </div>
                                     <div class="product-action mt-2">
                                         <div class="d-grid gap-2">
@@ -165,6 +231,87 @@
     <!--start Advertise banners-->
     @include('frontend.body.ads')
     <!--end Advertise banners-->
+   
+    <!--end special offer-->
+
+    <section class="py-4">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <h5 class="text-uppercase mb-0">New Arrivals</h5>
+                <a href="{{route('special.offer')}}" class="btn btn-dark ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+            </div>
+            <hr />
+            <div class="product-grid">
+                <div class="new-arrivals owl-carousel owl-theme">
+                    @foreach($special_offers as $product)
+                    <div class="item">
+                        <div class="card rounded-0 product-card">
+
+                            <a href="{{url('product/details/' .$product->id)}}">
+                                <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <div class="product-info">
+                                    <a href="{{url('product/details/' .$product->id)}}">
+                                        <h6 class="product-name mb-2">{{$product->product_name}}</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center">
+
+                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
+                                            <span class="fs-5">{{$product->discount_price}}$</span>
+                                        </div>
+                                        @php
+                                        $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                        $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                                        @endphp
+                                        <div class="cursor-pointer ms-auto">
+                                            @if($avarage == 0)
+                                            No Rating Yet!
+                                            @elseif($avarage == 1 || $avarage < 2) <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif ($avarage == 2 || $avarage < 3) <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    @elseif ($avarage == 3 || $avarage < 4) <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        @elseif ($avarage == 4 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif ($avarage == 5 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                @endif
+                                        </div>
+                                    </div>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                            <a href="javascript:;" class="btn btn-dark btn-ecomm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
+                                            <a href="javascript:;" class="btn btn-light btn-ecomm" id="{{$product->id}}" onclick="addToWishlist(this.id)"><i class='bx bx-heart'></i>Add to Wishlist</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section class="py-4">
         <div class="container">
             <div class="d-flex align-items-center">
@@ -191,7 +338,40 @@
                                         <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
                                             <span class="fs-5">{{$product->discount_price}}$</span>
                                         </div>
-      
+                                        @php
+                                        $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                        $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                                        @endphp
+                                        <div class="cursor-pointer ms-auto">
+                                            @if($avarage == 0)
+                                            No Rating Yet!
+                                            @elseif($avarage == 1 || $avarage < 2) <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif ($avarage == 2 || $avarage < 3) <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    @elseif ($avarage == 3 || $avarage < 4) <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        @elseif ($avarage == 4 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif ($avarage == 5 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                @endif
+                                        </div>
                                     </div>
                                     <div class="product-action mt-2">
                                         <div class="d-grid gap-2">
@@ -208,9 +388,6 @@
             </div>
         </div>
     </section>
-    <!--end special offer-->
-
-
     <!--start support info-->
     <section class="py-4 bg-light">
         <div class="container">

@@ -347,6 +347,7 @@ Route::get('/featured/view', [IndexController::class, 'FeaturedView'])->name('fe
 Route::get('/special/deals', [IndexController::class, 'SpecialDeals'])->name('special.deals');
 
 Route::get('/hot/deals', [IndexController::class, 'HotDeals'])->name('hot.deals');
+Route::get('/special/offer', [IndexController::class, 'SpecialOffer'])->name('special.offer');
 
 
 // advertisement
