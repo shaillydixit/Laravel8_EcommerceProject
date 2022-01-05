@@ -1,53 +1,36 @@
 <div class="header-wrapper" style="background-color: rgba(64, 224, 208, 0.7);">
     <div class="top-menu border-bottom">
         <div class="container">
-            <nav class="navbar navbar-expand">
+            <nav class="navbar navbar-expand" style="color: black;">
                 @php
                 $setting = App\Models\SiteSetting::find(1);
                 @endphp
                 <div class="shiping-title text-uppercase font-13 d-none d-sm-flex">Welcome to our {{$setting->company_name}}!</div>
                 <ul class=" navbar-nav ms-auto d-none d-lg-flex">
-                    <li class="nav-item"> <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#ordertracking">Track Order</a>
+                    <li class="nav-item"> <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#ordertracking" style="color: black;">Track Order</a>
                     </li>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{route('blog.view')}}">Blog</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('blog.view')}}" style="color: black;">Blog</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
 
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
-                            <div class="lang d-flex gap-1">
-                                <div><i class="flag-icon flag-icon-um"></i>
-                                </div>
-                                <div><span>ENG</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-lg-end">
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"> <i class="flag-icon flag-icon-de me-2"></i><span>German</span>
-                            </a> <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-fr me-2"></i><span>French</span></a>
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-um me-2"></i><span>English</span></a>
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-in me-2"></i><span>Hindi</span></a>
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-cn me-2"></i><span>Chinese</span></a>
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-ae me-2"></i><span>Arabic</span></a>
-                        </div>
-                    </li>
+                 
                     @auth
-                    <li class="nav-item"> <a class="nav-link" href="{{route('dashboard')}}">User Profile</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('dashboard')}}" style="color: black;">User Profile</a>
                     </li>
                     @else
-                    <li class="nav-item"> <a class="nav-link" href="{{route('login')}}">Login/Register</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('login')}}" style="color: black;">Login/Register</a>
                     </li>
                     @endauth
                 </ul>
                 <ul class="navbar-nav social-link ms-lg-2 ms-auto">
-                    <li class="nav-item"> <a class="nav-link" href="javascript:;"><i class='bx bxl-facebook'></i></a>
+                    <li class="nav-item"> <a class="nav-link" href="javascript:;" style="color: black;"><i class='bx bxl-facebook'></i></a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="javascript:;"><i class='bx bxl-twitter'></i></a>
+                    <li class="nav-item"> <a class="nav-link" href="javascript:;" style="color: black;"><i class='bx bxl-twitter'></i></a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="javascript:;"><i class='bx bxl-linkedin'></i></a>
+                    <li class="nav-item"> <a class="nav-link" href="javascript:;" style="color: black;"><i class='bx bxl-linkedin'></i></a>
                     </li>
                 </ul>
             </nav>

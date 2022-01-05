@@ -33,8 +33,8 @@
                                                     <h6 class="product-name mb-2">{{$row->product_name}}</h6>
                                                 </a>
                                                 <div class="d-flex align-items-center">
-                                                    <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">${{$row->selling_price}}</span>
-                                                        <span class="fs-5">${{$row->discount_price}}</span>
+                                                    <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">₹{{$row->selling_price}}</span>
+                                                        <span class="fs-5">₹{{$row->discount_price}}</span>
                                                     </div>
                                                     <div class="cursor-pointer ms-auto">
                                                         @php

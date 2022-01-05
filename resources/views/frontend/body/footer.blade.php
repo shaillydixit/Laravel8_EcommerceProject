@@ -27,10 +27,14 @@
                             <p class="mb-0 font-13">{{$setting->working_days}}</p>
                         </div>
                         <div class="working-days mb-3">
-                            <p class="list-inline-item"><i class='bx bxl-facebook'></i><a target="_blank" rel="nofollow" href="{{ $setting->facebook }}" title="Facebook"></a></p>
-                            <p class="list-inline-item"><i class='bx bxl-twitter'></i><a target="_blank" rel="nofollow" href="{{ $setting->twitter }}" title="Twitter"></a></p>
-                            <p class="list-inline-item"><i class='bx bxl-linkedin'></i><a target="_blank" rel="nofollow" href="{{ $setting->linkedin }}" title="Linkedin"></a></p>
-                            <p class="list-inline-item"><i class='bx bxl-instagram'></i><a target="_blank" rel="nofollow" href="{{ $setting->youtube }}" title="Youtube"></a></p>
+                            <p class="list-inline-item"><i class='bx bxl-facebook'></i><a target="_blank" rel="nofollow"
+                                    href="{{ $setting->facebook }}" title="Facebook"></a></p>
+                            <p class="list-inline-item"><i class='bx bxl-twitter'></i><a target="_blank" rel="nofollow"
+                                    href="{{ $setting->twitter }}" title="Twitter"></a></p>
+                            <p class="list-inline-item"><i class='bx bxl-linkedin'></i><a target="_blank" rel="nofollow"
+                                    href="{{ $setting->linkedin }}" title="Linkedin"></a></p>
+                            <p class="list-inline-item"><i class='bx bxl-instagram'></i><a target="_blank"
+                                    rel="nofollow" href="{{ $setting->youtube }}" title="Youtube"></a></p>
                         </div>
                     </div>
                 </div>
@@ -48,6 +52,7 @@
                         </ul>
                         @endforeach
                     </div>
+
                 </div>
                 @include('frontend.product.product_tags')
                 <div class="col">
@@ -55,21 +60,29 @@
                         <h6 class="mb-3 text-uppercase">Stay informed</h6>
                         <div class="subscribe">
                             <input type="text" class="form-control radius-30" placeholder="Enter Your Email" />
-                            <div class="mt-2 d-grid"> <a href="javascript:;" class="btn btn-dark btn-ecomm radius-30">Subscribe</a>
+                            <div class="mt-2 d-grid"> <a href="javascript:;"
+                                    class="btn btn-dark btn-ecomm radius-30">Subscribe</a>
                             </div>
-                            <p class="mt-2 mb-0 font-13">Subscribe to our newsletter to receive early discount offers, updates and new products info.</p>
+                            <p class="mt-2 mb-0 font-13">Subscribe to our newsletter to receive early discount offers,
+                                updates and new products info.</p>
                         </div>
                         <div class="download-app mt-3">
                             <h6 class="mb-3 text-uppercase">Download our app</h6>
                             <div class="d-flex align-items-center gap-2">
                                 <a href="javascript:;">
-                                    <img src="{{asset('frontend/assets/images/icons/apple-store.png')}}" class="" width="160" alt="" />
+                                    <img src="{{asset('frontend/assets/images/icons/apple-store.png')}}" class=""
+                                        width="160" alt="" />
                                 </a>
                                 <a href="javascript:;">
-                                    <img src="{{asset('frontend/assets/images/icons/play-store.png')}}" class="" width="160" alt="" />
+                                    <img src="{{asset('frontend/assets/images/icons/play-store.png')}}" class=""
+                                        width="160" alt="" />
                                 </a>
                             </div>
                         </div>
+                    </div>
+
+                    <div>
+                        <div><span id="google_element"></span> </div>
                     </div>
                 </div>
             </div>
@@ -85,3 +98,12 @@
         </div>
     </section>
 </footer>
+
+
+<script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+<script>
+    function loadGoogleTranslate() {
+        new google.translate.TranslateElement("google_element");
+    }
+
+</script>

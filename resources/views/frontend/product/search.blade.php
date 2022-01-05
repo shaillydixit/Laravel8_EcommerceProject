@@ -40,7 +40,7 @@
                                     <h6 class="text-uppercase mb-3">Categories</h6>
                                     @foreach($categories as $category)
                                     <ul class="list-unstyled mb-0 categories-list">
-                                        <li><a href="javascript:;">{{$category->category_name}} <span class="float-end badge rounded-pill bg-primary">42</span></a>
+                                    <li><a href="{{url('category/product/' .$category->id. '/' .$category->category_slug)}}">{{$category->category_name}}</a>
                                         </li>
                                     </ul>
                                     @endforeach

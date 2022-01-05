@@ -14,7 +14,7 @@
                         </div>
                         <div class="info-box-content ps-3">
                             <h6 class="mb-0">FREE SHIPPING &amp; RETURN</h6>
-                            <p class="mb-0">Free shipping on all orders over $49</p>
+                            <p class="mb-0">Free shipping on all orders over ₹499</p>
                         </div>
                     </div>
                 </div>
@@ -95,8 +95,8 @@
                                         <h6 class="product-name mb-2">{{$product->product_name}}</h6>
                                     </a>
                                     <div class="d-flex align-items-center">
-                                        <div class="mb-1 product-price"><span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
-                                            <span class="fs-5">{{$product->discount_price}}$</span>
+                                        <div class="mb-1 product-price"><span class="me-1 text-decoration-line-through">₹{{$product->selling_price}}</span>
+                                            <span class="fs-5">₹{{$product->discount_price}}</span>
                                         </div>
                                         @php
                                         $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
@@ -174,8 +174,8 @@
                                         <h6 class="product-name mb-2">{{$product->product_name}}</h6>
                                     </a>
                                     <div class="d-flex align-items-center">
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
-                                            <span class="fs-5">{{$product->discount_price}}$</span>
+                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">₹{{$product->selling_price}}</span>
+                                            <span class="fs-5">₹{{$product->discount_price}}</span>
                                         </div>
                                         @php
                                         $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
@@ -258,8 +258,8 @@
                                     </a>
                                     <div class="d-flex align-items-center">
 
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
-                                            <span class="fs-5">{{$product->discount_price}}$</span>
+                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">₹{{$product->selling_price}}</span>
+                                            <span class="fs-5">₹{{$product->discount_price}}</span>
                                         </div>
                                         @php
                                         $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
@@ -336,8 +336,8 @@
                                     </a>
                                     <div class="d-flex align-items-center">
 
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
-                                            <span class="fs-5">{{$product->discount_price}}$</span>
+                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">₹{{$product->selling_price}}</span>
+                                            <span class="fs-5">₹{{$product->discount_price}}</span>
                                         </div>
                                         @php
                                         $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
@@ -398,7 +398,7 @@
                         <div class="font-50"> <i class='bx bx-cart'></i>
                         </div>
                         <h2 class="fs-5 text-uppercase mb-0">Free delivery</h2>
-                        <p class="text-capitalize">Free delivery over $199</p>
+                        <p class="text-capitalize">Free delivery over ₹199</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
                     </div>
                 </div>

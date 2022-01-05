@@ -91,8 +91,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center mt-3 gap-2">
-                                    <h5 class="mb-0 text-decoration-line-through text-light-3" id="price">${{$product->selling_price}}</h5>
-                                    <h4 class="mb-0" id="dprice">${{$product->discount_price}}</h4>
+                                    <h5 class="mb-0 text-decoration-line-through text-light-3" id="price">₹{{$product->selling_price}}</h5>
+                                    <h4 class="mb-0" id="dprice">₹{{$product->discount_price}}</h4>
                                 </div>
                                 <div class="mt-3">
                                     <h6>Discription :</h6>

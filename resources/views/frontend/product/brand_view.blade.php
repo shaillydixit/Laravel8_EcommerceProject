@@ -54,7 +54,7 @@
                                     <div class="d-flex align-items-center">
                                         <button type="button" class="btn btn-dark btn-sm text-uppercase rounded-0 font-13 fw-500">Filter</button>
                                         <div class="ms-auto">
-                                            <p class="mb-0">Price: $200.00 - $900.00</p>
+                                            <p class="mb-0">Price: ₹200.00 - ₹9000.00</p>
                                         </div>
                                     </div>
                                 </div>
@@ -112,8 +112,8 @@
                                                     <h6 class="product-name mb-2">{{$product->product_name}}</h6>
                                                 </a>
                                                 <div class="d-flex align-items-center">
-                                                    <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">${{$product->selling_price}}</span>
-                                                        <span class="fs-5">${{$product->discount_price}}</span>
+                                                    <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">₹{{$product->selling_price}}</span>
+                                                        <span class="fs-5">₹{{$product->discount_price}}</span>
                                                     </div>
                                                     @php
                                         $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
