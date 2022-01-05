@@ -48,7 +48,9 @@ class CheckoutController extends Controller
             return view('frontend.payment.stripe', compact('data', 'carts', 'cartQty', 'cartTotal'));
         } elseif ($request->payment_method == 'card') {
             return 'card';
-        } else {
+        } elseif ($request->payment_method == 'razorpay') {
+            return view('frontend.payment.razor_pay', compact('data', 'carts', 'cartQty', 'cartTotal'));
+        }else {
             return view('frontend.payment.cash', compact('data', 'carts', 'cartQty', 'cartTotal'));
         }
     }

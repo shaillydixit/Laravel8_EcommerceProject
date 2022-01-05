@@ -32,7 +32,7 @@ use App\Http\Controllers\User\CashController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\StripeController;
-
+use App\Http\Controllers\User\RazorpayPaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -358,3 +358,8 @@ Route::post('/update/advertisement/{id}', [AdsController::class, 'UpdateAds'])->
 Route::get('/delete/advertisement/{id}', [AdsController::class, 'DeleteAds'])->name('delete.advertisement');
 Route::get('/advertisement/inactive/{id}', [AdsController::class, 'InactiveAds'])->name('inactive.advertisement');
 Route::get('/advertisement/active/{id}', [AdsController::class, 'ActiveAds'])->name('active.advertisement');
+
+
+// rajor
+Route::get('razorpay-payment', [RazorpayPaymentController::class, 'index']);
+Route::post('razorpay-payment', [RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
