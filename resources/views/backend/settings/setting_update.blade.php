@@ -16,13 +16,16 @@
                             <label for="exampleInputEmail1">Website Logo</label>
                             <input type="file" class="form-control" name="logo" onchange="mainImage(this)">
                             <img src="" id="mainImg">
+                            <div>
+                                <img src="{{asset($setting->logo)}}" style="width:80px; height:80px;" alt="">
+                            </div>
                             @error('logo')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Company Name</label>
-                            <input type="text" class="form-control" name="company_name" id="company_name">
+                            <input type="text" class="form-control" name="company_name" id="company_name" value="{{$setting->company_name}}">
                             @error('company_name')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -30,7 +33,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Company Address</label>
-                            <input type="text" class="form-control" name="company_address" id="company_address">
+                            <input type="text" class="form-control" name="company_address" id="company_address" value="{{$setting->company_address}}">
                             @error('company_address')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -38,7 +41,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Phone Number 1</label>
-                            <input type="text" class="form-control" name="phone_one" id="phone_one">
+                            <input type="text" class="form-control" name="phone_one" id="phone_one" value="{{$setting->phone_one}}">
                             @error('phone_one')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -46,7 +49,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Phone Number 2</label>
-                            <input type="text" class="form-control" name="phone_two" id="phone_two">
+                            <input type="text" class="form-control" name="phone_two" id="phone_two" value="{{$setting->phone_two}}">
                             @error('phone_two')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -54,7 +57,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email ID</label>
-                            <input type="email" class="form-control" name="email" id="email">
+                            <input type="email" class="form-control" name="email" id="email" value="{{$setting->email}}">
                             @error('email')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -62,7 +65,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Working Days</label>
-                            <input type="text" class="form-control" name="working_days" id="working_days">
+                            <input type="text" class="form-control" name="working_days" id="working_days" value="{{$setting->working_days}}">
                             @error('working_days')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -70,7 +73,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Facebook</label>
-                            <input type="text" class="form-control" name="facebook" id="facebook">
+                            <input type="text" class="form-control" name="facebook" id="facebook" value="{{$setting->facebook}}">
                             @error('facebook')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -78,7 +81,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Twitter</label>
-                            <input type="text" class="form-control" name="twitter" id="twitter">
+                            <input type="text" class="form-control" name="twitter" id="twitter" value="{{$setting->twitter}}">
                             @error('twitter')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -86,7 +89,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">LinkedIn</label>
-                            <input type="text" class="form-control" name="linkedin" id="linkedin">
+                            <input type="text" class="form-control" name="linkedin" id="linkedin" value="{{$setting->linkedin}}">
                             @error('linkedin')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -94,7 +97,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Youtube</label>
-                            <input type="text" class="form-control" name="youtube" id="youtube">
+                            <input type="text" class="form-control" name="youtube" id="youtube" value="{{$setting->youtube}}">
                             @error('youtube')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="col-md-8">
         <div class="white-box">
-            <h3 class="box-title m-b-2">Add Brand</h3>
+            <h3 class="box-title m-b-2">Edit Brand</h3>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
                     <form method="post" action="{{route('update.brand', $brands->id)}}" enctype="multipart/form-data">
@@ -31,8 +31,14 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Brand Image</label>
+                            
                             <input type="file" class="form-control" name="brand_image" onchange="mainImage(this)">
+                           
                             <img src="" id="mainImg">
+
+                            <div>
+                                <img src="{{asset($brands->brand_image)}}" style="width:80px; height:80px;" alt="">
+                            </div>
                             @error('brand_image')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

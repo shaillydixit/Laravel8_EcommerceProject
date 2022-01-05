@@ -93,7 +93,7 @@
                                                     <input type="text" name="shipping_phone" id="shipping_phone" class="form-control rounded-0">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Country</label>
+                                                    <label class="form-label">Divison</label>
                                                     <select class="form-select rounded-0" name="division_id" id="division_id">
                                                         <option value="" selected="" disabled="">Select Country</option>
                                                         @foreach($divisons as $item)
@@ -105,14 +105,15 @@
                                                     <label class="form-label">District</label>
                                                     <select class="form-select rounded-0" name="district_id" id="district_id">
                                                         <option value="" selected="" disabled="">Select District</option>
-
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">State/Province</label>
                                                     <select class="form-select rounded-0" name="state_id" id="state_id">
                                                         <option value="" selected="" disabled="">Select State</option>
-
+                                                        @foreach($states as $item)
+                                                        <option value="{{$item->id}}">{{$item->state_name}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
 
@@ -180,7 +181,7 @@
                         <div class="order-summary">
                             <div class="card rounded-0">
                                 <div class="card-body">
-                                    <!-- @if(Session::has('coupan'))
+                                    @if(Session::has('coupan'))
 
                                     @else
                                     <div class="card rounded-0 border bg-transparent shadow-none" id="coupanField">
@@ -192,7 +193,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endif -->
+                                    @endif
                                     <div class="card rounded-0 border bg-transparent shadow-none">
                                         <div class="card-body">
                                             <p class="fs-5">Order summary</p>
@@ -262,7 +263,6 @@
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        $('select[name="state_id"]').empty();
                         var d = $('select[name="district_id"]').empty();
                         $.each(data, function(key, value) {
                             $('select[name="district_id"]').append('<option value="' + value.id + '">' +
@@ -274,26 +274,6 @@
                 alert('danger');
             }
         });
-        $('select[name="district_id"]').on('change', function() {
-            var district_id = $(this).val();
-            if (district_id) {
-                $.ajax({
-                    url: "{{  url('/state-get/ajax') }}/" + district_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        var d = $('select[name="state_id"]').empty();
-                        $.each(data, function(key, value) {
-                            $('select[name="state_id"]').append('<option value="' + value.id + '">' +
-                                value.state_name + '</option>');
-                        });
-                    },
-                });
-            } else {
-                alert('danger');
-            }
-        });
-
     });
 </script>
 

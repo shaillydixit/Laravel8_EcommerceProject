@@ -1,15 +1,4 @@
-<div class="discount-alert d-none d-lg-block">
-    <div class="alert alert-dismissible fade show shadow-none rounded-0 mb-0 border-bottom">
-        <div class="d-lg-flex align-items-center gap-2 justify-content-center">
-            <p class="mb-0">Get Up to <strong>40% OFF</strong> New-Season Styles</p>
-            <a href="{{route('shop.page')}}" class="bg-dark text-white px-1 font-13 cursor-pointer">Shop Now</a>
-            <p class="mb-0 font-13">*Limited time only</p>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-</div>
-<!--start top header wrapper-->
-<div class="header-wrapper">
+<div class="header-wrapper" style="background-color: rgba(64, 224, 208, 0.7);">
     <div class="top-menu border-bottom">
         <div class="container">
             <nav class="navbar navbar-expand">
@@ -129,10 +118,11 @@
                                                     <p class="cart-header-clear ms-auto mb-0">VIEW CART</p>
                                                 </div>
                                             </a>
+                                            <div class="container">
                                             <div class="cart-list" id="miniCart">
 
                                             </div>
-
+                                            </div>
                                             <a href="javascript:;">
                                                 <div class="text-center cart-footer d-flex align-items-center">
                                                     <h5 class="mb-0">TOTAL</h5>

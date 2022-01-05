@@ -1,5 +1,5 @@
 <footer>
-    <section class="py-4 border-top bg-light">
+    <section class="py-4 border-top" style="background-color: rgba(64, 224, 208, 0.7);">
         <div class="container">
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
                 <div class="col">

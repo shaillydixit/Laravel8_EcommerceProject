@@ -61,7 +61,7 @@ class BrandController extends Controller
             Image::make($image)->resize(80, 80)->save('upload/brand/' . $name_gen);
             $save_url = 'upload/brand/' . $name_gen;
 
-            Brand::insert([
+            Brand::findOrFail($id)->update([
                 'category_id' => $request->category_id,
                 'brand_name' => $request->brand_name,
                 'brand_slug' => strtolower(str_replace(' ', '-', $request->brand_name)),
@@ -91,7 +91,7 @@ class BrandController extends Controller
     {
         $brands = Brand::findOrFail($id);
         $img = $brands->brand_image;
-        unlink($img);
+        // unlink($img);
 
         Brand::findOrFail($id)->delete();
 

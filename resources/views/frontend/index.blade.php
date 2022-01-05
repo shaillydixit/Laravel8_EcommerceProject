@@ -2,6 +2,7 @@
 @section('content')
 @include('frontend.body.slider')
 
+
 <div class="page-content">
     <!--start information-->
     <section class="py-3 border-top border-bottom">

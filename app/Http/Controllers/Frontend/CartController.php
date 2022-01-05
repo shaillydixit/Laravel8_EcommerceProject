@@ -151,7 +151,8 @@ class CartController extends Controller
                 $cartQty = Cart::count();
                 $cartTotal = Cart::total();
                 $divisons = ShippingDivision::orderBy('division_name', 'ASC')->get();
-                return view('frontend.checkout.checkout_view', compact('divisons', 'carts', 'cartQty', 'cartTotal'));
+                $states = ShippingState::orderBy('state_name', 'ASC')->get();
+                return view('frontend.checkout.checkout_view', compact('divisons', 'carts', 'cartQty', 'cartTotal', 'states'));
             } else {
                 $notification = [
                     'message' => 'First Add Product In The Cart',

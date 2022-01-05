@@ -266,8 +266,8 @@ $seo = App\Models\SeoSetting::find(1);
                         $('span[id="cartQty"]').text(response.cartQty)
                         var miniCart = ""
                         $.each(response.carts, function(key, value) {
-                            miniCart += ` <a class="dropdown-item" href="javascript:;">
-                                                <div class="d-flex align-items-center">
+                            miniCart += ` <a class="dropdown-item" href="">
+                                                <div class="flex align-items-center">
                                                     <div class="flex-grow-1">
                                                         <h6 class="cart-product-title">${value.name}</h6>
                                                         <p class="cart-product-price">${value.price} * ${value.qty}</p>
