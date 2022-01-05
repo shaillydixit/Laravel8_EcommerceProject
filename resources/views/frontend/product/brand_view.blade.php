@@ -5,7 +5,7 @@
     <section class="py-3 border-bottom border-top d-none d-md-flex bg-light">
         <div class="container">
             <div class="page-breadcrumb d-flex align-items-center">
-                <h3 class="breadcrumb-title pe-3">Shop Grid Left Sidebar</h3>
+                <h3 class="breadcrumb-title pe-3">Products</h3>
                 <div class="ms-auto">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
@@ -13,7 +13,7 @@
                             </li>
                             <li class="breadcrumb-item"><a href="javascript:;">Shop</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Shop Left Sidebar</li>
+                            <li class="breadcrumb-item active" aria-current="page">Products</li>
                         </ol>
                     </nav>
                 </div>
@@ -41,7 +41,7 @@
                                     <h6 class="text-uppercase mb-3">Categories</h6>
                                     @foreach($categories as $category)
                                     <ul class="list-unstyled mb-0 categories-list">
-                                        <li><a href="javascript:;">{{$category->category_name}} <span class="float-end badge rounded-pill bg-primary">42</span></a>
+                                        <li><a href="{{url('category/product/' .$category->id. '/' .$category->category_slug)}}">{{$category->category_name}}</a>
                                         </li>
                                     </ul>
                                     @endforeach
@@ -115,13 +115,40 @@
                                                     <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">${{$product->selling_price}}</span>
                                                         <span class="fs-5">${{$product->discount_price}}</span>
                                                     </div>
-                                                    <div class="cursor-pointer ms-auto">
-                                                        <i class="bx bxs-star text-warning"></i>
-                                                        <i class="bx bxs-star text-warning"></i>
-                                                        <i class="bx bxs-star text-warning"></i>
-                                                        <i class="bx bxs-star text-warning"></i>
-                                                        <i class="bx bxs-star text-warning"></i>
-                                                    </div>
+                                                    @php
+                                        $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                        $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                                        @endphp
+                                        <div class="cursor-pointer ms-auto">
+                                            @if($avarage == 0)
+                                            No Rating Yet!
+                                            @elseif($avarage == 1 || $avarage < 2) <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif ($avarage == 2 || $avarage < 3) <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    @elseif ($avarage == 3 || $avarage < 4) <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        @elseif ($avarage == 4 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif ($avarage == 5 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                @endif
+                                        </div>
                                                 </div>
                                                 <div class="product-action mt-2">
                                                     <div class="d-grid gap-2">
@@ -140,7 +167,6 @@
                             <!--end row-->
                         </div>
                         <hr>
-                        {{ $products->links('vendor.pagination.custom')  }}
                     </div>
                 </div>
             </div>

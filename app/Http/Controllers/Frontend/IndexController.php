@@ -95,7 +95,7 @@ class IndexController extends Controller
 
     public function ProductCategoryWise($cat_id, $slug)
     {
-        $products = Product::where('status', 1)->where('category_id', $cat_id)->orderBy('id', 'DESC')->paginate(3);
+        $products = Product::where('status', 1)->where('category_id', $cat_id)->orderBy('id', 'DESC')->paginate(6);
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
         $breadcat = Category::where('id', $cat_id)->get();
@@ -104,7 +104,7 @@ class IndexController extends Controller
 
     public function ProductSubcategoryWise($subcat_id, $slug)
     {
-        $products = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(3);
+        $products = Product::where('status', 1)->where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->paginate(6);
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
         $breadsubcat = SubCategory::with(['category'])->where('id', $subcat_id)->get();
@@ -113,7 +113,7 @@ class IndexController extends Controller
 
     public function ProductSubsubcategoryWise($subsubcat_id, $slug)
     {
-        $products = Product::where('status', 1)->where('subsubcategory_id', $subsubcat_id)->orderBy('id', 'DESC')->paginate(3);
+        $products = Product::where('status', 1)->where('subsubcategory_id', $subsubcat_id)->orderBy('id', 'DESC')->paginate(6);
         $categories = Category::orderBy('category_name', 'DESC')->get();
         $brands = Brand::orderBy('brand_image', 'DESC')->get();
         $breadsubsubcat = SubSubCategory::with(['category', 'subcategory'])->where('id', $subsubcat_id)->get();

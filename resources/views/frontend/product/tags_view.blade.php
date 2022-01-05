@@ -5,7 +5,7 @@
     <section class="py-3 border-bottom border-top d-none d-md-flex bg-light">
         <div class="container">
             <div class="page-breadcrumb d-flex align-items-center">
-                <h3 class="breadcrumb-title pe-3">Shop Grid Left Sidebar</h3>
+                <h3 class="breadcrumb-title pe-3">Tag View Products</h3>
                 <div class="ms-auto">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
@@ -13,7 +13,7 @@
                             </li>
                             <li class="breadcrumb-item"><a href="javascript:;">Shop</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Shop Left Sidebar</li>
+                            <li class="breadcrumb-item active" aria-current="page">Tag View Products</li>
                         </ol>
                     </nav>
                 </div>
@@ -145,7 +145,6 @@
                             <!--end row-->
                         </div>
                         <hr>
-                        {{ $products->links('vendor.pagination.custom')  }}
                     </div>
                 </div>
             </div>
