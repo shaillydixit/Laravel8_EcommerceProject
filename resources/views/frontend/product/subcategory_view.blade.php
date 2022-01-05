@@ -88,38 +88,6 @@
 
                 <div class="col-12 col-xl-9">
                     <div class="product-wrapper">
-                        <div class="toolbox d-flex align-items-center mb-3 gap-2">
-                            <div class="d-flex flex-wrap flex-grow-1 gap-1">
-                                <div class="d-flex align-items-center flex-nowrap">
-                                    <p class="mb-0 font-13 text-nowrap">Sort By:</p>
-                                    <select class="form-select ms-3 rounded-0">
-                                        <option value="menu_order" selected="selected">Default sorting</option>
-                                        <option value="popularity">Sort by popularity</option>
-                                        <option value="rating">Sort by average rating</option>
-                                        <option value="date">Sort by newness</option>
-                                        <option value="price">Sort by price: low to high</option>
-                                        <option value="price-desc">Sort by price: high to low</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-wrap">
-                                <div class="d-flex align-items-center flex-nowrap">
-                                    <p class="mb-0 font-13 text-nowrap">Show:</p>
-                                    <select class="form-select ms-3 rounded-0">
-                                        <option>9</option>
-                                        <option>12</option>
-                                        <option>16</option>
-                                        <option>20</option>
-                                        <option>50</option>
-                                        <option>100</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div> <a href="shop-grid-left-sidebar.html" class="btn btn-white rounded-0"><i class='bx bxs-grid me-0'></i></a>
-                            </div>
-                            <div> <a href="shop-list-left-sidebar.html" class="btn btn-light rounded-0"><i class='bx bx-list-ul me-0'></i></a>
-                            </div>
-                        </div>
                         <div class="product-grid">
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
                                 @foreach($products as $product)

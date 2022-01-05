@@ -16,9 +16,9 @@ class ShopController extends Controller
         if (!empty($_GET['category'])) {
             $slugs = explode(',', $_GET['category']);
             $catIds = Category::select('id')->whereIn('category_slug', $slugs)->pluck('id')->toArray();
-            $products = $products->whereIn('category_id', $catIds)->paginate(3);
+            $products = $products->whereIn('category_id', $catIds)->paginate(9);
         } else {
-            $products = Product::where('status', 1)->orderBy('id', 'DESC')->paginate(3);
+            $products = Product::where('status', 1)->orderBy('id', 'DESC')->paginate(9);
         }
         $brands = Brand::orderBy('brand_name', 'ASC')->get();
         $categories = Category::orderBy('category_name', 'DESC')->get();
@@ -27,9 +27,9 @@ class ShopController extends Controller
         if (!empty($_GET['brand'])) {
             $slugs = explode(',', $_GET['brand']);
             $brandIds = Brand::select('id')->whereIn('brand_slug', $slugs)->pluck('id')->toArray();
-            $products = $products->whereIn('brand_id', $brandIds)->paginate(3);
+            $products = $products->whereIn('brand_id', $brandIds)->paginate(9);
         } else {
-            $products = Product::where('status', 1)->orderBy('id', 'DESC')->paginate(3);
+            $products = Product::where('status', 1)->orderBy('id', 'DESC')->paginate(9);
         }
         $brands = Brand::orderBy('brand_name', 'ASC')->get();
         $categories = Category::orderBy('category_name', 'DESC')->get();

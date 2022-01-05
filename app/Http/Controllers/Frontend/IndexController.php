@@ -165,26 +165,26 @@ class IndexController extends Controller
 
     public function FeaturedView()
     {
-        $product = Product::with(['category', 'subcategory', 'brand'])->where('featured', 1)->orderBy('id', 'DESC')->paginate(4);
+        $product = Product::with(['category', 'subcategory', 'brand'])->where('featured', 1)->orderBy('id', 'DESC')->paginate(8);
         // dd($product);
         return view('frontend.product.featured_view', compact('product'));
     }
 
     public function SpecialDeals()
     {
-        $product = Product::with(['category', 'subcategory', 'brand'])->where('special_deals', 1)->orderBy('id', 'DESC')->paginate(4);
+        $product = Product::with(['category', 'subcategory', 'brand'])->where('special_deals', 1)->orderBy('id', 'DESC')->paginate(8);
         return view('frontend.product.specialdeals_view', compact('product'));
     }
 
     public function HotDeals()
     {
-        $product = Product::with(['category', 'subcategory', 'brand'])->where('hot_deals', 1)->orderBy('id', 'DESC')->paginate(4);
+        $product = Product::with(['category', 'subcategory', 'brand'])->where('hot_deals', 1)->orderBy('id', 'DESC')->paginate(8);
         return view('frontend.product.hotdeals_view', compact('product'));
     }
 
     public function SpecialOffer()
     {
-        $product = Product::with(['category', 'subcategory', 'brand'])->where('special_offer', 1)->orderBy('id', 'DESC')->paginate(4);
+        $product = Product::with(['category', 'subcategory', 'brand'])->where('special_offer', 1)->orderBy('id', 'DESC')->paginate(8);
         return view('frontend.product.special_offer', compact('product'));
     }
 }
