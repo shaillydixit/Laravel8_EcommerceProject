@@ -238,7 +238,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="white-box">
@@ -247,7 +247,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-actions text-center">
                             <input type="submit" class="btn btn-rounded btn-info mb-5" value="Add Product">
                         </div>

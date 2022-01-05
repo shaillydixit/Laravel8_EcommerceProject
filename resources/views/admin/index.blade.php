@@ -1,251 +1,417 @@
-@extends('admin.master')
+@extends('frontend.main_master')
 @section('content')
+@include('frontend.body.slider')
 
-@php
-$date = date('d-m-y');
-$today = App\Models\Order::where('order_date', $date)->sum('amount');
-
-$month = date('F');
-$month = App\Models\Order::where('order_month', $month)->sum('amount');
-
-$year = date('Y');
-$year = App\Models\Order::where('order_year', $year)->sum('amount');
-
-$pending = App\Models\Order::where('status', 'pending')->get();
-@endphp
-
-<div class="container-fluid">
-    <div class="row colorbox-group-widget">
-        <div class="col-md-3 col-sm-6 info-color-box">
-            <div class="white-box">
-                <div class="media bg-primary">
-                    <div class="media-body">
-                        <h3 class="info-count">{{$today}}/ INR<span class="pull-right"><i class="mdi mdi-checkbox-marked-circle-outline"></i></span></h3>
-                        <p class="info-text font-12">Today's Sale</p>
+<div class="page-content">
+    <!--start information-->
+    <section class="py-3 border-top border-bottom">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-3 row-group align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center p-3 bg-white">
+                        <div class="fs-1"><i class='bx bx-taxi'></i>
+                        </div>
+                        <div class="info-box-content ps-3">
+                            <h6 class="mb-0">FREE SHIPPING &amp; RETURN</h6>
+                            <p class="mb-0">Free shipping on all orders over $49</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex align-items-center p-3 bg-white">
+                        <div class="fs-1"><i class='bx bx-dollar-circle'></i>
+                        </div>
+                        <div class="info-box-content ps-3">
+                            <h6 class="mb-0">MONEY BACK GUARANTEE</h6>
+                            <p class="mb-0">100% money back guarantee</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex align-items-center p-3 bg-white">
+                        <div class="fs-1"><i class='bx bx-support'></i>
+                        </div>
+                        <div class="info-box-content ps-3">
+                            <h6 class="mb-0">ONLINE SUPPORT 24/7</h6>
+                            <p class="mb-0">Awesome Support for 24/7 Days</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!--end row-->
         </div>
-        <div class="col-md-3 col-sm-6 info-color-box">
-            <div class="white-box">
-                <div class="media bg-success">
-                    <div class="media-body">
-                        <h3 class="info-count">{{$month}}/ INR<span class="pull-right"><i class="mdi mdi-checkbox-marked-circle-outline"></i></span></h3>
-                        <p class="info-text font-12">Monthly Sale</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 info-color-box">
-            <div class="white-box">
-                <div class="media bg-danger">
-                    <div class="media-body">
-                        <h3 class="info-count">{{$year}}/ INR<span class="pull-right"><i class="mdi mdi-coin"></i></span></h3>
-                        <p class="info-text font-12">Yearly Sale</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 info-color-box">
-            <div class="white-box">
-                <div class="media bg-warning">
-                    <div class="media-body">
-                        <h3 class="info-count">{{count($pending)}}<span class="pull-right"><i class="mdi mdi-checkbox-marked-circle-outline"></i></span></h3>
-                        <p class="info-text font-12">Pending Orders</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-sm-12">
-            <div class="white-box sd-widget m-b-0 b-b-0">
-                <a href="javascript:void(0);" class="pull-right"><i class="icon-settings"></i></a>
-                <h4 class="box-title">Sales Difference</h4>
-            </div>
-            <div class="white-box p-0 b-t-0">
-                <div class="ct-sd-chart chart-pos"></div>
-                <ul class="list-inline t-a-c">
-                    <li>
-                        <h6 class="font-15"><i class="fa fa-circle m-r-5 text-danger"></i>March</h6>
-                    </li>
-                    <li>
-                        <h6 class="font-15"><i class="fa fa-circle m-r-5 text-primary"></i>February</h6>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="white-box sc-widget">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4 class="box-title">Sales Chart</h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <select class="custom-select">
-                            <option selected>March 2017</option>
-                            <option value="1">April 2017</option>
-                            <option value="2">May 2017</option>
-                            <option value="3">June 2017</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="chartist-sales-chart chart-pos m-t-40"></div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="white-box ie-widget m-b-0 b-b-0">
-                <h4 class="box-title">Item Earnings</h4>
-            </div>
-            <div class="white-box p-0 b-t-0">
-                <div class="ct-ie-chart chart-pos"></div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="white-box user-table">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4 class="box-title">All Recent Orders</h4>
-                    </div>
-                </div>
+    </section>
+    <!--end information-->
+    <!--start pramotion-->
+    <section class="py-4">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
                 @php
-                $orders = App\Models\Order::where('status','pending')->orderBy('id', 'DESC')->get();
+                $categories = App\Models\Category::orderBy('category_name', 'DESC')->limit(3)->get();
                 @endphp
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Invoice</th>
-                                <th>Amount</th>
-                                <th>Payment</th>
-                                <th>Status</th>
-                                <th>Process</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($orders as $item)
-                            <tr>
-                                <td>{{ Carbon\Carbon::parse($item->order_date)->diffForHumans() }} </td>
-                                <td>{{ $item->invoice_no }}</td>
-                                <td> ${{ $item->amount }}</td>
-                                <td>{{ $item->payment_method }}</td>
-                                <td> <span class="label label-success font-weight-100">{{ $item->status }}</span> </td>
-                                <td><a href="{{route('pending.order.details', $item->id)}}" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="fa fa-arrow-right"></i></a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="white-box calendar-widget">
-                <div id='calendar'></div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 col-sm-12">
-            <div class="white-box comment-widget">
-                <h4 class="box-title">Recent Comments</h4>
-                <ul class="media-list">
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#"> <img alt="user" class="media-object" src="{{asset('backend/plugins/images/users/jeffery.jpg')}}"> </a>
-                        </div>
-                        <div class="media-body">
-                            <div class="media-heading"><a href="javascript:void(0);" class="text-link"> Daniel Kristeen</a><span class="font-normal com-time">2 min ago</span>
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="javascript:void(0);"><span>Reply</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"><i class="fa fa-heart p-r-5"></i>0 Like</a>
-                                    </li>
-                                </ul>
+                @foreach($categories as $category)
+                <div class="col">
+                    <div class="card rounded-0 border shadow-none">
+                        <div class="row g-0 align-items-center">
+                            <div class="col">
+                                <img src="{{asset($category->category_image)}}" class="img-fluid" alt="" />
                             </div>
-                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.</p>
-                            <div class="media reply">
-                                <div class="media-left">
-                                    <a href="#"> <img alt="user" class="media-object" src="{{asset('backend/plugins/images/users/hanna.jpg')}}"> </a>
+                            <div class="col">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase">{{$category->category_name}}'s Wear</h5>
+                                    <p class="card-text text-uppercase">Hurry up!</p>
+                                    <a href="{{url('category/product/' .$category->id. '/' .$category->category_slug)}}" class="btn btn-dark btn-ecomm">SHOP NOW</a>
                                 </div>
-                                <div class="media-body">
-                                    <div class="media-heading"><a href="javascript:void(0);" class="text-link">Hanna Gover</a><span class="font-normal com-time">1 min ago</span>
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="javascript:void(0);"><span>Reply</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0);"><i class="fa fa-heart p-r-5"></i>0 Like</a>
-                                            </li>
-                                        </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <!--end row-->
+        </div>
+    </section>
+    <!--end pramotion-->
+    <!--start Featured product-->
+    <section class="py-4">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <h5 class="text-uppercase mb-0">FEATURED PRODUCTS</h5>
+                <a href="{{route('featured.view')}}" class="btn btn-dark btn-ecomm ms-auto rounded-0">More Products<i class='bx bx-chevron-right'></i></a>
+            </div>
+            <hr />
+            <div class="product-grid">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+                    @foreach($featured as $product)
+                    <div class="col">
+                        <div class="card rounded-0 product-card">
+                            <a href="{{url('product/details/' .$product->id)}}">
+                                <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <div class="product-info">
+                                    <a href="{{url('product/details/' .$product->id)}}">
+                                        <h6 class="product-name mb-2">{{$product->product_name}}</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="mb-1 product-price"><span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
+                                            <span class="fs-5">{{$product->discount_price}}$</span>
+                                        </div>
+                                        @php
+                                        $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                        $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                                        @endphp
+                                        <div class="cursor-pointer ms-auto">
+                                            @if($avarage == 0)
+                                            No Rating Yet!
+                                            @elseif($avarage == 1 || $avarage < 2) <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif ($avarage == 2 || $avarage < 3) <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    @elseif ($avarage == 3 || $avarage < 4) <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        @elseif ($avarage == 4 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif ($avarage == 5 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                @endif
+                                        </div>
                                     </div>
-                                    <p>Cras sit amet nibh libero, in gravida nulla.</p>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                            <a href="javascript:;" class="btn btn-dark btn-ecomm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
+                                            <a href="javascript:;" class="btn btn-light btn-ecomm" id="{{$product->id}}" onclick="addToWishlist(this.id)"><i class='bx bx-heart'></i>Add to Wishlist</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </li>
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#"> <img alt="user" class="media-object" src="{{asset('backend/plugins/images/users/jeffery.jpg')}}"> </a>
-                        </div>
-                        <div class="media-body">
-                            <div class="media-heading"><a href="javascript:void(0);" class="text-link"> Daniel Kristeen</a><span class="font-normal com-time">2 sec ago</span>
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="javascript:void(0);"><span>Reply</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"><i class="fa fa-heart p-r-5 text-danger"></i>2 Like</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.</p>
-                        </div>
-                    </li>
-                </ul>
-                <div class="add-comment">
-                    <input type="text" class="form-control" placeholder="Write your comment here">
-                    <i class="fa fa-camera"></i>
+                    </div>
+                    @endforeach
                 </div>
+                <!--end row-->
             </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="white-box">
-                <div class="profile-widget">
-                    <div class="profile-img">
-                        <img src="{{asset('backend/plugins/images/users/jeffery.jpg')}}" alt="user-img" class="img-circle">
-                        <p class="m-t-10 m-b-5"><a href="javascript:void(0);" class="profile-text font-22 font-semibold">Jeffery Brown</a></p>
-                        <span class="font-16">Ahmedabad, IN</span>
-                    </div>
-                    <div class="profile-info">
-                        <div class="col-xs-6 col-md-6 b-r">
-                            <h1 class="text-primary">647 </h1>
-                            <span class="font-16">Ranking</span>
-                        </div>
-                        <div class="col-xs-6 col-md-6">
-                            <h1 class="text-primary">98 </h1>
-                            <span class="font-16">Events</span>
-                        </div>
-                    </div>
-                    <div class="profile-detail font-15">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                        </p>
-                    </div>
-                    <div class="profile-btn">
-                        <a href="javascript:void(0);" class="btn btn-success">Follow Me</a>
-                        <a href="javascript:void(0);" class="btn btn-default btn-outline m-r-0">Detail View</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
+        </div>
+    </section>
+    <!--end Featured product-->
+    <!--start New Arrivals-->
+    <section class="py-4">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <h5 class="text-uppercase mb-0">Hot Deals</h5>
+                <a href="{{route('hot.deals')}}" class="btn btn-dark ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+            </div>
+            <hr />
+            <div class="product-grid">
+                <div class="new-arrivals owl-carousel owl-theme">
+                    @foreach($hot_deals as $product)
+                    <div class="item">
+                        <div class="card rounded-0 product-card">
+
+                            <a href="{{url('product/details/' .$product->id)}}">
+                                <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <div class="product-info">
+                                    <a href="{{url('product/details/' .$product->id)}}">
+                                        <h6 class="product-name mb-2">{{$product->product_name}}</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
+                                            <span class="fs-5">{{$product->discount_price}}$</span>
+                                        </div>
+                                        @php
+                                        $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                        $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                                        @endphp
+                                        <div class="cursor-pointer ms-auto">
+                                            @if($avarage == 0)
+                                            No Rating Yet!
+                                            @elseif($avarage == 1 || $avarage < 2) <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif ($avarage == 2 || $avarage < 3) <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    @elseif ($avarage == 3 || $avarage < 4) <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        @elseif ($avarage == 4 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif ($avarage == 5 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                @endif
+                                        </div>
+                                    </div>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                            <a href="javascript:;" class="btn btn-dark btn-ecomm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
+                                            <a href="javascript:;" class="btn btn-light btn-ecomm" id="{{$product->id}}" onclick="addToWishlist(this.id)"><i class='bx bx-heart'></i>Add to Wishlist</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--end New Arrivals-->
+    <!--start Advertise banners-->
+    <section class="py-4">
+        <div class="container">
+            <div class="add-banner">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
+                    <div class="col d-flex">
+                        <div class="card rounded-0 w-100 border shadow-none">
+                            <img src="{{asset('frontend/assets/images/promo/04.png')}}" class="card-img-top" alt="...">
+                            <div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-10%</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Sunglasses Sale</h5>
+                                <p class="card-text">See all Sunglasses and get 10% off at all Sunglasses</p> <a href="javascript:;" class="btn btn-dark btn-ecomm">SHOP BY GLASSES</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="card rounded-0 w-100 border shadow-none">
+                            <div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-80%</span>
+                            </div>
+                            <div class="card-body text-center mt-5">
+                                <h5 class="card-title">Cosmetics Sales</h5>
+                                <p class="card-text">Buy Cosmetics products and get 30% off at all Cosmetics</p> <a href="javascript:;" class="btn btn-dark btn-ecomm">SHOP BY COSMETICS</a>
+                            </div>
+                            <img src="{{asset('frontend/assets/images/promo/08.png')}}" class="card-img-top" alt="...">
+                        </div>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="card rounded-0 w-100 border shadow-none">
+                            <img src="{{asset('frontend/assets/images/promo/06.png')}}" class="card-img h-100" alt="...">
+                            <div class="card-img-overlay text-center top-20">
+                                <div class="border border-white border-3 py-3 bg-dark-3">
+                                    <h5 class="card-title text-white">Fashion Summer Sale</h5>
+                                    <p class="card-text text-uppercase fs-1 lh-1 mt-3 mb-2 text-white">Up to 80% off</p>
+                                    <p class="card-text fs-5 text-white">On top Fashion Brands</p> <a href="javascript:;" class="btn btn-white btn-ecomm">SHOP BY FASHION</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="card rounded-0 w-100 border shadow-none">
+                            <div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-50%</span>
+                            </div>
+                            <div class="card-body text-center">
+                                <img src="{{asset('frontend/assets/images/promo/07.png')}}" class="card-img-top" alt="...">
+                                <h5 class="card-title fs-1 text-uppercase">Super Sale</h5>
+                                <p class="card-text text-uppercase fs-4 lh-1 mb-2">Up to 50% off</p>
+                                <p class="card-text">On All Electronic</p> <a href="javascript:;" class="btn btn-dark btn-ecomm">HURRY UP!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end row-->
+            </div>
+        </div>
+    </section>
+    <!--end Advertise banners-->
+    <section class="py-4">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <h5 class="text-uppercase mb-0">Special Deals</h5>
+                <a href="{{route('special.deals')}}" class="btn btn-dark ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+            </div>
+            <hr />
+            <div class="product-grid">
+                <div class="new-arrivals owl-carousel owl-theme">
+                    @foreach($special_deals as $product)
+                    <div class="item">
+                        <div class="card rounded-0 product-card">
+
+                            <a href="{{url('product/details/' .$product->id)}}">
+                                <img src="{{asset($product->product_thumbnail)}}" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <div class="product-info">
+                                    <a href="{{url('product/details/' .$product->id)}}">
+                                        <h6 class="product-name mb-2">{{$product->product_name}}</h6>
+                                    </a>
+                                    <div class="d-flex align-items-center">
+
+                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">{{$product->selling_price}}$</span>
+                                            <span class="fs-5">{{$product->discount_price}}$</span>
+                                        </div>
+                                        @php
+                                        $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                        $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                                        @endphp
+                                        <div class="cursor-pointer ms-auto">
+                                            @if($avarage == 0)
+                                            No Rating Yet!
+                                            @elseif($avarage == 1 || $avarage < 2) <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                @elseif ($avarage == 2 || $avarage < 3) <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    @elseif ($avarage == 3 || $avarage < 4) <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star checked"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star"></span>
+                                                        @elseif ($avarage == 4 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            @elseif ($avarage == 5 || $avarage < 5) <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                @endif
+                                        </div>
+                                    </div>
+                                    <div class="product-action mt-2">
+                                        <div class="d-grid gap-2">
+                                            <a href="javascript:;" class="btn btn-dark btn-ecomm" data-bs-toggle="modal" data-bs-target="#exampleModal" id="{{$product->id}}" onclick="productView(this.id)"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
+                                            <a href="javascript:;" class="btn btn-light btn-ecomm" id="{{$product->id}}" onclick="addToWishlist(this.id)"><i class='bx bx-heart'></i>Add to Wishlist</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end special offer-->
+
+
+    <!--start support info-->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 row-group">
+                <div class="col">
+                    <div class="text-center">
+                        <div class="font-50"> <i class='bx bx-cart'></i>
+                        </div>
+                        <h2 class="fs-5 text-uppercase mb-0">Free delivery</h2>
+                        <p class="text-capitalize">Free delivery over $199</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="text-center">
+                        <div class="font-50"> <i class='bx bx-credit-card'></i>
+                        </div>
+                        <h2 class="fs-5 text-uppercase mb-0">Secure payment</h2>
+                        <p class="text-capitalize">We possess SSL / Secure сertificate</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="text-center">
+                        <div class="font-50"> <i class='bx bx-dollar-circle'></i>
+                        </div>
+                        <h2 class="fs-5 text-uppercase mb-0">Free returns</h2>
+                        <p class="text-capitalize">We return money within 30 days</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="text-center">
+                        <div class="font-50"> <i class='bx bx-support'></i>
+                        </div>
+                        <h2 class="fs-5 text-uppercase mb-0">Customer Support</h2>
+                        <p class="text-capitalize">Friendly 24/7 customer support</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec vestibulum magna, et dapib.</p>
+                    </div>
+                </div>
+            </div>
+            <!--end row-->
+        </div>
+    </section>
+    <!--end support info-->
+
+    <!--start brands-->
+    @include('frontend.body.brands')
+    <!--end brands-->
 </div>
 @endsection
