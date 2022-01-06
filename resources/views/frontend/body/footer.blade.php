@@ -27,14 +27,11 @@
                             <p class="mb-0 font-13">{{$setting->working_days}}</p>
                         </div>
                         <div class="working-days mb-3">
-                            <p class="list-inline-item"><i class='bx bxl-facebook'></i><a target="_blank" rel="nofollow"
-                                    href="{{ $setting->facebook }}" title="Facebook"></a></p>
-                            <p class="list-inline-item"><i class='bx bxl-twitter'></i><a target="_blank" rel="nofollow"
-                                    href="{{ $setting->twitter }}" title="Twitter"></a></p>
-                            <p class="list-inline-item"><i class='bx bxl-linkedin'></i><a target="_blank" rel="nofollow"
-                                    href="{{ $setting->linkedin }}" title="Linkedin"></a></p>
-                            <p class="list-inline-item"><i class='bx bxl-instagram'></i><a target="_blank"
-                                    rel="nofollow" href="{{ $setting->youtube }}" title="Youtube"></a></p>
+                            <a  style="color: black;" href="{{ $setting->facebook }}" title="Facebook"><p class="list-inline-item"><i class='bx bxl-facebook'></i></a>
+                            <a  style="color: black;" href="{{ $setting->twitter }}" title="Twitter"><p class="list-inline-item"><i class='bx bxl-twitter'></i></a>
+                            <a  style="color: black;" href="{{ $setting->linkedin }}" title="Linkedin"><p class="list-inline-item"><i class='bx bxl-linkedin'></i></a>
+                            <a  style="color: black;" href="{{ $setting->youtube }}" title="YouTube"><p class="list-inline-item"><i class='bx bxl-youtube'></i></a>
+                    
                         </div>
                     </div>
                 </div>
@@ -69,11 +66,11 @@
                         <div class="download-app mt-3">
                             <h6 class="mb-3 text-uppercase">Download our app</h6>
                             <div class="d-flex align-items-center gap-2">
-                                <a href="javascript:;">
+                                <a href="https://apps.apple.com/in/app/apple-store/id375380948">
                                     <img src="{{asset('frontend/assets/images/icons/apple-store.png')}}" class=""
                                         width="160" alt="" />
                                 </a>
-                                <a href="javascript:;">
+                                <a href="https://play.google.com/store">
                                     <img src="{{asset('frontend/assets/images/icons/play-store.png')}}" class=""
                                         width="160" alt="" />
                                 </a>
@@ -90,7 +87,8 @@
             <hr />
             <div class="row text-center">
                 <div class="col">
-                    <p class="mb-0">Copyright © 2021. <strong>Shailly Dixit</strong></p>
+                    <p class="mb-0">Copyright © 2021. 
+                      <a href="https://github.com/shaillydixit/Laravel8_EcommerceProject"><strong>Shailly Dixit</strong></a>  </p>
                 </div>
 
             </div>
