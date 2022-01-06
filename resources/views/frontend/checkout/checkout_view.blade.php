@@ -134,26 +134,20 @@
                                                     <h6 class="mb-0 h5">Select Payment Method</h6>
                                                     <hr>
                                                     <div class="input-group text-center">
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <label for="">Stripe</label>
                                                             <input type="radio" name="payment_method" value="stripe">
                                                             <br>
                                                             <img src="{{ asset('frontend/assets/images/payment/1.jpeg') }}" style="width:80px; height:60px;">
                                                         </div>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <label for="">Razorpay</label>
                                                             <input type="radio" name="payment_method" value="razorpay">
                                                             <br>
                                                             <img src="{{ asset('frontend/assets/images/payment/4.jpeg') }}" style="width:70px; height:50px;">
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <label for="">Card</label>
-                                                            <input type="radio" name="payment_method" value="card">
-                                                            <br>
-                                                            <img src="{{ asset('frontend/assets/images/payment/2.jpeg') }}" style="width:70px; height:50px;">
-                                                        </div>
 
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <label for="">Cash</label>
                                                             <input type="radio" name="payment_method" value="cash">
                                                             <br>

@@ -31,10 +31,7 @@ class AllUserController extends Controller
         return view('frontend.profile.user_orders', compact('orders'));
     }
 
-    public function UserAddress()
-    {
-        return view('frontend.profile.user_address');
-    }
+  
 
     public function UserLogout()
     {
